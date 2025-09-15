@@ -1,0 +1,422 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fff; /* Putih dominan */
+  color: #111; /* Teks hitam */
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgb(255, 255, 255); 
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  z-index: 1000;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.navbar .logo img {
+  height: 55px; /* default */
+}
+
+@media (max-width: 768px) {
+  .navbar .logo img {
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar .logo img {
+    height: 40px;
+  }
+}
+
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #010101;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #000000;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #000000;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url("smpn32.png") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.hero {
+  position: relative;  /* Supaya ::before berada di dalam hero */
+  width: 100%;
+  height: 100vh;       /* Tinggi hero sesuai viewport */
+  overflow: hidden;    /* Agar tidak keluar area hero */
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('beranda.jpeg');
+  background-size: cover;       /* Membuat gambar menutupi seluruh area */
+  background-position: center;  /* Memusatkan gambar */
+  background-repeat: no-repeat; /* Tidak diulang */
+  z-index: -1;                  /* Agar berada di belakang konten */
+}
+
+.hero-content {
+  position: relative;
+  color: #111;
+  z-index: 2;
+  background: rgba(255,255,255,0.85);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+.hero-content h1 {
+  font-size: 3.5em;
+  color: #4da6ff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  text-shadow: 0 0 6px #ff69b4;
+}
+.hero-content p {
+  font-size: 1.2em;
+  margin-bottom: 25px;
+  color: #333;
+}
+.btn-primary {
+  background: linear-gradient(45deg, #4da6ff, #ff69b4);
+  padding: 12px 25px;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(77,166,255,0.4);
+}
+
+/* Section */
+.section {
+  padding: 80px 50px;
+  text-align: center;
+}
+.section h2 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  color: #4da6ff;
+}
+.section p {
+  max-width: 800px;
+  margin: auto;
+  color: #444;
+}
+.dark {
+  background: #f9f9f9;
+}
+
+/* Program Cards */
+.card {
+  position: relative;
+  background: url("smpn32.png") no-repeat center/cover;
+  padding: 25px;
+  border-radius: 15px;
+  border: 2px solid #e6e6e6;
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: #000000; /* teks jadi putih */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* biar lebih terbaca */
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(254, 254, 254, 0.911); /* overlay gelap */
+  border-radius: 15px;
+  z-index: 0;
+}
+
+.card h3,
+.card p {
+  position: relative;
+  z-index: 1; /* teks di atas overlay */
+}
+
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 200px;           /* tinggi sama untuk semua gambar */
+  object-fit: cover;       /* menjaga proporsi gambar, memotong bagian yang lebih */
+  border-radius: 15px;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  cursor: pointer;         /* menunjukkan bisa diklik */
+}
+
+.gallery img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(255,105,180,0.3);
+}
+
+/* Overlay fullscreen */
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Gambar di overlay */
+#overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(255,105,180,0.3);
+}
+
+ 
+
+/* Footer */
+footer {
+  background: #4da6ff;
+  padding: 20px;
+  text-align: center;
+  color: #000;   /* ← teks hitam */
+  font-size: 0.9em;
+  border-top: 3px solid #ff69b4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar ul {
+    position: absolute;
+    top: 65px;
+    right: 10px;
+    background: #ff69b4; /* biru solid */
+    flex-direction: row; /* default sejajar */
+    flex-wrap: wrap; /* kalau lebih dari 3 otomatis turun */
+    gap: 8px; /* jarak antar tombol */
+    padding: 8px 10px;
+    display: none;
+    justify-content: flex-end; /* tombol ngumpul ke kanan */
+    max-width: 90%; /* biar nggak terlalu melebar */
+  }
+
+  
+
+  .navbar ul.active {
+    display: flex;
+  }
+
+  .navbar ul li a {
+    color: #000;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+
+  .navbar ul li a:hover {
+    background: rgba(77, 166, 255, 0.15); /* efek hover tipis */
+  }
+}
+section {
+  scroll-margin-top: 80px; /* tinggi navbar */
+}
+/* Struktur Grid */
+.struktur-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.struktur-grid .box {
+  background: #f9f9f9;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.struktur-grid .box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.struktur-grid ul {
+  padding-left: 20px;
+  margin: 8px 0;
+}
+
+.struktur-grid li {
+  list-style: disc;
+  margin-left: 15px;
+  color: #333;
+}
+
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.6em;
+  }
+
+  .hero-content p {
+    font-size: 0.9em;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .section h2 {
+    font-size: 1.6em;
+  }
+}
+
+
+/* Modal Klasmen */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+  padding-top: 60px;
+}
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 900px;
+  border-radius: 10px;
+}
+.close {
+  color: #333;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.klasmen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  text-align: center;
+}
+.klasmen-item img {
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.klasmen-item img:hover {
+  transform: scale(1.05);
+}
+.klasmen-item p {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+/* Zoom Modal */
+.zoom-modal {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.95);
+  justify-content: center;
+  align-items: center;
+}
+.zoom-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.close-zoom {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
