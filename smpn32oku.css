@@ -50,11 +50,10 @@ body {
   gap: 25px;
 }
 
-.navbar a {
-  text-decoration: none;
-  color: #010101;
-  font-weight: 600;
-  transition: color 0.3s ease;
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
 }
 
 .navbar a:hover {
@@ -80,7 +79,7 @@ body {
 .hero {
   position: relative;
   height: 100vh;
-  background: url("smpn32.png") center/cover no-repeat;
+  background: url("beranda.jpeg") center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -232,16 +231,13 @@ body {
   box-shadow: 0 6px 18px rgba(255,105,180,0.3);
 }
 
- 
-
-/* Footer */
 footer {
-  background: #4da6ff;
+  background: linear-gradient(90deg, #4da6ff, #ff69b4);
   padding: 20px;
   text-align: center;
-  color: #000;   /* ← teks hitam */
+  color: #fff;
   font-size: 0.9em;
-  border-top: 3px solid #ff69b4;
+  border-top: 3px solid #fff;
 }
 
 /* Responsive */
