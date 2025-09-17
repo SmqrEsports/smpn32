@@ -212,6 +212,16 @@
             Kesempatan berkompetisi di tingkat kabupaten, provinsi, hingga
             nasional untuk meraih prestasi dan pengalaman baru.
           </p>
+          <p
+            class="lihat-pencapaian"
+            style="
+              color: rgb(209, 11, 153);
+              cursor: pointer;
+              text-decoration: underline;
+            "
+          >
+            Klick untuk melihat pencapaian kami
+          </p>
         </div>
         <div class="card">
           <h3>Pembinaan Karakter</h3>
@@ -223,6 +233,54 @@
       </div>
     </section>
 
+    <!-- Modal Pencapaian -->
+    <div id="pencapaianModal" class="modal">
+      <div class="modal-content">
+        <span class="close-pencapaian">&times;</span>
+        <h2 class="season-title">
+          Tahun 2025<br /><span>Angkatan IV</span>
+        </h2>
+
+        <div class="klasmen-grid page" data-page="1">
+          <div class="klasmen-item">
+            <img src="ligapelajar2.jpeg" alt="Klasmen Minggu 1" class="zoomable" />
+            <p>Liga Esports Nasional Pelajar(Tim Putera)</p>
+          </div>
+          <div class="klasmen-item">
+            <img src="ligapelajar1.jpeg" alt="Klasmen Minggu 2" class="zoomable" />
+            <p>Liga Esports Nasional Pelajar(Tim Puteri)</p>
+          </div>
+          
+        </div>
+
+       
+      </div>
+    </div>
+
+    <!-- Script Modal -->
+    <script>
+      const pencapaianBtn = document.querySelector(".lihat-pencapaian");
+      const pencapaianModal = document.getElementById("pencapaianModal");
+      const closePencapaian = document.querySelector(".close-pencapaian");
+
+      // buka modal saat teks di klik
+      pencapaianBtn.addEventListener("click", () => {
+        pencapaianModal.style.display = "block";
+      });
+
+      // tutup modal saat klik tombol close
+      closePencapaian.addEventListener("click", () => {
+        pencapaianModal.style.display = "none";
+      });
+
+      // tutup modal saat klik di luar konten modal
+      window.addEventListener("click", (event) => {
+        if (event.target === pencapaianModal) {
+          pencapaianModal.style.display = "none";
+        }
+      });
+    </script>
+
     <!-- Modal Lightbox Klasmen -->
     <div id="klasmenModal" class="modal">
       <div class="modal-content">
@@ -230,7 +288,8 @@
         <h2 class="season-title">
           Seasons I<br /><span>July - Desember 2025</span>
         </h2>
-        <div class="klasmen-grid">
+
+        <div class="klasmen-grid page" data-page="1">
           <div class="klasmen-item">
             <img src="minggu1.jpeg" alt="Klasmen Minggu 1" class="zoomable" />
             <p>Minggu 1</p>
@@ -255,6 +314,9 @@
             />
             <p>Minggu 3 Puteri</p>
           </div>
+        </div>
+
+        <div class="klasmen-grid page" data-page="2" style="display: none">
           <div class="klasmen-item">
             <img
               src="minggu4.jpeg"
@@ -287,6 +349,9 @@
             />
             <p>Minggu 5 Puteri</p>
           </div>
+        </div>
+
+        <div class="klasmen-grid page" data-page="3" style="display: none">
           <div class="klasmen-item">
             <img
               src="minggu6.jpeg"
@@ -312,8 +377,31 @@
             <p>Minggu 7 Puteri</p>
           </div>
         </div>
+
+        <div>
+          <button onclick="changePage(-1)">Sebelumnya</button>
+          <button onclick="changePage(1)">Selanjutnya</button>
+        </div>
       </div>
     </div>
+
+    <script>
+  let currentPage = 1;
+  const klasmenModal = document.getElementById("klasmenModal");
+  const pages = klasmenModal.querySelectorAll(".klasmen-grid.page");
+  const totalPages = pages.length;
+
+  function changePage(step) {
+    pages[currentPage - 1].style.display = "none"; // sembunyikan halaman lama
+    currentPage += step;
+
+    if (currentPage < 1) currentPage = totalPages;
+    if (currentPage > totalPages) currentPage = 1;
+
+    pages[currentPage - 1].style.display = "grid"; // tampilkan halaman baru
+  }
+</script>
+
 
     <!-- Modal Zoom Gambar -->
     <div id="zoomModal" class="zoom-modal">
@@ -322,31 +410,73 @@
     </div>
 
     <!-- GALERI -->
-    <section id="galeri" class="section">
-      <h2>Galeri Kegiatan</h2>
-      <div class="gallery">
-        <div class="gallery-item">
-          <img src="les32.jpeg" alt="gambar" />
-          <div class="caption">Liga Esports SMPN32 OKU By SMQR Esports</div>
-        </div>
-        <div class="gallery-item">
-          <img src="beranda.jpeg" alt="Latihan Tim Esports" />
-          <div class="caption">Anggota Angkatan IV</div>
-        </div>
-        <div class="gallery-item">
-          <img src="ligapelajar1.jpeg" alt="Liga Pelajar Nasional" />
-          <div class="caption">Liga Pelajar Nasional 2025 Tim Puteri</div>
-        </div>
-        <div class="gallery-item">
-          <img src="ligapelajar2.jpeg" alt="Liga Pelajar Nasional" />
-          <div class="caption">Liga Pelajar Nasional 2025 Tim Putera</div>
-        </div>
-        <div class="gallery-item">
-          <img src="makanbersama.jpeg" alt="Pembinaan Karakter" />
-          <div class="caption">Memasak & makan makan bersama</div>
-        </div>
-      </div>
-    </section>
+   <section id="galeri" class="section">
+  <h2>Galeri Kegiatan</h2>
+  <div class="gallery" id="gallery">
+    <div class="gallery-item">
+      <img src="les32.jpeg" alt="gambar" />
+      <div class="caption">Liga Esports SMPN32 OKU By SMQR Esports</div>
+    </div>
+     <div class="gallery-item">
+      <img src="makanbersama.jpeg" alt="Pembinaan Karakter" />
+      <div class="caption">Memasak & makan makan bersama Angkatan IV</div>
+    </div>
+    <div class="gallery-item">
+      <img src="beranda.jpeg" alt="Latihan Tim Esports" />
+      <div class="caption">Angkatan IV Tahun 2025</div>
+    </div>
+    <div class="gallery-item">
+      <img src="angkatan3.jpeg" alt="Liga Pelajar Nasional" />
+      <div class="caption">Angkatan III Tahun 2024</div>
+    </div>
+     <div class="gallery-item">
+      <img src="angkatan2.jpeg" alt="Liga Pelajar Nasional" />
+      <div class="caption">Angkatan II Tahun 2023</div>
+    </div>
+    <div class="gallery-item">
+      <img src="angkatan1.jpeg" alt="Liga Pelajar Nasional" />
+      <div class="caption">Angkatan I Tahun 2022</div>
+    </div>
+    
+  </div>
+
+  <!-- Tombol Pagination -->
+  <div style="text-align:center; margin-top:20px;">
+    <button onclick="changeGalleryPage(-1)">Sebelumnya</button>
+    <span id="galleryPageInfo"></span>
+    <button onclick="changeGalleryPage(1)">Selanjutnya</button>
+  </div>
+</section>
+
+<script>
+  let galleryCurrentPage = 1;
+  const galleryItemsPerPage = 4;
+  const galleryItems = document.querySelectorAll("#gallery .gallery-item");
+  const galleryTotalPages = Math.ceil(galleryItems.length / galleryItemsPerPage);
+
+  function showGalleryPage(page) {
+    galleryItems.forEach((item, index) => {
+      item.style.display =
+        index >= (page - 1) * galleryItemsPerPage &&
+        index < page * galleryItemsPerPage
+          ? "block"
+          : "none";
+    });
+    document.getElementById("galleryPageInfo").innerText =
+      `Halaman ${page} dari ${galleryTotalPages}`;
+  }
+
+  function changeGalleryPage(step) {
+    galleryCurrentPage += step;
+    if (galleryCurrentPage < 1) galleryCurrentPage = galleryTotalPages;
+    if (galleryCurrentPage > galleryTotalPages) galleryCurrentPage = 1;
+    showGalleryPage(galleryCurrentPage);
+  }
+
+  // tampilkan halaman pertama saat load
+  showGalleryPage(galleryCurrentPage);
+</script>
+
 
     <!-- KONTAK -->
     <section id="kontak" class="section dark">
@@ -364,7 +494,7 @@
         style="
           margin-top: 20px;
           font-weight: 600;
-          color: #4da6ff;
+          color: #000000;
           text-align: center;
         "
       >
@@ -377,14 +507,16 @@
 
     <!-- FOOTER -->
     <footer>
-      © 2022 SMPN 32 OKU Esports. Hak Cipta Dilindungi Undang-Undang.
-    </footer>
+  © 2022 SMPN 32 OKU Esports | Official Website
+</footer>
+
 
     <!-- SCRIPT MODAL -->
     <script>
       // Modal Klasmen
       const modal = document.getElementById("klasmenModal");
       const btn = document.querySelector(".lihat-klasmen");
+
       const span = document.querySelector(".close");
 
       btn.onclick = () => (modal.style.display = "block");
