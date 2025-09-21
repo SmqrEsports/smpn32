@@ -9,49 +9,7 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
     <link href="smpn32.png" rel="stylesheet" />
-    <style>
-      /* Gaya Galeri */
-      .gallery img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 15px;
-        transition: transform 0.4s ease, box-shadow 0.3s ease;
-        cursor: pointer;
-      }
-      .gallery img:hover {
-        transform: scale(1.08);
-        box-shadow: 0 6px 18px rgba(255, 105, 180, 0.3);
-      }
-
-      /* Overlay Zoom Fullscreen */
-      .zoom-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-      }
-      .zoom-modal img {
-        max-width: 90%;
-        max-height: 90%;
-        border-radius: 15px;
-        box-shadow: 0 6px 18px rgba(255, 105, 180, 0.3);
-      }
-      .zoom-modal .close-zoom {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        font-size: 2em;
-        color: #fff;
-        cursor: pointer;
-      }
-    </style>
+    
   </head>
   <body>
     <!-- NAVBAR -->
@@ -373,12 +331,39 @@
             <p>Minggu 6 Puteri</p>
           </div>
           <div class="klasmen-item">
-            <img alt="21 September 2025" class="zoomable" />
+            <img
+              src="minggu7.jpeg"
+              alt="Klasmen Minggu 6 Puteri"
+              class="zoomable"
+            />
             <p>Minggu 7 Putera</p>
           </div>
           <div class="klasmen-item">
-            <img alt="21 September 2025" class="zoomable" />
+            <img
+              src="minggu7puteri.jpeg"
+              alt="Klasmen Minggu 6 Puteri"
+              class="zoomable"
+            />
             <p>Minggu 7 Puteri</p>
+          </div>
+          
+        </div>
+        <div class="klasmen-grid page" data-page="3" style="display: none">
+          <div class="klasmen-item">
+            <img
+              
+              alt="28 September 2025"
+              class="zoomable"
+            />
+            <p>Minggu 8 Putera</p>
+          </div>
+          <div class="klasmen-item">
+            <img
+              
+              alt="28 September 2025"
+              class="zoomable"
+            />
+            <p>Minggu 8 Puteri</p>
           </div>
         </div>
 
