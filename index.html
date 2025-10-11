@@ -11,13 +11,17 @@
     <link href="smpn32.png" rel="stylesheet" />
   </head>
   <body>
+    <!-- Tambahkan video background tepat di awal body -->
+
+    <div class="video-overlay"></div>
+
     <!-- NAVBAR -->
     <div class="navbar">
       <div class="logo">
         <img src="smpn32.png" alt="logo" />
       </div>
       <div>
-        <h4 style="color: #000000">SMPN 32 OKU Esports</h4>
+        <h4 class="brand-title">SMPN 32 OKU Esports</h4>
       </div>
 
       <div
@@ -29,15 +33,20 @@
         <span></span>
       </div>
       <ul>
-        <li><a href="#beranda">Beranda</a></li>
-        <li><a href="#program">Program</a></li>
         <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#program">Program</a></li>
         <li><a href="#galeri">Galeri</a></li>
       </ul>
     </div>
 
     <!-- HERO -->
     <header id="beranda" class="hero">
+      <!-- tambahkan video di sini -->
+      <video id="bgVideo" autoplay muted loop playsinline aria-hidden="true">
+        <source src="angkatan4.mp4" type="video/mp4" />
+        <!-- fallback text -->
+      </video>
+
       <div class="hero-content">
         <h1>SMPN 32 OKU Esports</h1>
         <p>Website Resmi Ekstrakurikuler Esports SMPN 32 Ogan Komering Ulu</p>
@@ -111,7 +120,7 @@
           <p>Ketua: Keysha Azzahra</p>
           <p>Wakil Ketua & Duta Esports: Aela Zafirah Taqiyyah</p>
           <p>Sekretaris: Azzahra Purnamasari</p>
-          <p>Bendahara: Sabila Sagita</p>
+          <p>Bendahara: Fajri Bahar Rhafsanjani</p>
         </div>
       </div>
     </section>
@@ -429,6 +438,10 @@
           <div class="caption">Liga Esports SMPN32 OKU By SMQR Esports</div>
         </div>
         <div class="gallery-item">
+          <img src="putera.jpeg" alt="Pembinaan Karakter" />
+          <div class="caption">Liga Esports Nasional Pelajar Tahun 2025</div>
+        </div>
+        <div class="gallery-item">
           <img src="makanbersama.jpeg" alt="Pembinaan Karakter" />
           <div class="caption">Memasak & makan makan bersama Angkatan IV</div>
         </div>
@@ -540,13 +553,7 @@
                   gap: 6px;
                 "
               >
-                <img
-                  src="smqresports.jpeg"
-                  alt="Logo SMQR Esports"
-                  width="20"
-                  height="20"
-                />
-                (SMQR ESPORTS)
+                SMQR ESPORTS
               </a>
             </li>
 
@@ -745,46 +752,25 @@
     <!-- KONTAK -->
     <section
       id="kontak"
-      class="section dark"
+      class="section dark kontakt"
       style="
         background: linear-gradient(135deg, #f7f7f8, #ffffff);
         padding: 40px 20px;
         border-radius: 16px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        color: white;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         text-align: center;
       "
     >
-      <h2
-        style="
-          font-size: 2rem;
-          margin-bottom: 15px;
-          font-weight: 700;
-          letter-spacing: 1px;
-          text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        "
-      >
-        📩 Kontak
-      </h2>
+      <h2 class="contact-title">📩 Kontak</h2>
 
-      <p style="font-size: 1.1rem; margin-bottom: 20px; font-weight: 500">
-        Untuk informasi lebih lanjut hubungi kami:
-      </p>
+      <p class="contact-sub">Untuk informasi lebih lanjut hubungi kami:</p>
 
-      <p style="font-size: 1.1rem; margin-bottom: 10px">
+      <p style="font-size: 1.1rem; margin-bottom: 10px; color: #0a0a0a">
         Instagram:
         <a
           href="https://instagram.com/esport_smpn32oku"
           target="_blank"
-          style="
-            color: #fff;
-            font-weight: bold;
-            text-decoration: none;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 6px 12px;
-            border-radius: 8px;
-            transition: all 0.3s;
-          "
+          class="insta-link"
         >
           @esport_smpn32oku
         </a>
@@ -794,10 +780,9 @@
         style="
           margin-top: 25px;
           font-weight: 600;
-          font-size: 1.2rem;
+          font-size: 1.05rem;
           line-height: 1.6;
-          color: #636363;
-          text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+          color: #0a0a0a;
         "
       >
         🎮✨ Ayo bergabung dengan <b>Ekstrakurikuler Esports SMPN 32 OKU!</b>
