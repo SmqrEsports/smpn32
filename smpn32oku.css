@@ -507,3 +507,105 @@ section {
 .hidden{display:none}
 
 
+/* Galeri Penyerahan Juara - Mobile Responsive */
+#galeri-penyerahan-juara {
+  padding: 40px 20px;
+}
+
+#galeri-penyerahan-juara h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
+#galeri-penyerahan-juara .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 0 10px;
+}
+
+#galeri-penyerahan-juara .gallery-item {
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(20, 20, 60, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#galeri-penyerahan-juara .gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(20, 20, 60, 0.12);
+}
+
+#galeri-penyerahan-juara .gallery-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+#galeri-penyerahan-juara .gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+#galeri-penyerahan-juara .caption {
+  padding: 15px;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  #galeri-penyerahan-juara {
+    padding: 30px 15px;
+  }
+
+  #galeri-penyerahan-juara h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  #galeri-penyerahan-juara .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 0;
+  }
+
+  #galeri-penyerahan-juara .gallery-item img {
+    height: 180px;
+  }
+
+  #galeri-penyerahan-juara .caption {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #galeri-penyerahan-juara {
+    padding: 25px 10px;
+  }
+
+  #galeri-penyerahan-juara h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+
+  #galeri-penyerahan-juara .gallery {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  #galeri-penyerahan-juara .gallery-item img {
+    height: 200px;
+  }
+
+  #galeri-penyerahan-juara .caption {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+}
