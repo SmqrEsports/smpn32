@@ -252,7 +252,7 @@
       });
     </script>
 
- <!-- Modal Lightbox Klasmen -->
+<!-- Modal Lightbox Klasmen -->
 <div id="klasmenModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -261,7 +261,7 @@
     </h2>
 
     <!-- Halaman 1 -->
-    <div class="klasmen-grid page" data-page="1" style="display: grid;">
+    <div class="klasmen-grid page1" data-page="1" style="display: grid;">
       <div>Bulan Juli Tahun 2025</div>
       <div class="klasmen-item">
         <img src="minggu1.jpeg" alt="Klasmen Minggu 1" class="zoomable" />
@@ -270,7 +270,7 @@
     </div>
 
     <!-- Halaman 2 -->
-    <div class="klasmen-grid page" data-page="2" style="display: none;">
+    <div class="klasmen-grid page1" data-page="2" style="display: none;">
       <div>Bulan Agustus Tahun 2025</div>
       <div class="klasmen-item"><img src="minggu2.jpeg" alt="Minggu 2" class="zoomable" /><p>Minggu 2</p></div>
       <div class="klasmen-item"><img src="minggu3.jpeg" alt="Minggu 3 Putera" class="zoomable" /><p>Minggu 3 Putera</p></div>
@@ -280,7 +280,7 @@
     </div>
 
     <!-- Halaman 3 -->
-    <div class="klasmen-grid page" data-page="3" style="display: none;">
+    <div class="klasmen-grid page1" data-page="3" style="display: none;">
       <div>Bulan September Tahun 2025</div>
       <div class="klasmen-item"><img src="minggu5.jpeg" alt="Minggu 5 Putera" class="zoomable" /><p>Minggu 5 Putera</p></div>
       <div class="klasmen-item"><img src="minggu5puteri.jpeg" alt="Minggu 5 Puteri" class="zoomable" /><p>Minggu 5 Puteri</p></div>
@@ -293,7 +293,7 @@
     </div>
 
     <!-- Halaman 4 -->
-    <div class="klasmen-grid page" data-page="4" style="display: none;">
+    <div class="klasmen-grid page1" data-page="4" style="display: none;">
       <div>Bulan Oktober Tahun 2025</div>
       <div class="klasmen-item"><img src="minggu9.png" alt="Minggu 9 Putera" class="zoomable" /><p>Minggu 9 Putera</p></div>
       <div class="klasmen-item"><img src="minggu9puteri.png" alt="Minggu 9 Puteri" class="zoomable" /><p>Minggu 9 Puteri</p></div>
@@ -306,7 +306,7 @@
     </div>
 
     <!-- Halaman 5 -->
-    <div class="klasmen-grid page" data-page="5" style="display: none;">
+    <div class="klasmen-grid page1" data-page="5" style="display: none;">
       <div>Bulan November Tahun 2025</div>
       <div class="klasmen-item"><img src="minggu13.png" alt="Minggu 13 Putera" class="zoomable" /><p>Minggu 13 Putera</p></div>
       <div class="klasmen-item"><img src="minggu13puteri.png" alt="Minggu 13 Puteri" class="zoomable" /><p>Minggu 13 Puteri</p></div>
@@ -317,14 +317,14 @@
     </div>
 
     <!-- Halaman 5 -->
-    <div class="klasmen-grid page" data-page="5" style="display: none;">
+    <div class="klasmen-grid page1" data-page="5" style="display: none;">
       <div>PLAYOFF Anggota Terbaik Tahun 2025</div>
       <div class="klasmen-item"><img src="PlayoffSeasons1.png" alt="Peringkat 4-8 Terbaik" class="zoomable" /><p>Minggu 16</p></div>
       
     </div>
 
     <!-- Halaman 6 (Desember / Juara) -->
-    <div class="klasmen-grid page" data-page="6" style="display: none;">
+    <div class="klasmen-grid page1" data-page="6" style="display: none;">
       <div>🏆 Bulan Desember Tahun 2025 🏆</div>
       <div class="klasmen-item"><img src="umumputera Seasons 1.png" alt="Juara Umum Putera" class="zoomable" /><p>Juara Umum Putera</p></div>
       <div class="klasmen-item"><img src="umumputeri Seasons 1.png" alt="Juara Umum Puteri" class="zoomable" /><p>Juara Umum Puteri</p></div>
@@ -335,59 +335,83 @@
       
     </div>
 
-    <!-- Halaman kosong (pesan akhir) -->
-    
-
-    <!-- Tombol Navigasi -->
+    <!-- Tombol Navigasi (seperti Seasons II) -->
     <div style="text-align:center; margin-top:50px; font-family:'Segoe UI', Roboto, sans-serif; color:#222;">
-  <div style="font-size:14px; letter-spacing:0.5px; background:linear-gradient(90deg, #0f2027, #203a43, #2c5364); color:white; display:inline-block; padding:14px 28px; border-radius:14px; box-shadow:0 6px 15px rgba(0,0,0,0.25); max-width:700px;">
-    TERIMAKASIH TELAH MENGIKUTI LIGA INI<br>
-    <span style="font-size:12px; color:#dcdcdc;">Klik <b>Selanjutnya</b> atau <b>Sebelumnya</b> untuk melihat klasmen lainnya.</span>
-  </div>
-  <div style="margin-top:25px;">
-    <button 
-      onclick="changePage(-1)" 
-      style="background:linear-gradient(135deg,#444,#222); color:white; border:none; padding:10px 22px; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; margin:0 10px; box-shadow:0 4px 10px rgba(0,0,0,0.3); transition:all 0.2s ease;">
-      ⬅ Sebelumnya
-    </button>
-    <button 
-      onclick="changePage(1)" 
-      style="background:linear-gradient(135deg,#1a73e8,#0a4abf); color:white; border:none; padding:10px 22px; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; margin:0 10px; box-shadow:0 4px 10px rgba(0,0,0,0.3); transition:all 0.2s ease;">
-      Selanjutnya ➡
-    </button>
-  </div>
-</div>
+      <div style="margin-top:25px;">
+        <button 
+          onclick="changePage1(-1)" 
+          style="background:linear-gradient(135deg,#444,#222); color:white; border:none; padding:10px 22px; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; margin:0 10px; box-shadow:0 4px 10px rgba(0,0,0,0.3); transition:all 0.2s ease;">
+          ⬅ Sebelumnya
+        </button>
+        <button 
+          onclick="changePage1(1)" 
+          style="background:linear-gradient(135deg,#1a73e8,#0a4abf); color:white; border:none; padding:10px 22px; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; margin:0 10px; box-shadow:0 4px 10px rgba(0,0,0,0.3); transition:all 0.2s ease;">
+          Selanjutnya ➡
+        </button>
+      </div>
+    </div>
+
 
 
   </div>
 </div>
 
 <script>
-let currentPage = 1;
-const pages = document.querySelectorAll(".klasmen-grid.page");
-const totalPages = pages.length;
+// Paging + modal handlers for Seasons I (mirror Seasons II behavior)
+let currentPage1 = 1;
 
-function showPage(pageNumber) {
-  for (let i = 0; i < totalPages; i++) {
+function getPages1() {
+  return document.querySelectorAll(".klasmen-grid.page1");
+}
+
+function showPage1(pageNumber) {
+  const pages = getPages1();
+  const total = pages.length;
+  if (total === 0) return;
+  for (let i = 0; i < total; i++) {
     pages[i].style.display = (i + 1 === pageNumber) ? "grid" : "none";
   }
 
   const activePage = pages[pageNumber - 1];
+  if (!activePage) return;
   const items = activePage.querySelectorAll(".klasmen-item");
-  // Jika halaman tidak punya konten, tampilkan halaman terakhir dengan pesan terima kasih
-  if (items.length === 0 && pageNumber < totalPages) {
-    showPage(totalPages);
+  if (items.length === 0 && pageNumber < total) {
+    // if current page empty and not last, wrap to last (same behavior as Seasons II)
+    showPage1(total);
   }
 }
 
-function changePage(step) {
-  currentPage += step;
-  if (currentPage < 1) currentPage = totalPages;
-  if (currentPage > totalPages) currentPage = 1;
-  showPage(currentPage);
+function changePage1(step) {
+  const total = getPages1().length;
+  if (total === 0) return;
+  currentPage1 += step;
+  if (currentPage1 < 1) currentPage1 = total;
+  if (currentPage1 > total) currentPage1 = 1;
+  showPage1(currentPage1);
 }
 
-showPage(currentPage);
+document.addEventListener('DOMContentLoaded', () => {
+  const modal1 = document.getElementById("klasmenModal");
+  const btn1 = document.querySelector(".lihat-klasmen");
+  const span1 = document.querySelector(".close");
+
+  if (btn1 && modal1) {
+    btn1.addEventListener("click", () => {
+      modal1.style.display = "block";
+      currentPage1 = 1;
+      showPage1(currentPage1);
+    });
+  }
+
+  if (span1 && modal1) span1.onclick = () => (modal1.style.display = "none");
+
+  window.addEventListener("click", (event) => {
+    if (event.target == modal1) modal1.style.display = "none";
+  });
+
+  // initialize first page
+  showPage1(currentPage1);
+});
 </script>
 
 
@@ -447,28 +471,64 @@ showPage(currentPage);
             <img src="s2_minggu1.jpeg" alt="Seasons2 Minggu 1" class="zoomable" />
             <p>Minggu 1</p>
           </div>
+          <div class="klasmen-item">
+            <img src="s2_minggu1.jpeg" alt="Seasons2 Minggu 2" class="zoomable" />
+            <p>Minggu 2</p>
+          </div>
+          <div class="klasmen-item">
+            <img src="s2_minggu1.jpeg" alt="Seasons2 Minggu 3" class="zoomable" />
+            <p>Minggu 3</p>
+          </div>
         </div>
 
         <!-- Halaman 2 -->
         <div class="klasmen-grid page2" data-page="2" style="display: none;">
           <div>Bulan Februari 2026</div>
-          <div class="klasmen-item"><img src="s2_minggu2.jpeg" alt="Seasons2 Minggu 2" class="zoomable" /><p>Minggu 2</p></div>
-          <div class="klasmen-item"><img src="s2_minggu3.jpeg" alt="Seasons2 Minggu 3" class="zoomable" /><p>Minggu 3</p></div>
+          <div class="klasmen-item"><img src="s2_minggu2.jpeg" alt="Seasons2 Minggu 4" class="zoomable" /><p>Minggu 4</p></div>
+          <div class="klasmen-item"><img src="s2_minggu3.jpeg" alt="Seasons2 Minggu 5" class="zoomable" /><p>Minggu 5</p></div>
+          <div class="klasmen-item"><img src="s2_minggu3.jpeg" alt="Seasons2 Minggu 6" class="zoomable" /><p>Minggu 6</p></div>
         </div>
 
         <!-- Halaman 3 -->
         <div class="klasmen-grid page2" data-page="3" style="display: none;">
           <div>Bulan Maret 2026</div>
-          <div class="klasmen-item"><img src="s2_minggu4.jpeg" alt="Seasons2 Minggu 4" class="zoomable" /><p>Minggu 4</p></div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 5" class="zoomable" /><p>Minggu 5</p></div>
+          <div class="klasmen-item"><img src="s2_minggu4.jpeg" alt="Seasons2 Minggu 7" class="zoomable" /><p>Minggu 7</p></div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 8" class="zoomable" /><p>Minggu 8</p></div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 9" class="zoomable" /><p>Minggu 9</p></div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 10" class="zoomable" /><p>Minggu 10</p></div>
         </div>
 
         <!-- Halaman 4 -->
         <div class="klasmen-grid page2" data-page="4" style="display: none;">
-          <div>Bulan April - Juni 2026</div>
-          <div class="klasmen-item"><img src="s2_umum_putera.png" alt="Juara Umum Putera S2" class="zoomable" /><p>Juara Umum Putera</p></div>
-          <div class="klasmen-item"><img src="s2_umum_puteri.png" alt="Juara Umum Puteri S2" class="zoomable" /><p>Juara Umum Puteri</p></div>
+          <div>Bulan April 2026</div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 11" class="zoomable" /><p>Minggu 11</p></div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 12" class="zoomable" /><p>Minggu 12</p></div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 13" class="zoomable" /><p>Minggu 13</p></div>
         </div>
+
+        <!-- Halaman 4 -->
+        <div class="klasmen-grid page2" data-page="4" style="display: none;">
+          <div>Bulan Mei 2026</div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 14" class="zoomable" /><p>Minggu 14</p></div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 15" class="zoomable" /><p>Minggu 15</p></div>
+          
+        </div>
+
+        <div class="klasmen-grid page2" data-page="4" style="display: none;">
+          <div>PLAYOFF Anggota Terbaik Tahun 2026</div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 16" class="zoomable" /><p>Minggu 16</p></div>
+        </div>
+
+        <div class="klasmen-grid page2" data-page="6" style="display: none;">
+      <div>🏆 Bulan Juni Tahun 2026 🏆</div>
+      <div class="klasmen-item"><img src="umumputera Seasons 2.png" alt="Juara Umum Putera" class="zoomable" /><p>Juara Umum Putera</p></div>
+      <div class="klasmen-item"><img src="umumputeri Seasons 2.png" alt="Juara Umum Puteri" class="zoomable" /><p>Juara Umum Puteri</p></div>
+      <div class="klasmen-item"><img src="Terdisiplin Seasons 2.png" alt="Anggota Terdisiplin" class="zoomable" /><p>Anggota Terdisiplin</p></div>
+      <div class="klasmen-item"><img src="anggota-terbaiks2.png" alt="17 Mei 2026" class="zoomable" /><p>Anggota Terbaik</p></div>
+      <div class="klasmen-item"><img src="moba Seasons 2.png" alt="Divisi MOBA" class="zoomable" /><p>Divisi MOBA</p></div>
+      <div class="klasmen-item"><img src="Battle Royale Seasons 2.png" alt="Divisi Battle Royale" class="zoomable" /><p>Divisi Battle Royale</p></div>
+      
+    </div>
 
         <!-- Tombol Navigasi untuk Seasons II -->
         <div style="text-align:center; margin-top:50px; font-family:'Segoe UI', Roboto, sans-serif; color:#222;">
@@ -615,13 +675,13 @@ showPage(currentPage);
                 "
               />
               <figcaption>
-                <strong>Seasons 1</strong> (Juli - Desember 2025)
+                <strong>Seasons I</strong> (SELESAI)
               </figcaption>
             </figure>
           </div>
 
           <hr />
-          <h3 class="subtitle">Informasi Liga #LES32OKU Seasons 1</h3>
+          <h3 class="subtitle">Informasi Liga #LES32OKU Seasons I</h3>
 
           <ul class="info-list">
             <li>
@@ -701,7 +761,7 @@ showPage(currentPage);
             <li> <b>Anggota Resmi Angkatan IV:</b> 23 Siswa Siswi SMPN 32 OKU</li>
             <li><b>Periode:</b> Juli - Desember 2025  <b>SELESAI</b></li>
             <li>
-  <b>Klasmen Seasons I:</b>
+  <b>Klasmen & Jadwal Seasons I:</b>
   <button
     class="lihat-klasmen btn-primary"
     style="
@@ -721,7 +781,7 @@ showPage(currentPage);
 </li>
 
             <li>
-              <b>Pemenang:</b>
+              <b>Pemenang Seasons I:</b>
               <button
                 onclick="toggleDetail('detailPemenang1')"
                 style="
@@ -821,7 +881,7 @@ showPage(currentPage);
 
         
 
-        <!-- Seasons 2 -->
+        <!-- Seasons II -->
         <div class="season" id="season2" style="display: none">
           <div class="gallery">
             <figure>
@@ -835,13 +895,13 @@ showPage(currentPage);
                 "
               />
               <figcaption>
-                <strong>Seasons 2</strong> (Januari - Juni 2026)
+                <strong>Seasons II</strong> (Januari - Juni 2026)
               </figcaption>
             </figure>
           </div>
 
           <hr />
-          <h3 class="subtitle">Informasi Liga #LES32OKU Seasons 2</h3>
+          <h3 class="subtitle">Informasi Liga #LES32OKU Seasons II</h3>
           <ul class="info-list">
             <li>
               <b>Penyelenggara</b>
@@ -907,7 +967,7 @@ showPage(currentPage);
             <li> <b>Anggota Resmi Angkatan IV:</b> 23 Siswa Siswi SMPN 32 OKU</li>
             <li><b>Periode:</b> Januari - Juni 2026</li>
             <li>
-              <b>Klasmen Seasons II:</b>
+              <b>Klasmen & Jadwal Seasons II:</b>
               <button
     class="lihat-klasmen1 btn-primary"
     style="
@@ -1037,7 +1097,7 @@ showPage(currentPage);
             cursor: pointer;
           "
         >
-          Seasons 1
+          Seasons I
         </button>
         <button
           onclick="showSeason(2)"
@@ -1051,7 +1111,7 @@ showPage(currentPage);
             cursor: pointer;
           "
         >
-          Seasons 2
+          Seasons II
         </button>
       </div>
     </section>
@@ -1119,35 +1179,21 @@ showPage(currentPage);
 
     <!-- SCRIPT MODAL -->
     <script>
-      // Modal Klasmen
-      const modal = document.getElementById("klasmenModal");
-      const btn = document.querySelector(".lihat-klasmen");
-btn.addEventListener("click", () => {
-  modal.style.display = "block";
-});
-
-
-      const span = document.querySelector(".close");
-
-      btn.onclick = () => (modal.style.display = "block");
-      span.onclick = () => (modal.style.display = "none");
-      window.onclick = (event) => {
-        if (event.target == modal) modal.style.display = "none";
-      };
-
-      // Modal Zoom Gambar
+      // Modal Zoom Gambar (guarded selectors)
       const zoomModal = document.getElementById("zoomModal");
       const zoomedImg = document.querySelector(".zoomed-image");
       const closeZoom = document.querySelector(".close-zoom");
 
-      document.querySelectorAll(".gallery img, .zoomable").forEach((img) => {
-        img.addEventListener("dblclick", () => {
-          zoomedImg.src = img.src;
-          zoomModal.style.display = "flex";
+      if (zoomModal && zoomedImg) {
+        document.querySelectorAll(".gallery img, .zoomable").forEach((img) => {
+          img.addEventListener("dblclick", () => {
+            zoomedImg.src = img.src;
+            zoomModal.style.display = "flex";
+          });
         });
-      });
+      }
 
-      closeZoom.onclick = () => (zoomModal.style.display = "none");
+      if (closeZoom && zoomModal) closeZoom.onclick = () => (zoomModal.style.display = "none");
       window.addEventListener("click", (event) => {
         if (event.target == zoomModal) zoomModal.style.display = "none";
       });
