@@ -1,460 +1,1062 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SMPN 32 OKU Esports</title>
-    <link rel="stylesheet" href="smpn32oku.css" />
-    <link rel="icon" type="image/png" href="smpn32.png" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
-    <link href="smpn32.png" rel="stylesheet" />
-  </head>
-  <body>
-    <!-- Tambahkan video background tepat di awal body -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMPN 32 OKU Ekstrakurikuler Esports</title>
+  <link rel="stylesheet" href="smpn32oku.css" />
+  <link rel="icon" type="image/png" href="smpn32.png" />
+  <link rel="icon" type="image/png" href="LOGO.jpg" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
-    <div class="video-overlay"></div>
+  <link href="smpn32.png" rel="stylesheet" />
+</head>
 
-    <!-- NAVBAR -->
-    <div class="navbar">
-      <div class="logo">
-        <img src="smpn32.png" alt="logo" />
-      </div>
-      <div>
-        <h4 class="brand-title">SMPN 32 OKU Esports</h4>
-      </div>
+<body>
+  <!-- Tambahkan video background tepat di awal body -->
 
-      <div
-        class="hamburger"
-        onclick="document.querySelector('.navbar ul').classList.toggle('active')"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <ul>
-        <li><a href="#tentang">Tentang</a></li>
-        <li><a href="#program">Program</a></li>
-        <li><a href="#galeri">Galeri</a></li>
-        <li><a href="#liga">LES32OKU</a></li>
-      </ul>
+  <div class="video-overlay"></div>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="logo">
+      <img src="smpn32.png" alt="logo" />
+      <img src="LOGO.jpg" alt="logo" />
+
+    </div>
+    <div>
+      <h4 class="brand-title">SMPN 32 OKU Ekstrakurikuler Esports</h4>
     </div>
 
-    <!-- HERO -->
-    <header id="beranda" class="hero">
-      <!-- tambahkan video di sini -->
-      <video id="bgVideo" autoplay muted loop playsinline aria-hidden="true">
-        <source src="angkatan4.mp4" type="video/mp4" />
-        <!-- fallback text -->
-      </video>
+    <div class="hamburger" onclick="document.querySelector('.navbar ul').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#galeri">Galeri</a></li>
+      <li><a href="#liga">LES32OKU</a></li>
+    </ul>
+  </div>
 
-      <div class="hero-content">
-        <h1>SMPN 32 OKU Esports</h1>
-        <p>Website Resmi Ekstrakurikuler Esports SMPN 32 Ogan Komering Ulu</p>
-        
-      </div>
-    </header>
+  <!-- HERO -->
+  <header id="beranda" class="hero">
+    <!-- tambahkan video di sini -->
+    <video id="bgVideo" autoplay muted loop playsinline aria-hidden="true">
+      <source src="angkatan4.mp4" type="video/mp4" />
+      <!-- fallback text -->
+    </video>
 
-    <!-- TENTANG -->
-    <section id="tentang" class="section">
-      <h2>Tentang Kami</h2>
-      <p>
-        SMPN 32 OKU Esports adalah wadah resmi untuk siswa siswi yang ingin
-        mengembangkan bakat di dunia Esports. Sejak Tahun 2022 dibentuk Kami
-        mengedepankan
-        <b>sportivitas, kerja sama tim, disiplin,</b> serta keseimbangan antara
-        prestasi akademik dan non-akademik.
-      </p>
+    <div class="hero-content">
 
-      <h3
-        style="
-          color: #4da6ff;
-          margin-top: 40px;
-          font-size: 1.6em;
-          font-weight: bold;
-        "
-      >
-        Struktur Perangkat SMPN 32 OKU Esports
-      </h3>
+      <h1>SMPN 32 OKU Esports</h1>
+      <p>Website Resmi Ekstrakurikuler Esports SMPN 32 Ogan Komering Ulu</p>
 
-      <div class="struktur-grid">
-        <div class="box" style="background: rgba(255,255,255,0.85); padding: 15px 20px; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.2); line-height: 1.6; font-family: 'Segoe UI', sans-serif;">
-  <p style="margin-bottom: 8px;"><b>Kepala Sekolah:</b> Yanti, S.Pd., MM.</p>
-  
-  <p style="margin-bottom: 4px;"><b>Pembina:</b></p>
-  <ul style="margin-top: 0; margin-bottom: 10px; padding-left: 20px;">
-    <li>1. Dr. Suci Cahyati, S.Pd., M.Or. (2022 - 2024)</li>
-    <li>2. Heri Yansah, S.Pd. (2025 - Sekarang)</li>
-  </ul>
+    </div>
+  </header>
 
-  <p style="margin-bottom: 4px;"><b>Pelatih:</b></p>
-  <ul style="margin-top: 0; padding-left: 20px;">
-    <li>1. Albert Saputra (2022 - 2024)</li>
-    <li>2. <b>M. Aman Hidayat, S.T.</b> (2025 - Sekarang)</li>
-  </ul>
-</div>
+  <!-- TENTANG -->
+  <section id="tentang" style="
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: auto;
+    font-family: 'Segoe UI', sans-serif;
+  ">
+    <h2 style="
+      text-align: center;
+      font-size: 2.2em;
+      margin-bottom: 20px;
+      color: #4da6ff;
+    ">
+      Tentang Kami
+    </h2>
 
+    <p style="
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+      line-height: 1.8;
+      font-size: 1.05em;
+      color: #000000;
+    ">
+      SMPN 32 OKU Esports merupakan wadah resmi bagi siswa dan siswi untuk
+      mengembangkan bakat di bidang Esports. Berdiri sejak tahun 2022, kami
+      menjunjung tinggi
+      <b>sportivitas, kerja sama tim, disiplin,</b> serta keseimbangan antara
+      prestasi akademik dan non-akademik.
+    </p>
 
-        <div class="box">
-          <p><b>Angkatan I Tahun 2022</b></p>
-          <p>Ketua: Rizky Rizaldy</p>
-          <p>Wakil Ketua: Vinza</p>
-          <p>Sekretaris: Atrilla Abellindah</p>
-          <p>Bendahara: Monika Sari</p>
-        </div>
+    <h3 style="
+      text-align: center;
+      margin-top: 60px;
+      margin-bottom: 40px;
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #4da6ff;
+    ">
+      Struktur Perangkat SMPN 32 OKU Esports
+    </h3>
 
-        <div class="box">
-          <p><b>Angkatan II Tahun 2023</b></p>
-          <p>Ketua: Vinza</p>
-          <p>Wakil Ketua: Raffa Alfinza</p>
-          <p>Sekretaris: Atrilla Abellindah</p>
-          <p>Bendahara: Almira Nafa Ramadhani</p>
-        </div>
+    <div style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    ">
+      <!-- STRUKTUR INTI -->
+      <div style="
+    position: relative;
+    background-image: url('smpn32.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #111;
+    overflow: hidden;
+  ">
+        <!-- OVERLAY AGAR TEKS JELAS -->
+        <div style="
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(2px);
+      z-index: 0;
+    "></div>
 
-        <div class="box">
-          <p><b>Angkatan III Tahun 2024</b></p>
-          <p>Ketua: M. Haidar Satria Kuto</p>
-          <p>Wakil Ketua: Raffa Ahmad Ramadhan</p>
-          <p>Sekretaris: Lutfi Armanza</p>
-          <p>Bendahara: Excell Sagita Mahawira</p>
-        </div>
+        <!-- KONTEN -->
+        <div style="position: relative; z-index: 1">
+          <p><b>Kepala Sekolah</b></p>
+          <p>• Yanti, S.Pd., MM.</p>
 
-        <div class="box">
-          <p><b>Angkatan IV Tahun 2025</b></p>
-          <p>Ketua: Keysha Azzahra</p>
-          <p>Wakil Ketua & Duta Esports: Aela Zafirah Taqiyyah</p>
-          <p>Sekretaris: Azzahra Purnamasari</p>
-          <p>Bendahara: Fajri Bahar Rhafsanjani</p>
-        </div>
-      </div>
-    </section>
+          <hr style="margin: 16px 0; opacity: 0.3" />
 
-    <!-- PROGRAM -->
-    <section id="program" class="section dark">
-      <h2>Program Unggulan</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Pembinaan Divisi Esports</h3>
+          <p><b>Pembina</b></p>
+          <p>• Dr. Suci Cahyati, S.Pd., M.Or. (2022 – 2024)</p>
+          <p>• Heri Yansah, S.Pd. (2025 – Sekarang)</p>
+
+          <hr style="margin: 16px 0; opacity: 0.3" />
+
+          <p><b>Pelatih</b></p>
+          <p>• Albert Saputra (2022 – 2024)</p>
           <p>
-            Berbagai cabang Esports seperti Mobile Legends dan Free Fire dengan
-            jadwal teratur serta bimbingan pelatih berpengalaman yang juga
-            merupakan Wakil Ketua ESI Kab OKU Sekaligus Pemilik dari
-            <a
-              href="https://smqresports.netlify.app/"
-              target="_blank"
-              style="
+            • <b>M. Aman Hidayat, S.T.</b> (2025 – Sekarang)
+          </p>
+        </div>
+      </div>
+
+
+      <!-- ANGKATAN I -->
+      <div style="
+    position: relative;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(249, 212, 35, 0.92),
+        rgba(255, 179, 71, 0.92)
+      ),
+      url('logoangk1-3.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    color: #2b1a00;
+  ">
+        <p style="font-size: 1.2em; font-weight: bold">
+          Angkatan I 2022 - 2023
+        </p>
+         <!-- PEMBINA & PELATIH -->
+  <div style="margin-bottom: 14px;">
+    <p style="font-size: 1.05em; font-weight: 600; margin-bottom: 6px;">
+      Pembina
+    </p>
+    <p style="font-size: 1em; margin: 0;">
+      Dr. Suci Cahyati, S.Pd., M.Or.
+    </p>
+
+    <p style="font-size: 1.05em; font-weight: 600; margin: 10px 0 6px;">
+      Pelatih
+    </p>
+    <p style="font-size: 1em; margin: 0;">
+      Albert Saputra
+    </p>
+  </div>
+        <p>• Ketua: Rizky Rizaldy</p>
+        <p>• Wakil Ketua: Vinza</p>
+        <p>• Sekretaris: Atrilla Abellindah</p>
+        <p>• Bendahara: Monika Sari</p>
+      </div>
+
+
+      <!-- ANGKATAN II -->
+      <div style="
+    position: relative;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(249, 212, 35, 0.92),
+        rgba(255, 179, 71, 0.92)
+      ),
+      url('logoangk1-3.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    color: #2b1a00;
+  ">
+        <p style="font-size: 1.2em; font-weight: bold">
+          Angkatan II 2023 - 2024
+        </p>
+         <!-- PEMBINA & PELATIH -->
+  <div style="margin-bottom: 14px;">
+    <p style="font-size: 1.05em; font-weight: 600; margin-bottom: 6px;">
+      Pembina
+    </p>
+    <p style="font-size: 1em; margin: 0;">
+      Dr. Suci Cahyati, S.Pd., M.Or.
+    </p>
+
+    <p style="font-size: 1.05em; font-weight: 600; margin: 10px 0 6px;">
+      Pelatih
+    </p>
+    <p style="font-size: 1em; margin: 0;">
+      Albert Saputra
+    </p>
+  </div>
+        <p>• Ketua: Vinza</p>
+        <p>• Wakil Ketua: Raffa Alfinza</p>
+        <p>• Sekretaris: Atrilla Abellindah</p>
+        <p>• Bendahara: Almira Nafa Ramadhani</p>
+      </div>
+
+
+      <!-- ANGKATAN III -->
+      <div style="
+    position: relative;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(249, 212, 35, 0.92),
+        rgba(255, 179, 71, 0.92)
+      ),
+      url('logoangk1-3.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    color: #2b1a00;
+  ">
+        <p style="font-size: 1.2em; font-weight: bold">
+          Angkatan III 2024 - 2025
+        </p>
+         <!-- PEMBINA & PELATIH -->
+  <div style="margin-bottom: 14px;">
+    <p style="font-size: 1.05em; font-weight: 600; margin-bottom: 6px;">
+      Pembina
+    </p>
+    <p style="font-size: 1em; margin: 0;">
+      Heri Yansah, S.Pd.
+    </p>
+
+    <p style="font-size: 1.05em; font-weight: 600; margin: 10px 0 6px;">
+      Pelatih
+    </p>
+    <p style="font-size: 1em; margin: 0;">
+      Albert Saputra
+    </p>
+  </div>
+        <p>• Ketua: M. Haidar Satria Kuto</p>
+        <p>• Wakil Ketua: Raffa Ahmad Ramadhan</p>
+        <p>• Sekretaris: Lutfi Armanza</p>
+        <p>• Bendahara: Excell Sagita Mahawira</p>
+      </div>
+
+
+
+      <!-- ANGKATAN IV -->
+      <div style="
+    position: relative;
+    background-image: url('LOGO.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #000000;
+    overflow: hidden;
+  ">
+        <!-- OVERLAY AGAR TEKS JELAS -->
+        <div style="
+      position: absolute;
+      inset: 0;
+      background: rgba(160, 160, 160, 0.9);
+      backdrop-filter: blur(2px);
+      z-index: 0;
+    "></div>
+
+        <!-- KONTEN -->
+        <div style="position: relative; z-index: 1">
+          <p style="font-size: 1.2em; font-weight: bold">
+          Angkatan IV 2025 - 2026
+        </p>
+         <!-- PEMBINA & PELATIH -->
+  <div style="margin-bottom: 14px;">
+    <p style="font-size: 1.05em; font-weight: 600; margin-bottom: 6px;">
+      Pembina
+    </p>
+    <p style="font-size: 1em; margin: 0;">
+     Heri Yansah, S.Pd.
+    </p>
+
+    <p style="font-size: 1.05em; font-weight: 600; margin: 10px 0 6px;">
+      Pelatih
+    </p>
+    <p style="font-size: 1em; margin: 0;">
+      M. Aman Hidayat, S.T.
+    </p>
+  </div>
+        <p>• Ketua: Keysha Azzahra</p>
+        <p>• Wakil Ketua: Aela Zafirah Taqiyyah</p>
+        <p>• Sekretaris: Azzahra Purnamasari</p>
+        <p>• Bendahara: Fajri Bahar Rhafsanjani</p>
+        </div>
+      </div>
+
+      <div style="
+    position: relative;
+    background-image: url('LOGO.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #000000;
+    overflow: hidden;
+  ">
+        <!-- OVERLAY AGAR TEKS JELAS -->
+        <div style="
+      position: absolute;
+      inset: 0;
+      background: rgba(160, 160, 160, 0.9);
+      backdrop-filter: blur(2px);
+      z-index: 0;
+    "></div>
+
+        <!-- KONTEN -->
+        <div style="position: relative; z-index: 1">
+          <p style="font-size: 1.2em; font-weight: bold">
+          Angkatan V 2026 - 2027
+        </p>
+        <div style="margin-bottom: 14px;">
+    <p style="font-size: 1.05em; font-weight: 600; margin-bottom: 6px;">
+      Pembina
+    </p>
+    <p style="font-size: 1em; margin: 0;">
+     Heri Yansah, S.Pd.
+    </p>
+
+    <p style="font-size: 1.05em; font-weight: 600; margin: 10px 0 6px;">
+      Pelatih
+    </p>
+    <p style="font-size: 1em; margin: 0;">
+      M. Aman Hidayat, S.T.
+    </p>
+  </div>
+        <p>• Ketua: ????</p>
+        <p>• Wakil Ketua: ????</p>
+        <p>• Sekretaris: ????</p>
+        <p>• Bendahara: ????</p>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+
+  <!-- PROGRAM -->
+  <section id="program" class="section dark">
+    <h2>Program Unggulan</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Pembinaan Divisi Esports</h3>
+        <p>
+          Berbagai cabang Esports seperti Mobile Legends dan Free Fire dengan
+          jadwal teratur serta bimbingan pelatih berpengalaman yang juga
+          merupakan Wakil Ketua ESI Kab OKU Sekaligus Pemilik dari
+          <a href="https://smqresports.netlify.app/" target="_blank" style="
                 color: rgb(209, 11, 11);
                 font-weight: bold;
                 text-decoration: none;
-              "
-            >
-              SMQR ESPORTS
-            </a>
-          </p>
-        </div>
-        <div class="card">
-          <h3>Liga Esports SMPN 32 OKU</h3>
-          <p>
-            Kompetisi internal yang bekerja sama dengan SMQR Esports untuk
-            mengasah mental juara, meningkatkan keterampilan, dan mempererat
-            kekompakan tim.
-          </p>
-         <a href="#liga"
-              style="
+              ">
+            SMQR ESPORTS
+          </a>
+        </p>
+      </div>
+      <div class="card">
+        <h3>Liga Esports SMPN 32 OKU</h3>
+        <p>
+          Kompetisi internal yang bekerja sama dengan SMQR Esports untuk
+          mengasah mental juara, meningkatkan keterampilan, dan mempererat
+          kekompakan tim.
+        </p>
+        <a href="#liga" style="
                 color: rgb(209, 11, 153);
                 font-weight: bold;
                 text-decoration: none;
               " ">Lihat LES32OKU</a>
         </div>
-        <div class="card">
+        <div class=" card">
           <h3>Turnamen Eksternal</h3>
           <p>
             Kesempatan berkompetisi di tingkat kabupaten, provinsi, hingga
             nasional untuk meraih prestasi dan pengalaman baru.
           </p>
-          <p
-            class="lihat-pencapaian"
-            style="
+          <p class="lihat-pencapaian" style="
               color: rgb(209, 11, 153);
               cursor: pointer;
               text-decoration: underline;
-            "
-          >
+            ">
             Klick untuk melihat pencapaian kami
           </p>
+      </div>
+      <div class="card">
+        <h3>Pembinaan Karakter</h3>
+        <p>
+          Pembentukan sikap disiplin, sportivitas, serta kepemimpinan agar
+          siswa menjadi teladan positif di dalam maupun luar sekolah.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Turnamen Tahunan Esports Angkatan</h3>
+        <p>
+          Kompetisi esports rutin satu kali setiap tahun bersama SMQR Esports untuk pengembangan skill dan mental juara.
+        </p>
+        <p class="lihat-tourangkatan" style="
+              color: rgb(209, 11, 153);
+              cursor: pointer;
+              text-decoration: underline;
+            ">
+          Angkatan IV Tahun 2026
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- MODAL PENCAPAIAN -->
+  <div id="pencapaianModal" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.7);
+    backdrop-filter:blur(4px);
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+  ">
+
+    <div style="
+      background:linear-gradient(145deg,#020617,#0f172a);
+      padding:18px;
+      border-radius:14px;
+      max-width:420px;
+      width:92%;
+      box-shadow:0 18px 40px rgba(0,0,0,.6);
+    ">
+
+      <!-- CLOSE -->
+      <span class="close-pencapaian" style="float:right;color:#fff;font-size:22px;cursor:pointer;">
+        &times;
+      </span>
+
+      <!-- JUDUL -->
+      <h2 style="color:#fff;text-align:center;font-size:18px;margin-bottom:14px;">
+        Pencapaian Ekstrakurikuler Esports SMPN 32 OKU<br>
+        <span style="color:#d4af37;font-size:14px;">Dari masa ke masa</span>
+      </h2>
+
+      <!-- PAGE 1 -->
+      <div class="klasmen-page" style="
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+        gap:12px;
+      ">
+        <div style="background:rgba(255,255,255,.04);padding:10px;border-radius:10px;text-align:center;">
+          <img src="putera.jpeg" onclick="zoomImage(this)" style="width:100%;border-radius:8px;cursor:zoom-in;">
+          <p style="color:#e5e7eb;font-size:12px;margin-top:6px;">
+            Pencapaian Liga Esports Nasional Pelajar(Tim Putera 2025)
+          </p>
         </div>
-        <div class="card">
-          <h3>Pembinaan Karakter</h3>
-          <p>
-            Pembentukan sikap disiplin, sportivitas, serta kepemimpinan agar
-            siswa menjadi teladan positif di dalam maupun luar sekolah.
+
+        <div style="background:rgba(255,255,255,.04);padding:10px;border-radius:10px;text-align:center;">
+          <img src="ligapelajar2.jpeg" onclick="zoomImage(this)" style="width:100%;border-radius:8px;cursor:zoom-in;">
+          <p style="color:#e5e7eb;font-size:12px;margin-top:6px;">
+            Tim Putera Liga Esports Nasional Pelajar(Tim Putera 2025)
           </p>
         </div>
       </div>
-    </section>
 
-    <!-- Modal Pencapaian -->
-    <div id="pencapaianModal" class="modal">
-      <div class="modal-content">
-        <span class="close-pencapaian">&times;</span>
-        <h2 class="season-title">Tahun 2025<br /><span>Angkatan IV</span></h2>
+      <!-- PAGE 2 -->
+      <div class="klasmen-page" style="
+        display:none;
+        grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+        gap:12px;
+      ">
+        <div style="background:rgba(255,255,255,.04);padding:10px;border-radius:10px;text-align:center;">
+          <img src="puteri.jpeg" onclick="zoomImage(this)" style="width:100%;border-radius:8px;cursor:zoom-in;">
+          <p style="color:#e5e7eb;font-size:12px;margin-top:6px;">
+            Pencapaian Liga Esports Nasional Pelajar(Tim Puteri 2025)
+          </p>
+        </div>
 
-        <div class="klasmen-grid page" data-page="1">
-          <div class="klasmen-item">
-            <img src="putera.jpeg" alt="Klasmen Minggu 1" class="zoomable" />
-            <p>Liga Esports Nasional Pelajar(Pencapaian Tim Putera)</p>
-          </div>
-          <div class="klasmen-item">
-            <img
-              src="ligapelajar2.jpeg"
-              alt="Klasmen Minggu 1"
-              class="zoomable"
-            />
-            <p>Liga Esports Nasional Pelajar(Tim Putera)</p>
-          </div>
-          <div class="klasmen-item">
-            <img src="puteri.jpeg" alt="Klasmen Minggu 2" class="zoomable" />
-            <p>Liga Esports Nasional Pelajar(Pencapaian Tim Puteri)</p>
-          </div>
-          <div class="klasmen-item">
-            <img
-              src="ligapelajar1.jpeg"
-              alt="Klasmen Minggu 2"
-              class="zoomable"
-            />
-            <p>Liga Esports Nasional Pelajar(Tim Puteri)</p>
-          </div>
+        <div style="background:rgba(255,255,255,.04);padding:10px;border-radius:10px;text-align:center;">
+          <img src="ligapelajar1.jpeg" onclick="zoomImage(this)" style="width:100%;border-radius:8px;cursor:zoom-in;">
+          <p style="color:#e5e7eb;font-size:12px;margin-top:6px;">
+            Tim Puteri Liga Esports Nasional Pelajar(Tim Puteri 2025)
+          </p>
         </div>
       </div>
-    </div>
 
-    <!-- Script Modal -->
-    <script>
-      const pencapaianBtn = document.querySelector(".lihat-pencapaian");
-      const pencapaianModal = document.getElementById("pencapaianModal");
-      const closePencapaian = document.querySelector(".close-pencapaian");
+      <div class="klasmen-page" style="
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+        gap:12px;
+      ">
+        <div style="background:rgba(255,255,255,.04);padding:10px;border-radius:10px;text-align:center;">
+          <img src="putera.jpegg" onclick="zoomImage(this)" style="width:100%;border-radius:8px;cursor:zoom-in;">
+          <p style="color:#e5e7eb;font-size:12px;margin-top:6px;">
+            Pencapaian SMA Swasta Sentosa Bhakti Festival Esports 2026
+          </p>
+        </div>
 
-      // buka modal saat teks di klik
-      pencapaianBtn.addEventListener("click", () => {
-        pencapaianModal.style.display = "block";
-      });
-
-      // tutup modal saat klik tombol close
-      closePencapaian.addEventListener("click", () => {
-        pencapaianModal.style.display = "none";
-      });
-
-      // tutup modal saat klik di luar konten modal
-      window.addEventListener("click", (event) => {
-        if (event.target === pencapaianModal) {
-          pencapaianModal.style.display = "none";
-        }
-      });
-    </script>
-
-<!-- Modal Lightbox Klasmen -->
-<div id="klasmenModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2 class="season-title">
-      Seasons I<br /><span>July - Desember 2025</span>
-    </h2>
-
-    <!-- Halaman 1 -->
-    <div class="klasmen-grid page1" data-page="1" style="display: grid;">
-      <div>Bulan Juli Tahun 2025</div>
-      <div class="klasmen-item">
-        <img src="minggu1.jpeg" alt="Klasmen Minggu 1" class="zoomable" />
-        <p>Minggu 1</p>
+        <div style="background:rgba(255,255,255,.04);padding:10px;border-radius:10px;text-align:center;">
+          <img src="ligapelajar2.jpegg" onclick="zoomImage(this)" style="width:100%;border-radius:8px;cursor:zoom-in;">
+          <p style="color:#e5e7eb;font-size:12px;margin-top:6px;">
+            Tim Putera SMA Swasta Sentosa Bhakti Festival Esports 2026
+          </p>
+        </div>
       </div>
-    </div>
 
-    <!-- Halaman 2 -->
-    <div class="klasmen-grid page1" data-page="2" style="display: none;">
-      <div>Bulan Agustus Tahun 2025</div>
-      <div class="klasmen-item"><img src="minggu2.jpeg" alt="Minggu 2" class="zoomable" /><p>Minggu 2</p></div>
-      <div class="klasmen-item"><img src="minggu3.jpeg" alt="Minggu 3 Putera" class="zoomable" /><p>Minggu 3 Putera</p></div>
-      <div class="klasmen-item"><img src="minggu3puteri.jpeg" alt="Minggu 3 Puteri" class="zoomable" /><p>Minggu 3 Puteri</p></div>
-      <div class="klasmen-item"><img src="minggu4.jpeg" alt="Minggu 4 Putera" class="zoomable" /><p>Minggu 4 Putera</p></div>
-      <div class="klasmen-item"><img src="minggu4puteri.jpeg" alt="Minggu 4 Puteri" class="zoomable" /><p>Minggu 4 Puteri</p></div>
-    </div>
+      <!-- PAGINATION -->
+      <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-top:14px;
+        padding-top:10px;
+        border-top:1px solid rgba(255,255,255,.1);
+      ">
+        <button id="prevPage" style="
+          background:linear-gradient(135deg,#d4af37,#b8962e);
+          border:none;
+          padding:6px 12px;
+          border-radius:999px;
+          font-size:12px;
+          font-weight:600;
+          cursor:pointer;
+        ">⟨</button>
 
-    <!-- Halaman 3 -->
-    <div class="klasmen-grid page1" data-page="3" style="display: none;">
-      <div>Bulan September Tahun 2025</div>
-      <div class="klasmen-item"><img src="minggu5.jpeg" alt="Minggu 5 Putera" class="zoomable" /><p>Minggu 5 Putera</p></div>
-      <div class="klasmen-item"><img src="minggu5puteri.jpeg" alt="Minggu 5 Puteri" class="zoomable" /><p>Minggu 5 Puteri</p></div>
-      <div class="klasmen-item"><img src="minggu6.jpeg" alt="Minggu 6 Putera" class="zoomable" /><p>Minggu 6 Putera</p></div>
-      <div class="klasmen-item"><img src="minggu6puteri.jpeg" alt="Minggu 6 Puteri" class="zoomable" /><p>Minggu 6 Puteri</p></div>
-      <div class="klasmen-item"><img src="minggu7.jpeg" alt="Minggu 7 Putera" class="zoomable" /><p>Minggu 7 Putera</p></div>
-      <div class="klasmen-item"><img src="minggu7puteri.jpeg" alt="Minggu 7 Puteri" class="zoomable" /><p>Minggu 7 Puteri</p></div>
-      <div class="klasmen-item"><img src="minggu8.jpeg" alt="Minggu 8 Putera" class="zoomable" /><p>Minggu 8 Putera</p></div>
-      <div class="klasmen-item"><img src="minggu8puteri.jpeg" alt="Minggu 8 Puteri" class="zoomable" /><p>Minggu 8 Puteri</p></div>
-    </div>
+        <span id="pageIndicator" style="color:#fff;font-size:12px;">
+          1 / 2
+        </span>
 
-    <!-- Halaman 4 -->
-    <div class="klasmen-grid page1" data-page="4" style="display: none;">
-      <div>Bulan Oktober Tahun 2025</div>
-      <div class="klasmen-item"><img src="minggu9.png" alt="Minggu 9 Putera" class="zoomable" /><p>Minggu 9 Putera</p></div>
-      <div class="klasmen-item"><img src="minggu9puteri.png" alt="Minggu 9 Puteri" class="zoomable" /><p>Minggu 9 Puteri</p></div>
-      <div class="klasmen-item"><img src="minggu10.jpeg" alt="Minggu 10 Putera" class="zoomable" /><p>Minggu 10 Putera</p></div>
-      <div class="klasmen-item"><img src="minggu10puteri.jpeg" alt="Minggu 10 Puteri" class="zoomable" /><p>Minggu 10 Puteri</p></div>
-      <div class="klasmen-item"><img src="minggu11.png" alt="Minggu 11 Putera" class="zoomable" /><p>Minggu 11 Putera</p></div>
-      <div class="klasmen-item"><img src="minggu11puteri.png" alt="Minggu 11 Puteri" class="zoomable" /><p>Minggu 11 Puteri</p></div>
-      <div class="klasmen-item"><img src="minggu12.png" alt="Minggu 12 Putera" class="zoomable" /><p>Minggu 12 Putera</p></div>
-      <div class="klasmen-item"><img src="minggu12puteri.png" alt="Minggu 12 Puteri" class="zoomable" /><p>Minggu 12 Puteri</p></div>
-    </div>
-
-    <!-- Halaman 5 -->
-    <div class="klasmen-grid page1" data-page="5" style="display: none;">
-      <div>Bulan November Tahun 2025</div>
-      <div class="klasmen-item"><img src="minggu13.png" alt="Minggu 13 Putera" class="zoomable" /><p>Minggu 13 Putera</p></div>
-      <div class="klasmen-item"><img src="minggu13puteri.png" alt="Minggu 13 Puteri" class="zoomable" /><p>Minggu 13 Puteri</p></div>
-      <div class="klasmen-item"><img src="minggu14.png" alt="Minggu 14 Putera" class="zoomable" /><p>Minggu 14 Putera</p></div>
-      <div class="klasmen-item"><img src="minggu14puteri.png" alt="Minggu 14 Puteri" class="zoomable" /><p>Minggu 14 Puteri</p></div>
-      <div class="klasmen-item"><img src="umumputera Seasons 1.png" alt="Minggu 15 Putera(Terakhir)" class="zoomable" /><p>Minggu 15 Putera</p></div>
-      <div class="klasmen-item"><img src="umumputeri Seasons 1.png" alt="Minggu 15 Puteri(Terakhir)" class="zoomable" /><p>Minggu 15 Puteri</p></div>
-    </div>
-
-    <!-- Halaman 5 -->
-    <div class="klasmen-grid page1" data-page="5" style="display: none;">
-      <div>PLAYOFF Anggota Terbaik Tahun 2025</div>
-      <div class="klasmen-item"><img src="PlayoffSeasons1.png" alt="Peringkat 4-8 Terbaik" class="zoomable" /><p>Minggu 16</p></div>
-      
-    </div>
-
-    <!-- Halaman 6 (Desember / Juara) -->
-    <div class="klasmen-grid page1" data-page="6" style="display: none;">
-      <div>🏆 Bulan Desember Tahun 2025 🏆</div>
-      <div class="klasmen-item"><img src="umumputera Seasons 1.png" alt="Juara Umum Putera" class="zoomable" /><p>Juara Umum Putera</p></div>
-      <div class="klasmen-item"><img src="umumputeri Seasons 1.png" alt="Juara Umum Puteri" class="zoomable" /><p>Juara Umum Puteri</p></div>
-      <div class="klasmen-item"><img src="Terdisiplin Seasons 1(1).png" alt="Anggota Terdisiplin" class="zoomable" /><p>Anggota Terdisiplin</p></div>
-      <div class="klasmen-item"><img src="anggota-terbaiks1.png" alt="30 November 2025" class="zoomable" /><p>Anggota Terbaik</p></div>
-      <div class="klasmen-item"><img src="moba Seasons 1.png" alt="Divisi MOBA" class="zoomable" /><p>Divisi MOBA</p></div>
-      <div class="klasmen-item"><img src="Battle Royale Seasons 1(1).png" alt="Divisi Battle Royale" class="zoomable" /><p>Divisi Battle Royale</p></div>
-      
-    </div>
-
-    <!-- Tombol Navigasi (seperti Seasons II) -->
-    <div style="text-align:center; margin-top:50px; font-family:'Segoe UI', Roboto, sans-serif; color:#222;">
-      <div style="margin-top:25px;">
-        <button 
-          onclick="changePage1(-1)" 
-          style="background:linear-gradient(135deg,#444,#222); color:white; border:none; padding:10px 22px; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; margin:0 10px; box-shadow:0 4px 10px rgba(0,0,0,0.3); transition:all 0.2s ease;">
-          ⬅ Sebelumnya
-        </button>
-        <button 
-          onclick="changePage1(1)" 
-          style="background:linear-gradient(135deg,#1a73e8,#0a4abf); color:white; border:none; padding:10px 22px; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; margin:0 10px; box-shadow:0 4px 10px rgba(0,0,0,0.3); transition:all 0.2s ease;">
-          Selanjutnya ➡
-        </button>
+        <button id="nextPage" style="
+          background:linear-gradient(135deg,#d4af37,#b8962e);
+          border:none;
+          padding:6px 12px;
+          border-radius:999px;
+          font-size:12px;
+          font-weight:600;
+          cursor:pointer;
+        ">⟩</button>
       </div>
+
     </div>
-
-
-
   </div>
-</div>
 
-<script>
-// Paging + modal handlers for Seasons I (mirror Seasons II behavior)
-let currentPage1 = 1;
+  <!-- ZOOM IMAGE -->
+  <div id="imageZoom" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+  ">
+    <img id="zoomedImg" style="
+      max-width:92%;
+      max-height:92%;
+      border-radius:12px;
+      box-shadow:0 20px 50px rgba(0,0,0,.8);
+    ">
+  </div>
 
-function getPages1() {
-  return document.querySelectorAll(".klasmen-grid.page1");
-}
+  <!-- SCRIPT -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const modal = document.getElementById("pencapaianModal");
+      const openBtn = document.querySelector(".lihat-pencapaian");
+      const closeBtn = document.querySelector(".close-pencapaian");
+      const pages = document.querySelectorAll(".klasmen-page");
+      const prevBtn = document.getElementById("prevPage");
+      const nextBtn = document.getElementById("nextPage");
+      const indicator = document.getElementById("pageIndicator");
 
-function showPage1(pageNumber) {
-  const pages = getPages1();
-  const total = pages.length;
-  if (total === 0) return;
-  for (let i = 0; i < total; i++) {
-    pages[i].style.display = (i + 1 === pageNumber) ? "grid" : "none";
-  }
+      let current = 0;
 
-  const activePage = pages[pageNumber - 1];
-  if (!activePage) return;
-  const items = activePage.querySelectorAll(".klasmen-item");
-  if (items.length === 0 && pageNumber < total) {
-    // if current page empty and not last, wrap to last (same behavior as Seasons II)
-    showPage1(total);
-  }
-}
+      function showPage(i) {
+        pages.forEach((p, idx) => {
+          p.style.display = idx === i ? "grid" : "none";
+        });
+        indicator.textContent = `${i + 1} / ${pages.length}`;
+        prevBtn.disabled = i === 0;
+        nextBtn.disabled = i === pages.length - 1;
+        prevBtn.style.opacity = i === 0 ? ".4" : "1";
+        nextBtn.style.opacity = i === pages.length - 1 ? ".4" : "1";
+      }
 
-function changePage1(step) {
-  const total = getPages1().length;
-  if (total === 0) return;
-  currentPage1 += step;
-  if (currentPage1 < 1) currentPage1 = total;
-  if (currentPage1 > total) currentPage1 = 1;
-  showPage1(currentPage1);
-}
+      openBtn.onclick = () => {
+        modal.style.display = "flex";
+        showPage(current);
+      };
 
-document.addEventListener('DOMContentLoaded', () => {
-  const modal1 = document.getElementById("klasmenModal");
-  const btn1 = document.querySelector(".lihat-klasmen");
-  const span1 = document.querySelector(".close");
+      closeBtn.onclick = () => modal.style.display = "none";
 
-  if (btn1 && modal1) {
-    btn1.addEventListener("click", () => {
-      modal1.style.display = "block";
-      currentPage1 = 1;
+      modal.onclick = e => {
+        if (e.target === modal) modal.style.display = "none";
+      };
+
+      prevBtn.onclick = () => current > 0 && showPage(--current);
+      nextBtn.onclick = () => current < pages.length - 1 && showPage(++current);
+    });
+
+    // ZOOM IMAGE FUNCTION
+    function zoomImage(img) {
+      const overlay = document.getElementById("imageZoom");
+      const zoomed = document.getElementById("zoomedImg");
+      zoomed.src = img.src;
+      overlay.style.display = "flex";
+    }
+
+    document.getElementById("imageZoom").onclick = () => {
+      document.getElementById("imageZoom").style.display = "none";
+    };
+  </script>
+
+
+
+  <div id="tourangkatanModal" class="modal">
+    <div class="modal-content">
+      <span class="close-tourangkatan">&times;</span>
+      <h2 class="season-title">Divisi MOBA(MOBILE LEGENDS) & BATTLE ROYALE(FREE FIRE)<br /><span>Tournament Esports
+          Angkatan IV</span></h2>
+
+      <div class="klasmen-grid page" data-page="1">
+        <div class="klasmen-item">
+          <img src="1ff2026.jpeg" alt="Klasmen Minggu 1" class="zoomable" />
+          <p>Juara 1 Divisi MOBA(Team UNTUNG Angkatan II)</p>
+        </div>
+        <div class="klasmen-item">
+          <img src="2moba2026.jpeg" alt="Klasmen Minggu 1" class="zoomable" />
+          <p>Juara 2 Divisi MOBA(Team CEES HITAM Angkatan I)</p>
+        </div>
+        <div class="klasmen-item">
+          <img src="3moba2026.jpeg" alt="Klasmen Minggu 2" class="zoomable" />
+          <p>Juara 3 Divisi MOBA(Team FIVE DEADLY SINS Angkatan III)</p>
+        </div>
+        <div class="klasmen-item">
+          <img src="1moba2026.jpeg" alt="Klasmen Minggu 1" class="zoomable" />
+          <p>Juara 1 Divisi BATTLE ROYALE(Team PROPERR Angkatan IV)</p>
+        </div>
+        <div class="klasmen-item">
+          <img src="2ff2026.jpeg" alt="Klasmen Minggu 1" class="zoomable" />
+          <p>Juara 2 Divisi BATTLE ROYALE(Team AIMSTARS Angkatan IV)</p>
+        </div>
+        <div class="klasmen-item">
+          <img src="3ff2026.jpeg" alt="Klasmen Minggu 2" class="zoomable" />
+          <p>Juara 3 Divisi BATTLE ROYALE(Team MY BABYY Angkatan IV)</p>
+        </div>
+
+      </div>
+      <div style="
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 20px;
+  ">
+        <button id="prevBtn" onclick="prevPage()">◀ Sebelumnya</button>
+        <button id="nextBtn" onclick="nextPage()">Selanjutnya ▶</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ================== PAGINATION MODAL ==================
+    const ITEMS_PER_PAGE = 3;
+    let currentPage = 1;
+
+    const modal = document.getElementById("tourangkatanModal");
+    const items = modal.querySelectorAll(".klasmen-item");
+
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    const totalPages = Math.ceil(items.length / ITEMS_PER_PAGE);
+
+    function showPage(page) {
+      // Kunci agar tidak keluar batas
+      if (page < 1) page = 1;
+      if (page > totalPages) page = totalPages;
+
+      currentPage = page;
+
+      const start = (currentPage - 1) * ITEMS_PER_PAGE;
+      const end = start + ITEMS_PER_PAGE;
+
+      items.forEach((item, index) => {
+        item.style.display =
+          index >= start && index < end ? "block" : "none";
+      });
+
+      // Disable tombol jika di batas
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages;
+    }
+
+    function nextPage() {
+      showPage(currentPage + 1);
+    }
+
+    function prevPage() {
+      showPage(currentPage - 1);
+    }
+
+    // Saat halaman pertama kali dimuat / modal dibuka
+    document.addEventListener("DOMContentLoaded", () => {
+      showPage(1);
+    });
+  </script>
+
+
+  <script>
+    const tourangkatanBtn = document.querySelector(".lihat-tourangkatan");
+    const tourangkatanModal = document.getElementById("tourangkatanModal");
+    const closeTourangkatan = document.querySelector(".close-tourangkatan");
+
+    // buka modal saat teks di klik
+    tourangkatanBtn.addEventListener("click", () => {
+      tourangkatanModal.style.display = "block";
+    });
+
+    // tutup modal saat klik tombol close
+    closeTourangkatan.addEventListener("click", () => {
+      tourangkatanModal.style.display = "none";
+    });
+
+    // tutup modal saat klik di luar konten modal
+    window.addEventListener("click", (event) => {
+      if (event.target === tourangkatanModal) {
+        tourangkatanModal.style.display = "none";
+      }
+    });
+  </script>
+
+  <!-- Modal Lightbox Klasmen -->
+  <div id="klasmenModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 class="season-title">
+        Seasons I<br /><span>July - Desember 2025</span>
+      </h2>
+
+      <!-- Halaman 1 -->
+      <div class="klasmen-grid page1" data-page="1" style="display: grid;">
+        <div>Bulan Juli Tahun 2025</div>
+        <div class="klasmen-item">
+          <img src="minggu1.jpeg" alt="Klasmen Minggu 1" class="zoomable" />
+          <p>Minggu 1</p>
+        </div>
+      </div>
+
+      <!-- Halaman 2 -->
+      <div class="klasmen-grid page1" data-page="2" style="display: none;">
+        <div>Bulan Agustus Tahun 2025</div>
+        <div class="klasmen-item"><img src="minggu2.jpeg" alt="Minggu 2" class="zoomable" />
+          <p>Minggu 2</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu3.jpeg" alt="Minggu 3 Putera" class="zoomable" />
+          <p>Minggu 3 Putera</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu3puteri.jpeg" alt="Minggu 3 Puteri" class="zoomable" />
+          <p>Minggu 3 Puteri</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu4.jpeg" alt="Minggu 4 Putera" class="zoomable" />
+          <p>Minggu 4 Putera</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu4puteri.jpeg" alt="Minggu 4 Puteri" class="zoomable" />
+          <p>Minggu 4 Puteri</p>
+        </div>
+      </div>
+
+      <!-- Halaman 3 -->
+      <div class="klasmen-grid page1" data-page="3" style="display: none;">
+        <div>Bulan September Tahun 2025</div>
+        <div class="klasmen-item"><img src="minggu5.jpeg" alt="Minggu 5 Putera" class="zoomable" />
+          <p>Minggu 5 Putera</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu5puteri.jpeg" alt="Minggu 5 Puteri" class="zoomable" />
+          <p>Minggu 5 Puteri</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu6.jpeg" alt="Minggu 6 Putera" class="zoomable" />
+          <p>Minggu 6 Putera</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu6puteri.jpeg" alt="Minggu 6 Puteri" class="zoomable" />
+          <p>Minggu 6 Puteri</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu7.jpeg" alt="Minggu 7 Putera" class="zoomable" />
+          <p>Minggu 7 Putera</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu7puteri.jpeg" alt="Minggu 7 Puteri" class="zoomable" />
+          <p>Minggu 7 Puteri</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu8.jpeg" alt="Minggu 8 Putera" class="zoomable" />
+          <p>Minggu 8 Putera</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu8puteri.jpeg" alt="Minggu 8 Puteri" class="zoomable" />
+          <p>Minggu 8 Puteri</p>
+        </div>
+      </div>
+
+      <!-- Halaman 4 -->
+      <div class="klasmen-grid page1" data-page="4" style="display: none;">
+        <div>Bulan Oktober Tahun 2025</div>
+        <div class="klasmen-item"><img src="minggu9.png" alt="Minggu 9 Putera" class="zoomable" />
+          <p>Minggu 9 Putera</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu9puteri.png" alt="Minggu 9 Puteri" class="zoomable" />
+          <p>Minggu 9 Puteri</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu10.jpeg" alt="Minggu 10 Putera" class="zoomable" />
+          <p>Minggu 10 Putera</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu10puteri.jpeg" alt="Minggu 10 Puteri" class="zoomable" />
+          <p>Minggu 10 Puteri</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu11.png" alt="Minggu 11 Putera" class="zoomable" />
+          <p>Minggu 11 Putera</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu11puteri.png" alt="Minggu 11 Puteri" class="zoomable" />
+          <p>Minggu 11 Puteri</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu12.png" alt="Minggu 12 Putera" class="zoomable" />
+          <p>Minggu 12 Putera</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu12puteri.png" alt="Minggu 12 Puteri" class="zoomable" />
+          <p>Minggu 12 Puteri</p>
+        </div>
+      </div>
+
+      <!-- Halaman 5 -->
+      <div class="klasmen-grid page1" data-page="5" style="display: none;">
+        <div>Bulan November Tahun 2025</div>
+        <div class="klasmen-item"><img src="minggu13.png" alt="Minggu 13 Putera" class="zoomable" />
+          <p>Minggu 13 Putera</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu13puteri.png" alt="Minggu 13 Puteri" class="zoomable" />
+          <p>Minggu 13 Puteri</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu14.png" alt="Minggu 14 Putera" class="zoomable" />
+          <p>Minggu 14 Putera</p>
+        </div>
+        <div class="klasmen-item"><img src="minggu14puteri.png" alt="Minggu 14 Puteri" class="zoomable" />
+          <p>Minggu 14 Puteri</p>
+        </div>
+        <div class="klasmen-item"><img src="umumputera Seasons 1.png" alt="Minggu 15 Putera(Terakhir)"
+            class="zoomable" />
+          <p>Minggu 15 Putera</p>
+        </div>
+        <div class="klasmen-item"><img src="umumputeri Seasons 1.png" alt="Minggu 15 Puteri(Terakhir)"
+            class="zoomable" />
+          <p>Minggu 15 Puteri</p>
+        </div>
+      </div>
+
+      <!-- Halaman 5 -->
+      <div class="klasmen-grid page1" data-page="5" style="display: none;">
+        <div>PLAYOFF Anggota Terbaik Tahun 2025</div>
+        <div class="klasmen-item"><img src="PlayoffSeasons1.png" alt="Peringkat 4-8 Terbaik" class="zoomable" />
+          <p>Minggu 16</p>
+        </div>
+
+      </div>
+
+      <!-- Halaman 6 (Desember / Juara) -->
+      <div class="klasmen-grid page1" data-page="6" style="display: none;">
+        <div>🏆 Bulan Desember Tahun 2025 🏆</div>
+        <div class="klasmen-item"><img src="umumputera Seasons 1.png" alt="Juara Umum Putera" class="zoomable" />
+          <p>Juara Umum Putera</p>
+        </div>
+        <div class="klasmen-item"><img src="umumputeri Seasons 1.png" alt="Juara Umum Puteri" class="zoomable" />
+          <p>Juara Umum Puteri</p>
+        </div>
+        <div class="klasmen-item"><img src="Terdisiplin Seasons 1(1).png" alt="Anggota Terdisiplin" class="zoomable" />
+          <p>Anggota Terdisiplin</p>
+        </div>
+        <div class="klasmen-item"><img src="anggota-terbaiks1.png" alt="30 November 2025" class="zoomable" />
+          <p>Anggota Terbaik</p>
+        </div>
+        <div class="klasmen-item"><img src="moba Seasons 1.png" alt="Divisi MOBA" class="zoomable" />
+          <p>Divisi MOBA</p>
+        </div>
+        <div class="klasmen-item"><img src="Battle Royale Seasons 1(1).png" alt="Divisi Battle Royale"
+            class="zoomable" />
+          <p>Divisi Battle Royale</p>
+        </div>
+
+      </div>
+
+      <!-- Tombol Navigasi (seperti Seasons II) -->
+      <div style="text-align:center; margin-top:50px; font-family:'Segoe UI', Roboto, sans-serif; color:#222;">
+        <div style="margin-top:25px;">
+          <button onclick="changePage1(-1)"
+            style="background:linear-gradient(135deg,#444,#222); color:white; border:none; padding:10px 22px; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; margin:0 10px; box-shadow:0 4px 10px rgba(0,0,0,0.3); transition:all 0.2s ease;">
+            ⬅ Sebelumnya
+          </button>
+          <button onclick="changePage1(1)"
+            style="background:linear-gradient(135deg,#1a73e8,#0a4abf); color:white; border:none; padding:10px 22px; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; margin:0 10px; box-shadow:0 4px 10px rgba(0,0,0,0.3); transition:all 0.2s ease;">
+            Selanjutnya ➡
+          </button>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <script>
+    // Paging + modal handlers for Seasons I (mirror Seasons II behavior)
+    let currentPage1 = 1;
+
+    function getPages1() {
+      return document.querySelectorAll(".klasmen-grid.page1");
+    }
+
+    function showPage1(pageNumber) {
+      const pages = getPages1();
+      const total = pages.length;
+      if (total === 0) return;
+      for (let i = 0; i < total; i++) {
+        pages[i].style.display = (i + 1 === pageNumber) ? "grid" : "none";
+      }
+
+      const activePage = pages[pageNumber - 1];
+      if (!activePage) return;
+      const items = activePage.querySelectorAll(".klasmen-item");
+      if (items.length === 0 && pageNumber < total) {
+        // if current page empty and not last, wrap to last (same behavior as Seasons II)
+        showPage1(total);
+      }
+    }
+
+    function changePage1(step) {
+      const total = getPages1().length;
+      if (total === 0) return;
+      currentPage1 += step;
+      if (currentPage1 < 1) currentPage1 = total;
+      if (currentPage1 > total) currentPage1 = 1;
+      showPage1(currentPage1);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal1 = document.getElementById("klasmenModal");
+      const btn1 = document.querySelector(".lihat-klasmen");
+      const span1 = document.querySelector(".close");
+
+      if (btn1 && modal1) {
+        btn1.addEventListener("click", () => {
+          modal1.style.display = "block";
+          currentPage1 = 1;
+          showPage1(currentPage1);
+        });
+      }
+
+      if (span1 && modal1) span1.onclick = () => (modal1.style.display = "none");
+
+      window.addEventListener("click", (event) => {
+        if (event.target == modal1) modal1.style.display = "none";
+      });
+
+      // initialize first page
       showPage1(currentPage1);
     });
-  }
-
-  if (span1 && modal1) span1.onclick = () => (modal1.style.display = "none");
-
-  window.addEventListener("click", (event) => {
-    if (event.target == modal1) modal1.style.display = "none";
-  });
-
-  // initialize first page
-  showPage1(currentPage1);
-});
-</script>
+  </script>
 
 
 
-    <!-- Modal Zoom Gambar -->
-    <div id="zoomModal" class="zoom-modal">
-      <span class="close-zoom">&times;</span>
-      <img class="zoomed-image" src="" alt="Zoomed" />
-    </div>
+  <!-- Modal Zoom Gambar -->
+  <div id="zoomModal" class="zoom-modal">
+    <span class="close-zoom">&times;</span>
+    <img class="zoomed-image" src="" alt="Zoomed" />
+  </div>
 
-    <!-- GALERI -->
-    <section id="galeri" class="section">
-      <h2>Galeri Kegiatan</h2>
-      <div class="gallery" id="gallery">
-        <div class="gallery-item">
-          <img src="les32.jpeg" alt="gambar" />
-          <div class="caption">Liga Esports SMPN32 OKU By SMQR Esports</div>
-        </div>
-        <div class="gallery-item">
-          <img src="putera.jpeg" alt="Pembinaan Karakter" />
-          <div class="caption">Liga Esports Nasional Pelajar Tahun 2025</div>
-        </div>
-        <div class="gallery-item">
-          <img src="makanbersama.jpeg" alt="Pembinaan Karakter" />
-          <div class="caption">Memasak & makan makan bersama Angkatan IV</div>
-        </div>
-        <div class="gallery-item">
-          <img src="beranda.jpeg" alt="Latihan Tim Esports" />
-          <div class="caption">Angkatan IV Tahun 2025</div>
-        </div>
-        <div class="gallery-item">
-          <img src="angkatan3.jpeg" alt="Liga Pelajar Nasional" />
-          <div class="caption">Angkatan III Tahun 2024</div>
-        </div>
-        <div class="gallery-item">
-          <img src="angkatan2.jpeg" alt="Liga Pelajar Nasional" />
-          <div class="caption">Angkatan II Tahun 2023</div>
-        </div>
-        <div class="gallery-item">
-          <img src="angkatan1.jpeg" alt="Liga Pelajar Nasional" />
-          <div class="caption">Angkatan I Tahun 2022</div>
-        </div>
+  <!-- GALERI -->
+  <section id="galeri" class="section">
+    <h2>Galeri Kegiatan</h2>
+    <div class="gallery" id="gallery">
+
+      <div class="gallery-item">
+        <img src="les32.jpeg" alt="gambar" />
+        <div class="caption">Liga Esports SMPN32 OKU By SMQR Esports</div>
       </div>
+      <div class="gallery-item">
+        <img src="putera.jpeg" alt="Pembinaan Karakter" />
+        <div class="caption">Liga Esports Nasional Pelajar Tahun 2025</div>
+      </div>
+      <div class="gallery-item">
+        <img src="TourangkatanIV.jpeg" alt="Pembinaan Karakter" />
+        <div class="caption">Tournament Esports Angkatan IV 2026</div>
+      </div>
+      <div class="gallery-item">
+        <img src="makanbersama.jpeg" alt="Pembinaan Karakter" />
+        <div class="caption">Memasak & makan makan bersama Angkatan IV 2025</div>
+      </div>
+      <div class="gallery-item">
+        <img src="beranda.jpeg" alt="Latihan Tim Esports" />
+        <div class="caption">Angkatan IV Tahun 2025</div>
+      </div>
+      <div class="gallery-item">
+        <img src="angkatan3.jpeg" alt="Liga Pelajar Nasional" />
+        <div class="caption">Angkatan III Tahun 2024</div>
+      </div>
+      <div class="gallery-item">
+        <img src="angkatan2.jpeg" alt="Liga Pelajar Nasional" />
+        <div class="caption">Angkatan II Tahun 2023</div>
+      </div>
+      <div class="gallery-item">
+        <img src="angkatan1.jpeg" alt="Liga Pelajar Nasional" />
+        <div class="caption">Angkatan I Tahun 2022</div>
+      </div>
+    </div>
 
     <!-- Modal Lightbox Klasmen Seasons II -->
     <div id="klasmenModal2" class="modal">
@@ -468,8 +1070,12 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="klasmen-grid page2" data-page="1" style="display: grid;">
           <div>Bulan Januari 2026</div>
           <div class="klasmen-item">
-            <img src="s2_minggu1.jpeg" alt="Seasons2 Minggu 1" class="zoomable" />
-            <p>Minggu 1</p>
+            <img src="S2M1Putera.png" alt="Seasons2 Minggu 1" class="zoomable" />
+            <p>Minggu 1 Putera</p>
+          </div>
+          <div class="klasmen-item">
+            <img src="S2M1Puteri.png" alt="Seasons2 Minggu 1" class="zoomable" />
+            <p>Minggu 1 Puteri</p>
           </div>
           <div class="klasmen-item">
             <img src="s2_minggu1.jpeg" alt="Seasons2 Minggu 2" class="zoomable" />
@@ -484,62 +1090,99 @@ document.addEventListener('DOMContentLoaded', () => {
         <!-- Halaman 2 -->
         <div class="klasmen-grid page2" data-page="2" style="display: none;">
           <div>Bulan Februari 2026</div>
-          <div class="klasmen-item"><img src="s2_minggu2.jpeg" alt="Seasons2 Minggu 4" class="zoomable" /><p>Minggu 4</p></div>
-          <div class="klasmen-item"><img src="s2_minggu3.jpeg" alt="Seasons2 Minggu 5" class="zoomable" /><p>Minggu 5</p></div>
-          <div class="klasmen-item"><img src="s2_minggu3.jpeg" alt="Seasons2 Minggu 6" class="zoomable" /><p>Minggu 6</p></div>
+          <div class="klasmen-item"><img src="s2_minggu2.jpeg" alt="Seasons2 Minggu 4" class="zoomable" />
+            <p>Minggu 4</p>
+          </div>
+          <div class="klasmen-item"><img src="s2_minggu3.jpeg" alt="Seasons2 Minggu 5" class="zoomable" />
+            <p>Minggu 5</p>
+          </div>
+          <div class="klasmen-item"><img src="s2_minggu3.jpeg" alt="Seasons2 Minggu 6" class="zoomable" />
+            <p>Minggu 6</p>
+          </div>
         </div>
 
         <!-- Halaman 3 -->
         <div class="klasmen-grid page2" data-page="3" style="display: none;">
           <div>Bulan Maret 2026</div>
-          <div class="klasmen-item"><img src="s2_minggu4.jpeg" alt="Seasons2 Minggu 7" class="zoomable" /><p>Minggu 7</p></div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 8" class="zoomable" /><p>Minggu 8</p></div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 9" class="zoomable" /><p>Minggu 9</p></div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 10" class="zoomable" /><p>Minggu 10</p></div>
+          <div class="klasmen-item"><img src="s2_minggu4.jpeg" alt="Seasons2 Minggu 7" class="zoomable" />
+            <p>Minggu 7</p>
+          </div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 8" class="zoomable" />
+            <p>Minggu 8</p>
+          </div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 9" class="zoomable" />
+            <p>Minggu 9</p>
+          </div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 10" class="zoomable" />
+            <p>Minggu 10</p>
+          </div>
         </div>
 
         <!-- Halaman 4 -->
         <div class="klasmen-grid page2" data-page="4" style="display: none;">
           <div>Bulan April 2026</div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 11" class="zoomable" /><p>Minggu 11</p></div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 12" class="zoomable" /><p>Minggu 12</p></div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 13" class="zoomable" /><p>Minggu 13</p></div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 11" class="zoomable" />
+            <p>Minggu 11</p>
+          </div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 12" class="zoomable" />
+            <p>Minggu 12</p>
+          </div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 13" class="zoomable" />
+            <p>Minggu 13</p>
+          </div>
         </div>
 
         <!-- Halaman 4 -->
         <div class="klasmen-grid page2" data-page="4" style="display: none;">
           <div>Bulan Mei 2026</div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 14" class="zoomable" /><p>Minggu 14</p></div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 15" class="zoomable" /><p>Minggu 15</p></div>
-          
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 14" class="zoomable" />
+            <p>Minggu 14</p>
+          </div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 15" class="zoomable" />
+            <p>Minggu 15</p>
+          </div>
+
         </div>
 
         <div class="klasmen-grid page2" data-page="4" style="display: none;">
           <div>PLAYOFF Anggota Terbaik Tahun 2026</div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 16" class="zoomable" /><p>Minggu 16</p></div>
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 16" class="zoomable" />
+            <p>Minggu 16</p>
+          </div>
         </div>
 
         <div class="klasmen-grid page2" data-page="6" style="display: none;">
-      <div>🏆 Bulan Juni Tahun 2026 🏆</div>
-      <div class="klasmen-item"><img src="umumputera Seasons 2.png" alt="Juara Umum Putera" class="zoomable" /><p>Juara Umum Putera</p></div>
-      <div class="klasmen-item"><img src="umumputeri Seasons 2.png" alt="Juara Umum Puteri" class="zoomable" /><p>Juara Umum Puteri</p></div>
-      <div class="klasmen-item"><img src="Terdisiplin Seasons 2.png" alt="Anggota Terdisiplin" class="zoomable" /><p>Anggota Terdisiplin</p></div>
-      <div class="klasmen-item"><img src="anggota-terbaiks2.png" alt="17 Mei 2026" class="zoomable" /><p>Anggota Terbaik</p></div>
-      <div class="klasmen-item"><img src="moba Seasons 2.png" alt="Divisi MOBA" class="zoomable" /><p>Divisi MOBA</p></div>
-      <div class="klasmen-item"><img src="Battle Royale Seasons 2.png" alt="Divisi Battle Royale" class="zoomable" /><p>Divisi Battle Royale</p></div>
-      
-    </div>
+          <div>🏆 Bulan Juni Tahun 2026 🏆</div>
+          <div class="klasmen-item"><img src="umumputera Seasons 2.png" alt="Juara Umum Putera" class="zoomable" />
+            <p>Juara Umum Putera</p>
+          </div>
+          <div class="klasmen-item"><img src="umumputeri Seasons 2.png" alt="Juara Umum Puteri" class="zoomable" />
+            <p>Juara Umum Puteri</p>
+          </div>
+          <div class="klasmen-item"><img src="Terdisiplin Seasons 2.png" alt="Anggota Terdisiplin" class="zoomable" />
+            <p>Anggota Terdisiplin</p>
+          </div>
+          <div class="klasmen-item"><img src="anggota-terbaiks2.png" alt="17 Mei 2026" class="zoomable" />
+            <p>Anggota Terbaik</p>
+          </div>
+          <div class="klasmen-item"><img src="moba Seasons 2.png" alt="Divisi MOBA" class="zoomable" />
+            <p>Divisi MOBA</p>
+          </div>
+          <div class="klasmen-item"><img src="Battle Royale Seasons 2.png" alt="Divisi Battle Royale"
+              class="zoomable" />
+            <p>Divisi Battle Royale</p>
+          </div>
+
+        </div>
 
         <!-- Tombol Navigasi untuk Seasons II -->
         <div style="text-align:center; margin-top:50px; font-family:'Segoe UI', Roboto, sans-serif; color:#222;">
           <div style="margin-top:25px;">
-            <button 
-              onclick="changePage2(-1)" 
+            <button onclick="changePage2(-1)"
               style="background:linear-gradient(135deg,#444,#222); color:white; border:none; padding:10px 22px; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; margin:0 10px; box-shadow:0 4px 10px rgba(0,0,0,0.3); transition:all 0.2s ease;">
               ⬅ Sebelumnya
             </button>
-            <button 
-              onclick="changePage2(1)" 
+            <button onclick="changePage2(1)"
               style="background:linear-gradient(135deg,#1a73e8,#0a4abf); color:white; border:none; padding:10px 22px; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; margin:0 10px; box-shadow:0 4px 10px rgba(0,0,0,0.3); transition:all 0.2s ease;">
               Selanjutnya ➡
             </button>
@@ -549,428 +1192,227 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
 
     <script>
-    // Paging for Seasons II modal (robust to script order)
-    let currentPage2 = 1;
+      // Paging for Seasons II modal (robust to script order)
+      let currentPage2 = 1;
 
-    function getPages2() {
-      return document.querySelectorAll(".klasmen-grid.page2");
-    }
-
-    function showPage2(pageNumber) {
-      const pages = getPages2();
-      const total = pages.length;
-      if (total === 0) return;
-      for (let i = 0; i < total; i++) {
-        pages[i].style.display = (i + 1 === pageNumber) ? "grid" : "none";
+      function getPages2() {
+        return document.querySelectorAll(".klasmen-grid.page2");
       }
 
-      const activePage = pages[pageNumber - 1];
-      if (!activePage) return;
-      const items = activePage.querySelectorAll(".klasmen-item");
-      if (items.length === 0 && pageNumber < total) {
-        showPage2(total);
+      function showPage2(pageNumber) {
+        const pages = getPages2();
+        const total = pages.length;
+        if (total === 0) return;
+        for (let i = 0; i < total; i++) {
+          pages[i].style.display = (i + 1 === pageNumber) ? "grid" : "none";
+        }
+
+        const activePage = pages[pageNumber - 1];
+        if (!activePage) return;
+        const items = activePage.querySelectorAll(".klasmen-item");
+        if (items.length === 0 && pageNumber < total) {
+          showPage2(total);
+        }
       }
-    }
 
-    function changePage2(step) {
-      const total = getPages2().length;
-      if (total === 0) return;
-      currentPage2 += step;
-      if (currentPage2 < 1) currentPage2 = total;
-      if (currentPage2 > total) currentPage2 = 1;
-      showPage2(currentPage2);
-    }
+      function changePage2(step) {
+        const total = getPages2().length;
+        if (total === 0) return;
+        currentPage2 += step;
+        if (currentPage2 < 1) currentPage2 = total;
+        if (currentPage2 > total) currentPage2 = 1;
+        showPage2(currentPage2);
+      }
 
-    // Register handlers after DOM is loaded so button (which is later in the file)
-    // can be found. This avoids null when script runs before the button exists.
-    document.addEventListener('DOMContentLoaded', () => {
-      const modal2 = document.getElementById("klasmenModal2");
-      const btn2 = document.querySelector(".lihat-klasmen1");
-      const span2 = document.querySelector(".close2");
+      // Register handlers after DOM is loaded so button (which is later in the file)
+      // can be found. This avoids null when script runs before the button exists.
+      document.addEventListener('DOMContentLoaded', () => {
+        const modal2 = document.getElementById("klasmenModal2");
+        const btn2 = document.querySelector(".lihat-klasmen1");
+        const span2 = document.querySelector(".close2");
 
-      if (btn2 && modal2) {
-        btn2.addEventListener("click", () => {
-          modal2.style.display = "block";
-          currentPage2 = 1;
-          showPage2(currentPage2);
+        if (btn2 && modal2) {
+          btn2.addEventListener("click", () => {
+            modal2.style.display = "block";
+            currentPage2 = 1;
+            showPage2(currentPage2);
+          });
+        }
+
+        if (span2 && modal2) span2.onclick = () => (modal2.style.display = "none");
+
+        window.addEventListener("click", (event) => {
+          if (event.target == modal2) modal2.style.display = "none";
         });
-      }
 
-      if (span2 && modal2) span2.onclick = () => (modal2.style.display = "none");
-
-      window.addEventListener("click", (event) => {
-        if (event.target == modal2) modal2.style.display = "none";
+        // Initialize first page for modal2
+        showPage2(currentPage2);
       });
-
-      // Initialize first page for modal2
-      showPage2(currentPage2);
-    });
     </script>
 
-      <!-- Tombol Pagination -->
-      <div style="text-align: center; margin-top: 20px">
-        <button onclick="changeGalleryPage(-1)">Sebelumnya</button>
-        <span id="galleryPageInfo"></span>
-        <button onclick="changeGalleryPage(1)">Selanjutnya</button>
-      </div>
-    </section>
+    <!-- Tombol Pagination -->
+    <div style="text-align: center; margin-top: 20px">
+      <button onclick="changeGalleryPage(-1)">Sebelumnya</button>
+      <span id="galleryPageInfo"></span>
+      <button onclick="changeGalleryPage(1)">Selanjutnya</button>
+    </div>
+  </section>
 
-    <script>
-      let galleryCurrentPage = 1;
-      const galleryItemsPerPage = 4;
-      const galleryItems = document.querySelectorAll("#gallery .gallery-item");
-      const galleryTotalPages = Math.ceil(
-        galleryItems.length / galleryItemsPerPage
-      );
+  <script>
+    let galleryCurrentPage = 1;
+    const galleryItemsPerPage = 4;
+    const galleryItems = document.querySelectorAll("#gallery .gallery-item");
+    const galleryTotalPages = Math.ceil(
+      galleryItems.length / galleryItemsPerPage
+    );
 
-      function showGalleryPage(page) {
-        galleryItems.forEach((item, index) => {
-          item.style.display =
-            index >= (page - 1) * galleryItemsPerPage &&
+    function showGalleryPage(page) {
+      galleryItems.forEach((item, index) => {
+        item.style.display =
+          index >= (page - 1) * galleryItemsPerPage &&
             index < page * galleryItemsPerPage
-              ? "block"
-              : "none";
-        });
-        document.getElementById(
-          "galleryPageInfo"
-        ).innerText = `Halaman ${page} dari ${galleryTotalPages}`;
-      }
+            ? "block"
+            : "none";
+      });
+      document.getElementById(
+        "galleryPageInfo"
+      ).innerText = `Halaman ${page} dari ${galleryTotalPages}`;
+    }
 
-      function changeGalleryPage(step) {
-        galleryCurrentPage += step;
-        if (galleryCurrentPage < 1) galleryCurrentPage = galleryTotalPages;
-        if (galleryCurrentPage > galleryTotalPages) galleryCurrentPage = 1;
-        showGalleryPage(galleryCurrentPage);
-      }
-
-      // tampilkan halaman pertama saat load
+    function changeGalleryPage(step) {
+      galleryCurrentPage += step;
+      if (galleryCurrentPage < 1) galleryCurrentPage = galleryTotalPages;
+      if (galleryCurrentPage > galleryTotalPages) galleryCurrentPage = 1;
       showGalleryPage(galleryCurrentPage);
-    </script>
+    }
 
-    <section id="liga">
-      <h2
-        class="title"
-        style="
+    // tampilkan halaman pertama saat load
+    showGalleryPage(galleryCurrentPage);
+  </script>
+
+  <section id="liga">
+    <h2 class="title" style="
           background: linear-gradient(45deg, #4f7cff, #ff69b4);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-        "
-      >
-        Liga Esports SMPN 32 OKU #LES32OKU
-      </h2>
+        ">
+      Liga Esports SMPN 32 OKU #LES32OKU
+    </h2>
 
-      <!-- Container untuk Seasons -->
-      <div class="season-container">
-        <!-- Seasons 1 -->
-        <div class="season" id="season1">
-          <div class="gallery">
-            <figure>
-              <img
-                src="les32.jpeg"
-                alt="Liga Esports SMPN 32 OKU"
-                style="
-                  width: 100%;
-                  border-radius: 12px;
-                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                "
-              />
-              <figcaption>
-                <strong>Seasons I</strong> (SELESAI)
-              </figcaption>
-            </figure>
-          </div>
+    <!-- Container untuk Seasons -->
+    <div class="season-container">
+      <!-- Seasons 1 -->
+      <div class="season" id="season1">
+        <div class="gallery">
+          <figure style="
+    margin: 30px auto;
+    padding: 16px;
+    max-width: 520px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    text-align: center;
+  ">
+            <img src="les32.jpeg" alt="Liga Esports SMPN 32 OKU" style="
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      margin-bottom: 12px;
+    " />
+            <figcaption style="
+      font-size: 0.95em;
+      color: #000000;
+      letter-spacing: 0.5px;
+    ">
+              <strong>Seasons I</strong> (SELESAI)
+            </figcaption>
+          </figure>
 
-          <hr />
-          <h3 class="subtitle">Informasi Liga #LES32OKU Seasons I</h3>
-
-          <ul class="info-list">
-            <li>
-              <b>Penyelenggara:</b>
-              <a href="https://smqresports.netlify.app/" target="_blank" style="color: rgb(255, 0, 0); text-decoration: none;">
-                SMQR ESPORTS
-              </a>
-            </li>
-            <li>
-              <b>Game Yang dipertandingkan : </b>
-              <a>MOBA (Mobile Legends) & BATTLE ROYALE (Free Fire)</a> 
-              
-            </li>
-            <li>
-  <!-- Elegant sponsorship block — tanpa CSS eksternal -->
-<section aria-labelledby="sponsor-title">
-  <center>
-    <!-- Ornamen emas (SVG) -->
-    <svg width="220" height="32" viewBox="0 0 220 32" role="img" aria-hidden="true"
-         xmlns="http://www.w3.org/2000/svg" focusable="false">
-      <g fill="none" stroke="none">
-        <path d="M10 16 Q40 2 80 16 T150 16 T210 16" fill="none" stroke="#b88b1f" stroke-width="2"/>
-        <circle cx="110" cy="16" r="4" fill="#b88b1f"/>
-      </g>
-    </svg>
-
-    <h3 id="sponsor-title">Didukung oleh</h3>
-
-    <hr />
-
-    <figure>
-      <figcaption>
-        <address>
-          <p>
-            <strong>Dr. Suci Cahyati, S.Pd., M.Or.</strong><br />
-            <a href="https://www.instagram.com/sucay32/" target="_blank" rel="noopener noreferrer">
-              @sucay32
-            </a>
-          </p>
-
-          <p>
-            <strong>Martin Arikardi, S.H., M.H.</strong><br />
-            <a href="https://www.instagram.com/martinarikardi/" target="_blank" rel="noopener noreferrer">
-              @martinarikardi
-            </a>
-          </p>
-          <p>
-            <strong>M. Aman Hidayat, S.T.</strong><br />
-            <a href="https://www.instagram.com/muhammadamann71/" target="_blank" rel="noopener noreferrer">
-              @muhammadamann71
-            </a>
-          </p>
-          <p>
-            <strong>ESI KAB OKU</strong><br />
-            <a href="https://www.instagram.com/esi_kab_oku/" target="_blank" rel="noopener noreferrer">
-              @esi_kab_oku       
-
-            </a>
-          </p>
-          
-        </address>
-      </figcaption>
-    </figure>
-
-    <hr />
-
-    <p>
-      <small>&#10022; Terima kasih atas dukungan dan kontribusi berharga.</small>
-    </p>
-  </center>
-</section>
-
-  
-  
-</li>
-            <li><b>Peserta:</b> 40 Orang Siswa Siswi </li>
-            <li> <b>Anggota Resmi Angkatan IV:</b> 23 Siswa Siswi SMPN 32 OKU</li>
-            <li><b>Periode:</b> Juli - Desember 2025  <b>SELESAI</b></li>
-            <li>
-  <b>Klasmen & Jadwal Seasons I:</b>
-  <button
-    class="lihat-klasmen btn-primary"
-    style="
-      margin-left: 10px;
-      padding: 8px 16px;
-      border: none;
-      background: linear-gradient(45deg, #ff4ecd, #4f7cff);
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    "
-  >
-    Lihat Detail
-  </button>
-</li>
-
-            <li>
-              <b>Pemenang Seasons I:</b>
-              <button
-                onclick="toggleDetail('detailPemenang1')"
-                style="
-                  margin-left: 10px;
-                  padding: 8px 16px;
-                  border: none;
-                  background: linear-gradient(45deg, #ff4ecd, #4f7cff);
-                  color: white;
-                  border-radius: 8px;
-                  cursor: pointer;
-                  font-weight: bold;
-                  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-                "
-              >
-                Lihat Detail
-              </button>
-
-              <div
-                id="detailPemenang1"
-                style="
-                  display: none;
-                  margin-top: 15px;
-                  padding: 15px;
-                  border-radius: 12px;
-                  background: #f9f9ff;
-                  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-                "
-              >
-                <ul>
-                  <li>
-                    <b>Umum Putera:</b>
-                    <ol>
-                      <li>Juara 1: M. Fahri Akbar Siregar</li>
-                      <li>Juara 2: Rezeki</li>
-                      <li>Juara 3: Bima Kaparali</li>
-                    </ol>
-                  </li>
-                  <li>
-                    <b>Umum Puteri:</b>
-                    <ol>
-                      <li>Juara 1: Keysha Azzahra</li>
-                      <li>Juara 2: Vinni Violeta Kemala Sari</li>
-                      <li>Juara 3: Azzahra Purnamasari</li>
-                    </ol>
-                  </li>
-                  
-                  <li>
-                    <b>Divisi MOBA:</b>
-                    <ol>
-                      <li>Juara 1: M. Fahri Akbar Siregar</li>
-                      <li>Juara 2: Keysha Azzahra</li>
-                      <li>Juara 3: Vinni Violeta Kemala Sari</li>
-                    </ol>
-                  </li>
-                  <li>
-                    <b>Divisi Battle Royale:</b>
-                    <ol>
-                      <li>Juara 1: Rezeki</li>
-                      <li>Juara 2: Bima Kaparali</li>
-                      <li>Juara 3: Satria Wisesa</li>
-                    </ol>
-                  </li>
-                  <li>
-                    <b>Anggota Terdisiplin:</b>
-                    <ol>
-                      <li>Juara 1: Rezeki</li>
-                      <li>Juara 2: M. Zavri Aryono</li>
-                      <li>Juara 3: Afgan Pratama</li>
-                    </ol>
-                  </li>
-                  <li><b>Anggota Terbaik:</b></li>
-                  <ol>
-                      <li>Juara: Fajri Bahar Rhafsanjani</li>
-                      
-                    </ol>
-                </ul>
-              </div>
-            </li>
-          </ul>
-
-          <section id="galeri-penyerahan-juara" class="section">
-            <h2>Galeri Seasons I Angkatan IV</h2>
-            <div class="gallery" id="gallery-penyerahan-juara">
-              <div class="gallery-item">
-                <img src="pembukaseason1.jpg" alt="13 DESEMBER 2025" />
-                <div class="caption">Pembukaan Juli 2025</div>
-              </div>
-              <div class="gallery-item">
-                <img src="penutupseasons1.jpg" alt="13 DESEMBER 2025" />
-                <div class="caption">Penutupan Desember 2025</div>
-              </div>
-              
-             
-            </div>
-          </section>
         </div>
 
-        
+        <hr />
+        <h3 class="subtitle">Informasi Liga #LES32OKU Seasons I</h3>
 
-        <!-- Seasons II -->
-        <div class="season" id="season2" style="display: none">
-          <div class="gallery">
-            <figure>
-              <img
-                src="les32.jpeg"
-                alt="Liga Esports SMPN 32 OKU Season 2"
-                style="
-                  width: 100%;
-                  border-radius: 12px;
-                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                "
-              />
-              <figcaption>
-                <strong>Seasons II</strong> (Januari - Juni 2026)
-              </figcaption>
-            </figure>
-          </div>
+        <ul class="info-list">
+          <li>
+            <b>Penyelenggara:</b>
+            <a href="https://smqresports.netlify.app/" target="_blank"
+              style="color: rgb(255, 0, 0); text-decoration: none;">
+              SMQR ESPORTS
+            </a>
+          </li>
+          <li>
+            <b>Game Yang dipertandingkan : </b>
+            <a>MOBA (Mobile Legends) & BATTLE ROYALE (Free Fire)</a>
 
-          <hr />
-          <h3 class="subtitle">Informasi Liga #LES32OKU Seasons II</h3>
-          <ul class="info-list">
-            <li>
-              <b>Penyelenggara</b>
-              <a href="https://smqresports.netlify.app/" target="_blank" style="color: rgb(255, 0, 0); text-decoration: none;">
-                SMQR ESPORTS
-              </a>
-            </li>
-            <li>
-              <b>Game Yang dipertandingkan : </b>
-              <a>MOBA (Mobile Legends) & BATTLE ROYALE (Free Fire)</a> 
-              
-            </li>
+          </li>
+          <li>
+            <!-- Elegant sponsorship block — tanpa CSS eksternal -->
             <section aria-labelledby="sponsor-title">
-  <center>
-    <!-- Ornamen emas (SVG) -->
-    <svg width="220" height="32" viewBox="0 0 220 32" role="img" aria-hidden="true"
-         xmlns="http://www.w3.org/2000/svg" focusable="false">
-      <g fill="none" stroke="none">
-        <path d="M10 16 Q40 2 80 16 T150 16 T210 16" fill="none" stroke="#b88b1f" stroke-width="2"/>
-        <circle cx="110" cy="16" r="4" fill="#b88b1f"/>
-      </g>
-    </svg>
+              <center>
+                <!-- Ornamen emas (SVG) -->
+                <svg width="220" height="32" viewBox="0 0 220 32" role="img" aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg" focusable="false">
+                  <g fill="none" stroke="none">
+                    <path d="M10 16 Q40 2 80 16 T150 16 T210 16" fill="none" stroke="#b88b1f" stroke-width="2" />
+                    <circle cx="110" cy="16" r="4" fill="#b88b1f" />
+                  </g>
+                </svg>
 
-    <h3 id="sponsor-title">Didukung oleh</h3>
+                <h3 id="sponsor-title">Didukung oleh</h3>
 
-    <hr />
+                <hr />
 
-    <figure>
-      <figcaption>
-        <address>
-          <p>
-            <strong>Martin Arikardi, S.H., M.H.</strong><br />
-            <a href="https://www.instagram.com/martinarikardi/" target="_blank" rel="noopener noreferrer">
-              @martinarikardi
-            </a>
-          </p>
-          <p>
-            <strong>M. Aman Hidayat, S.T.</strong><br />
-            <a href="https://www.instagram.com/muhammadamann71/" target="_blank" rel="noopener noreferrer">
-              @muhammadamann71
-            </a>
-          </p>
-          <p>
-            <strong>ESI KAB OKU</strong><br />
-            <a href="https://www.instagram.com/esi_kab_oku/" target="_blank" rel="noopener noreferrer">
-              @esi_kab_oku       
+                <figure>
+                  <figcaption>
+                    <address>
+                      <p>
+                        <strong>Dr. Suci Cahyati, S.Pd., M.Or.</strong><br />
+                        <a href="https://www.instagram.com/sucay32/" target="_blank" rel="noopener noreferrer">
+                          @sucay32
+                        </a>
+                      </p>
 
-            </a>
-          </p>
-          
-        </address>
-      </figcaption>
-    </figure>
+                      <p>
+                        <strong>Martin Arikardi, S.H., M.H.</strong><br />
+                        <a href="https://www.instagram.com/martinarikardi/" target="_blank" rel="noopener noreferrer">
+                          @martinarikardi
+                        </a>
+                      </p>
+                      <p>
+                        <strong>M. Aman Hidayat, S.T.</strong><br />
+                        <a href="https://www.instagram.com/muhammadamann71/" target="_blank" rel="noopener noreferrer">
+                          @muhammadamann71
+                        </a>
+                      </p>
+                      <p>
+                        <strong>ESI KAB OKU</strong><br />
+                        <a href="https://www.instagram.com/esi_kab_oku/" target="_blank" rel="noopener noreferrer">
+                          @esi_kab_oku
 
-    <hr />
+                        </a>
+                      </p>
 
-    <p>
-      <small>&#10022; Terima kasih atas dukungan dan kontribusi berharga.</small>
-    </p>
-  </center>
-</section>
-            <li><b>Peserta Seasons II:</b> Akan diumumkan</li>
-            <li> <b>Anggota Resmi Angkatan IV:</b> 23 Siswa Siswi SMPN 32 OKU</li>
-            <li><b>Periode:</b> Januari - Juni 2026</li>
-            <li>
-              <b>Klasmen & Jadwal Seasons II:</b>
-              <button
-    class="lihat-klasmen1 btn-primary"
-    style="
+                    </address>
+                  </figcaption>
+                </figure>
+
+                <hr />
+
+                <p>
+                  <small>&#10022; Terima kasih atas dukungan dan kontribusi berharga.</small>
+                </p>
+              </center>
+            </section>
+
+
+
+          </li>
+          <li><b>Peserta:</b> 40 Orang Siswa Siswi </li>
+          <li> <b>Anggota Resmi Angkatan IV:</b> 23 Siswa Siswi SMPN 32 OKU</li>
+          <li><b>Periode:</b> Juli - Desember 2025 <b>SELESAI</b></li>
+          <li>
+            <b>Klasmen & Jadwal Seasons I:</b>
+            <button class="lihat-klasmen btn-primary" style="
       margin-left: 10px;
       padding: 8px 16px;
       border: none;
@@ -980,30 +1422,14 @@ document.addEventListener('DOMContentLoaded', () => {
       cursor: pointer;
       font-weight: bold;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    "
-  >
-    Lihat Detail
-  </button>
+    ">
+              Lihat Detail
+            </button>
+          </li>
 
-              <div
-                id="detailPemenangg2"
-                style="
-                  display: none;
-                  margin-top: 15px;
-                  padding: 15px;
-                  border-radius: 12px;
-                  background: #f9f9ff;
-                  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-                "
-              >
-                <p>Data pemenang akan diupdate setelah kompetisi selesai.</p>
-              </div>
-            </li>
-            <li>
-              <b>Pemenang Seasons II:</b>
-              <button
-                onclick="toggleDetail('detailPemenang2')"
-                style="
+          <li>
+            <b>Pemenang Seasons I:</b>
+            <button onclick="toggleDetail('detailPemenang1')" style="
                   margin-left: 10px;
                   padding: 8px 16px;
                   border: none;
@@ -1013,81 +1439,292 @@ document.addEventListener('DOMContentLoaded', () => {
                   cursor: pointer;
                   font-weight: bold;
                   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-                "
-              >
-                Lihat Detail
-              </button>
+                ">
+              Lihat Detail
+            </button>
 
-             <div
-                id="detailPemenang2"
-                style="
+            <div id="detailPemenang1" style="
                   display: none;
                   margin-top: 15px;
                   padding: 15px;
                   border-radius: 12px;
                   background: #f9f9ff;
                   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-                "
-              >
-                <ul>
-                  <li>
-                    <b>Umum Putera:</b>
-                    <ol>
-                      <li>Juara 1: </li>
-                      <li>Juara 2: </li>
-                      <li>Juara 3: </li>
-                    </ol>
-                  </li>
-                  <li>
-                    <b>Umum Puteri:</b>
-                    <ol>
-                      <li>Juara 1: </li>
-                      <li>Juara 2: </li>
-                      <li>Juara 3: </li>
-                    </ol>
-                  </li>
-                  
-                  <li>
-                    <b>Divisi MOBA:</b>
-                    <ol>
-                      <li>Juara 1: </li>
-                      <li>Juara 2: </li>
-                      <li>Juara 3: </li>
-                    </ol>
-                  </li>
-                  <li>
-                    <b>Divisi Battle Royale:</b>
-                    <ol>
-                      <li>Juara 1: </li>
-                      <li>Juara 2: </li>
-                      <li>Juara 3: </li>
-                    </ol>
-                  </li>
-                  <li>
-                    <b>Anggota Terdisiplin:</b>
-                    <ol>
-                      <li>Juara 1: </li>
-                      <li>Juara 2: </li>
-                      <li>Juara 3: </li>
-                    </ol>
-                  </li>
-                  <li><b>Anggota Terbaik:</b></li>
+                ">
+              <ul>
+                <li>
+                  <b>Umum Putera:</b>
                   <ol>
-                      <li>Juara: </li>
-                      
-                    </ol>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
+                    <li>Juara 1: M. Fahri Akbar Siregar</li>
+                    <li>Juara 2: Rezeki</li>
+                    <li>Juara 3: Bima Kaparali</li>
+                  </ol>
+                </li>
+                <li>
+                  <b>Umum Puteri:</b>
+                  <ol>
+                    <li>Juara 1: Keysha Azzahra</li>
+                    <li>Juara 2: Vinni Violeta Kemala Sari</li>
+                    <li>Juara 3: Azzahra Purnamasari</li>
+                  </ol>
+                </li>
+
+                <li>
+                  <b>Divisi MOBA:</b>
+                  <ol>
+                    <li>Juara 1: M. Fahri Akbar Siregar</li>
+                    <li>Juara 2: Keysha Azzahra</li>
+                    <li>Juara 3: Vinni Violeta Kemala Sari</li>
+                  </ol>
+                </li>
+                <li>
+                  <b>Divisi Battle Royale:</b>
+                  <ol>
+                    <li>Juara 1: Rezeki</li>
+                    <li>Juara 2: Bima Kaparali</li>
+                    <li>Juara 3: Satria Wisesa</li>
+                  </ol>
+                </li>
+                <li>
+                  <b>Anggota Terdisiplin:</b>
+                  <ol>
+                    <li>Juara 1: Rezeki</li>
+                    <li>Juara 2: M. Zavri Aryono</li>
+                    <li>Juara 3: Afgan Pratama</li>
+                  </ol>
+                </li>
+                <li><b>Anggota Terbaik:</b></li>
+                <ol>
+                  <li>Juara: Fajri Bahar Rhafsanjani</li>
+
+                </ol>
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+        <section id="galeri-penyerahan-juara" class="section">
+          <h2>Galeri Seasons I Angkatan IV</h2>
+          <div class="gallery" id="gallery-penyerahan-juara">
+            <div class="gallery-item">
+              <img src="pembukaseason1.jpg" alt="13 DESEMBER 2025" />
+              <div class="caption">Pembukaan Juli 2025</div>
+            </div>
+            <div class="gallery-item">
+              <img src="penutupseasons1.jpg" alt="13 DESEMBER 2025" />
+              <div class="caption">Penutupan Desember 2025</div>
+            </div>
+
+
+          </div>
+        </section>
       </div>
 
-      <!-- Pagination -->
-      <div style="text-align: center; margin-top: 20px">
-        <button
-          onclick="showSeason(1)"
-          style="
+
+
+      <!-- Seasons II -->
+      <div class="season" id="season2" style="display: none">
+        <div class="gallery">
+          <figure style="
+    margin: 30px auto;
+    padding: 16px;
+    max-width: 520px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    text-align: center;
+  ">
+            <img src="les32.jpeg" alt="Liga Esports SMPN 32 OKU" style="
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      margin-bottom: 12px;
+    " />
+            <figcaption style="
+      font-size: 0.95em;
+      color: #000000;
+      letter-spacing: 0.5px;
+    ">
+              <strong>Seasons II</strong> (Sekarang Berlangsung)
+            </figcaption>
+          </figure>
+
+        </div>
+
+        <hr />
+        <h3 class="subtitle">Informasi Liga #LES32OKU Seasons II</h3>
+        <ul class="info-list">
+          <li>
+            <b>Penyelenggara</b>
+            <a href="https://smqresports.netlify.app/" target="_blank"
+              style="color: rgb(255, 0, 0); text-decoration: none;">
+              SMQR ESPORTS
+            </a>
+          </li>
+          <li>
+            <b>Game Yang dipertandingkan : </b>
+            <a>MOBA (Mobile Legends) & BATTLE ROYALE (Free Fire)</a>
+
+          </li>
+          <section aria-labelledby="sponsor-title">
+            <center>
+              <!-- Ornamen emas (SVG) -->
+              <svg width="220" height="32" viewBox="0 0 220 32" role="img" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <g fill="none" stroke="none">
+                  <path d="M10 16 Q40 2 80 16 T150 16 T210 16" fill="none" stroke="#b88b1f" stroke-width="2" />
+                  <circle cx="110" cy="16" r="4" fill="#b88b1f" />
+                </g>
+              </svg>
+
+              <h3 id="sponsor-title">Didukung oleh</h3>
+
+              <hr />
+
+              <figure>
+                <figcaption>
+                  <address>
+                    <p>
+                      <strong>Martin Arikardi, S.H., M.H.</strong><br />
+                      <a href="https://www.instagram.com/martinarikardi/" target="_blank" rel="noopener noreferrer">
+                        @martinarikardi
+                      </a>
+                    </p>
+                    <p>
+                      <strong>M. Aman Hidayat, S.T.</strong><br />
+                      <a href="https://www.instagram.com/muhammadamann71/" target="_blank" rel="noopener noreferrer">
+                        @muhammadamann71
+                      </a>
+                    </p>
+                    <p>
+                      <strong>ESI KAB OKU</strong><br />
+                      <a href="https://www.instagram.com/esi_kab_oku/" target="_blank" rel="noopener noreferrer">
+                        @esi_kab_oku
+
+                      </a>
+                    </p>
+
+                  </address>
+                </figcaption>
+              </figure>
+
+              <hr />
+
+              <p>
+                <small>&#10022; Terima kasih atas dukungan dan kontribusi berharga.</small>
+              </p>
+            </center>
+          </section>
+          <li><b>Peserta Seasons II:</b> 44 Orang Siswa Siswi</li>
+          <li> <b>Anggota Resmi Angkatan IV:</b> 23 Siswa Siswi SMPN 32 OKU</li>
+          <li><b>Periode:</b> Januari - Juni 2026</li>
+          <li>
+            <b>Klasmen & Jadwal Seasons II:</b>
+            <button class="lihat-klasmen1 btn-primary" style="
+      margin-left: 10px;
+      padding: 8px 16px;
+      border: none;
+      background: linear-gradient(45deg, #ff4ecd, #4f7cff);
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    ">
+              Lihat Detail
+            </button>
+
+            <div id="detailPemenangg2" style="
+                  display: none;
+                  margin-top: 15px;
+                  padding: 15px;
+                  border-radius: 12px;
+                  background: #f9f9ff;
+                  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+                ">
+              <p>Data pemenang akan diupdate setelah kompetisi selesai.</p>
+            </div>
+          </li>
+          <li>
+            <b>Pemenang Seasons II:</b>
+            <button onclick="toggleDetail('detailPemenang2')" style="
+                  margin-left: 10px;
+                  padding: 8px 16px;
+                  border: none;
+                  background: linear-gradient(45deg, #ff4ecd, #4f7cff);
+                  color: white;
+                  border-radius: 8px;
+                  cursor: pointer;
+                  font-weight: bold;
+                  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                ">
+              Lihat Detail
+            </button>
+
+            <div id="detailPemenang2" style="
+                  display: none;
+                  margin-top: 15px;
+                  padding: 15px;
+                  border-radius: 12px;
+                  background: #f9f9ff;
+                  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+                ">
+              <ul>
+                <li>
+                  <b>Umum Putera:</b>
+                  <ol>
+                    <li>Juara 1: </li>
+                    <li>Juara 2: </li>
+                    <li>Juara 3: </li>
+                  </ol>
+                </li>
+                <li>
+                  <b>Umum Puteri:</b>
+                  <ol>
+                    <li>Juara 1: </li>
+                    <li>Juara 2: </li>
+                    <li>Juara 3: </li>
+                  </ol>
+                </li>
+
+                <li>
+                  <b>Divisi MOBA:</b>
+                  <ol>
+                    <li>Juara 1: </li>
+                    <li>Juara 2: </li>
+                    <li>Juara 3: </li>
+                  </ol>
+                </li>
+                <li>
+                  <b>Divisi Battle Royale:</b>
+                  <ol>
+                    <li>Juara 1: </li>
+                    <li>Juara 2: </li>
+                    <li>Juara 3: </li>
+                  </ol>
+                </li>
+                <li>
+                  <b>Anggota Terdisiplin:</b>
+                  <ol>
+                    <li>Juara 1: </li>
+                    <li>Juara 2: </li>
+                    <li>Juara 3: </li>
+                  </ol>
+                </li>
+                <li><b>Anggota Terbaik:</b></li>
+                <ol>
+                  <li>Juara: </li>
+
+                </ol>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div style="text-align: center; margin-top: 20px">
+      <button onclick="showSeason(1)" style="
             padding: 8px 16px;
             margin: 5px;
             border: none;
@@ -1095,13 +1732,10 @@ document.addEventListener('DOMContentLoaded', () => {
             color: white;
             border-radius: 6px;
             cursor: pointer;
-          "
-        >
-          Seasons I
-        </button>
-        <button
-          onclick="showSeason(2)"
-          style="
+          ">
+        Seasons I
+      </button>
+      <button onclick="showSeason(2)" style="
             padding: 8px 16px;
             margin: 5px;
             border: none;
@@ -1109,94 +1743,84 @@ document.addEventListener('DOMContentLoaded', () => {
             color: white;
             border-radius: 6px;
             cursor: pointer;
-          "
-        >
-          Seasons II
-        </button>
-      </div>
-    </section>
+          ">
+        Seasons II
+      </button>
+    </div>
+  </section>
 
-    <script>
-      function toggleDetail(id) {
-        const detail = document.getElementById(id);
-        detail.style.display =
-          detail.style.display === "none" ? "block" : "none";
-      }
+  <script>
+    function toggleDetail(id) {
+      const detail = document.getElementById(id);
+      detail.style.display =
+        detail.style.display === "none" ? "block" : "none";
+    }
 
-      function showSeason(season) {
-        document
-          .querySelectorAll(".season")
-          .forEach((el) => (el.style.display = "none"));
-        document.getElementById("season" + season).style.display = "block";
-      }
-    </script>
+    function showSeason(season) {
+      document
+        .querySelectorAll(".season")
+        .forEach((el) => (el.style.display = "none"));
+      document.getElementById("season" + season).style.display = "block";
+    }
+  </script>
 
-    <!-- KONTAK -->
-    <section
-      id="kontak"
-      class="section dark kontakt"
-      style="
+  <!-- KONTAK -->
+  <section id="kontak" class="section dark kontakt" style="
         background: linear-gradient(135deg, #f7f7f8, #ffffff);
         padding: 40px 20px;
         border-radius: 16px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         text-align: center;
-      "
-    >
-      <h2 class="contact-title">📩 Kontak</h2>
+      ">
+    <h2 class="contact-title">📩 Kontak</h2>
 
-      <p class="contact-sub">Untuk informasi lebih lanjut hubungi kami:</p>
+    <p class="contact-sub">Untuk informasi lebih lanjut hubungi kami:</p>
 
-      <p style="font-size: 1.1rem; margin-bottom: 10px; color: #0a0a0a">
-        Instagram:
-        <a
-          href="https://instagram.com/esport_smpn32oku"
-          target="_blank"
-          class="insta-link"
-        >
-          @esport_smpn32oku
-        </a>
-      </p>
+    <p style="font-size: 1.1rem; margin-bottom: 10px; color: #0a0a0a">
+      Instagram:
+      <a href="https://instagram.com/esport_smpn32oku" target="_blank" class="insta-link">
+        @esport_smpn32oku
+      </a>
+    </p>
 
-      <p
-        style="
+    <p style="
           margin-top: 25px;
           font-weight: 600;
           font-size: 1.05rem;
           line-height: 1.6;
           color: #0a0a0a;
-        "
-      >
-        🎮✨ Ayo bergabung dengan <b>Ekstrakurikuler Esports SMPN 32 OKU!</b>
-        Tunjukkan bakatmu, tingkatkan skill, dan jadilah bagian dari tim hebat
-        yang siap bersaing dengan semangat sportivitas. 🚀🔥 Jangan ragu,
-        saatnya kamu jadi bintang di arena esports sekolah kita!
-      </p>
-    </section>
+        ">
+      🎮✨ Ayo bergabung dengan <b>Ekstrakurikuler Esports SMPN 32 OKU!</b>
+      Tunjukkan bakatmu, tingkatkan skill, dan jadilah bagian dari tim hebat
+      yang siap bersaing dengan semangat sportivitas. 🚀🔥 Jangan ragu,
+      saatnya kamu jadi bintang di arena esports sekolah kita!
+    </p>
+  </section>
 
-    <!-- FOOTER -->
-    <footer>Copyright © 2022 All Right Reserved. SMPN 32 OKU ESPORTS</footer>
+  <!-- FOOTER -->
+  <footer>Copyright © 2022 All Right Reserved. SMPN 32 OKU ESPORTS</footer>
 
-    <!-- SCRIPT MODAL -->
-    <script>
-      // Modal Zoom Gambar (guarded selectors)
-      const zoomModal = document.getElementById("zoomModal");
-      const zoomedImg = document.querySelector(".zoomed-image");
-      const closeZoom = document.querySelector(".close-zoom");
+  <!-- SCRIPT MODAL -->
+  <script>
+    // Modal Zoom Gambar (guarded selectors)
+    const zoomModal = document.getElementById("zoomModal");
+    const zoomedImg = document.querySelector(".zoomed-image");
+    const closeZoom = document.querySelector(".close-zoom");
 
-      if (zoomModal && zoomedImg) {
-        document.querySelectorAll(".gallery img, .zoomable").forEach((img) => {
-          img.addEventListener("dblclick", () => {
-            zoomedImg.src = img.src;
-            zoomModal.style.display = "flex";
-          });
+    if (zoomModal && zoomedImg) {
+      document.querySelectorAll(".gallery img, .zoomable").forEach((img) => {
+        img.addEventListener("dblclick", () => {
+          zoomedImg.src = img.src;
+          zoomModal.style.display = "flex";
         });
-      }
-
-      if (closeZoom && zoomModal) closeZoom.onclick = () => (zoomModal.style.display = "none");
-      window.addEventListener("click", (event) => {
-        if (event.target == zoomModal) zoomModal.style.display = "none";
       });
-    </script>
-  </body>
+    }
+
+    if (closeZoom && zoomModal) closeZoom.onclick = () => (zoomModal.style.display = "none");
+    window.addEventListener("click", (event) => {
+      if (event.target == zoomModal) zoomModal.style.display = "none";
+    });
+  </script>
+</body>
+
 </html>
