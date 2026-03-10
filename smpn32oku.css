@@ -931,3 +931,43 @@ section {
     font-size: 0.8rem;
   }
 }
+
+/* Struktur Perangkat - Responsive Text Layout */
+@media (max-width: 768px) {
+
+  /* Adjust text sizes for tablets */
+  .struktur-content h4 {
+    font-size: 1em !important;
+  }
+
+  .struktur-content p {
+    font-size: 0.85em !important;
+  }
+
+  .struktur-content span {
+    font-size: 0.75em !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* Adjust text sizes for mobile phones */
+  .struktur-content h4 {
+    font-size: 0.95em !important;
+    margin-bottom: 6px !important;
+  }
+
+  .struktur-content p {
+    font-size: 0.8em !important;
+    line-height: 1.4 !important;
+  }
+
+  .struktur-content span {
+    font-size: 0.7em !important;
+  }
+
+  /* Reduce spacing on mobile */
+  .struktur-content>div {
+    margin-bottom: 15px !important;
+  }
+}
