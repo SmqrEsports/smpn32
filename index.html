@@ -516,6 +516,19 @@
         <span style="color:#d4af37;font-size:14px;">Dari masa ke masa</span>
       </h2>
 
+      <!-- SEARCH INPUT -->
+      <input type="text" id="searchInput" placeholder="Cari pencapaian..." style="
+        width:100%;
+        padding:8px 12px;
+        border-radius:8px;
+        border:none;
+        background:rgba(255,255,255,.1);
+        color:#fff;
+        font-size:14px;
+        margin-bottom:14px;
+        outline:none;
+      ">
+
       <!-- PAGE 1 -->
       <div class="klasmen-page" style="
         display:grid;
@@ -579,8 +592,29 @@
         </div>
       </div>
 
+      <div class="klasmen-page" style="
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+        gap:12px;
+      ">
+        <div style="background:rgba(255,255,255,.04);padding:10px;border-radius:10px;text-align:center;">
+          <img src="bawasluff26.jpeg" onclick="zoomImage(this)"
+            style="width:100%;border-radius:8px;cursor:zoom-in;">
+          <p style="color:#e5e7eb;font-size:12px;margin-top:6px;">
+            Tim Free Fire Tournament Esports BAWASLU OKU Tahun 2026 
+          </p>
+        </div>
+
+        <div style="background:rgba(255,255,255,.04);padding:10px;border-radius:10px;text-align:center;">
+          <img src="bawaslumoba26.jpeg" onclick="zoomImage(this)" style="width:100%;border-radius:8px;cursor:zoom-in;">
+          <p style="color:#e5e7eb;font-size:12px;margin-top:6px;">
+            Tim Mobile Legends Tournament Esports BAWASLU OKU Tahun 2026 
+          </p>
+        </div>
+      </div>
+
       <!-- PAGINATION -->
-      <div style="
+      <div id="pagination" style="
         display:flex;
         justify-content:space-between;
         align-items:center;
@@ -660,6 +694,8 @@
 
       openBtn.onclick = () => {
         modal.style.display = "flex";
+        searchInput.value = "";
+        filterAchievements(); // Reset search
         showPage(current);
       };
 
@@ -671,6 +707,40 @@
 
       prevBtn.onclick = () => current > 0 && showPage(--current);
       nextBtn.onclick = () => current < pages.length - 1 && showPage(++current);
+
+      // SEARCH FUNCTION
+      const searchInput = document.getElementById("searchInput");
+      searchInput.addEventListener("input", filterAchievements);
+
+      function filterAchievements() {
+        const query = searchInput.value.toLowerCase().trim();
+        const allItems = document.querySelectorAll(".klasmen-page > div");
+        const pagination = document.getElementById("pagination");
+
+        if (query === "" || query.length < 2) {
+          // Reset all items to visible
+          allItems.forEach(item => item.style.display = "block");
+          // Reset pages to normal
+          pagination.style.display = "flex";
+          showPage(current);
+          return;
+        }
+
+        // Hide pagination during search
+        pagination.style.display = "none";
+
+        // Filter items
+        allItems.forEach(item => {
+          const text = item.querySelector("p").textContent.toLowerCase();
+          item.style.display = text.includes(query) ? "block" : "none";
+        });
+
+        // Show all pages that have visible items
+        pages.forEach(page => {
+          const hasVisible = Array.from(page.children).some(child => child.style.display === "block");
+          page.style.display = hasVisible ? "grid" : "none";
+        });
+      }
     });
 
     // ZOOM IMAGE FUNCTION
@@ -1154,35 +1224,37 @@
           <div class="klasmen-item"><img src="S2M89Puteri.png" alt="Seasons2 Minggu 9" class="zoomable" />
             <p>Minggu 8 & 9 Puteri</p>
           </div>
+          <div class="klasmen-item"><img src="S2M10Putera.png" alt="Seasons2 Minggu 10" class="zoomable" />
+            <p>Minggu 10 Putera</p>
+          </div>
           <div class="klasmen-item"><img src="S2M10Puteri.png" alt="Seasons2 Minggu 10" class="zoomable" />
-            <p>Minggu 10</p>
+            <p>Minggu 10 Puteri</p>
           </div>
         </div>
 
         <!-- Halaman 4 -->
         <div class="klasmen-grid page2" data-page="4" style="display: none;">
           <div>Bulan April 2026</div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 11" class="zoomable" />
-            <p>Minggu 11</p>
+          <div class="klasmen-item"><img src="S2M11Putera.png" alt="Seasons2 Minggu 11" class="zoomable" />
+            <p>Minggu 11 Putera</p>
           </div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 12" class="zoomable" />
-            <p>Minggu 12 </p>
+          <div class="klasmen-item"><img src="S2M11Puteri.png" alt="Seasons2 Minggu 11" class="zoomable" />
+            <p>Minggu 11 Puteri</p>
           </div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 13" class="zoomable" />
-            <p>Minggu 13</p>
+          <div class="klasmen-item"><img src="S2M12Putera.png" alt="Seasons2 Minggu 12" class="zoomable" />
+            <p>Minggu 12 Putera</p>
           </div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 13" class="zoomable" />
-            <p>Minggu 14</p>
+          <div class="klasmen-item"><img src="S2M12Puteri.png" alt="Seasons2 Minggu 12" class="zoomable" />
+            <p>Minggu 12 Puteri</p>
           </div>
         </div>
 
         <!-- Halaman 4 -->
         <div class="klasmen-grid page2" data-page="4" style="display: none;">
           <div>Bulan Mei 2026</div>
-          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 14" class="zoomable" />
+          <div class="klasmen-item"><img src="s2_minggu5.jpeg" alt="Seasons2 Minggu 15" class="zoomable" />
             <p>Minggu 15</p>
           </div>
-
 
         </div>
 
@@ -1656,8 +1728,8 @@
               </p>
             </center>
           </section>
-          <li><b>Peserta Seasons II:</b> 61 Orang Siswa Siswi</li>
-          <li> <b>Anggota Resmi Angkatan IV:</b> 23 Siswa Siswi SMPN 32 OKU</li>
+          <li><b>Peserta Seasons II:</b> 54 Orang Siswa Siswi</li>
+          <li> <b>Anggota Resmi Angkatan IV:</b> 28 Siswa Siswi SMPN 32 OKU</li>
           <li><b>Periode:</b> Januari - Juni 2026</li>
           <li>
             <b>Klasmen & Jadwal Seasons II:</b>
