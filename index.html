@@ -135,7 +135,7 @@
             <h4 style="margin: 0 0 8px 0; font-size: 1.1em; font-weight: bold; color: #2c3e50;">KEPALA SEKOLAH</h4>
             <p style="margin: 0 0 4px 0; padding-left: 12px; font-size: 0.9em; color: #7f8c8d;">• Yanti,
               S.Pd.,MM<br><span style="font-size: 0.8em; color: #95a5a6;">(2022 – 2025)</span></p>
-            <p style="margin: 0; padding-left: 12px; font-size: 0.9em; color: #000000; font-weight: 500;">• Alna Royani,
+            <p style="margin: 0; padding-left: 12px; font-size: 1.2em; color: #000000; font-weight: 500;">• Alna Royani,
               M.Pd.<br><span style="font-size: 0.8em; color: #27ae60;">(2026 – Sekarang)</span></p>
           </div>
 
@@ -147,8 +147,8 @@
             <h4 style="margin: 0 0 8px 0; font-size: 1.1em; font-weight: bold; color: #2c3e50;">PEMBINA</h4>
             <p style="margin: 0 0 4px 0; padding-left: 12px; font-size: 0.9em; color: #7f8c8d;">• Dr. Suci Cahyati,
               S.Pd., M.Or.<br><span style="font-size: 0.8em; color: #95a5a6;">(2022 – 2024)</span></p>
-            <p style="margin: 0; padding-left: 12px; font-size: 0.9em; color: #000000; font-weight: 500;">• Heri Yansah,
-              S.Pd.<br><span style="font-size: 0.8em; color: #27ae60;">(2025 – Sekarang)</span></p>
+            <p style="margin: 0; padding-left: 12px; font-size: 1.1em; color: #000000; font-weight: 500;">• Heri Yansah,
+              S.Pd.<br><span style="font-size: 0.8em; color: #27ae60;">(2024 – Sekarang)</span></p>
           </div>
 
           <hr
@@ -159,7 +159,7 @@
             <h4 style="margin: 0 0 8px 0; font-size: 1.1em; font-weight: bold; color: #2c3e50;">PELATIH</h4>
             <p style="margin: 0 0 4px 0; padding-left: 12px; font-size: 0.9em; color: #7f8c8d;">• Albert
               Saputra<br><span style="font-size: 0.8em; color: #95a5a6;">(2022 – 2024)</span></p>
-            <p style="margin: 0; padding-left: 12px; font-size: 0.9em; color: #000000; font-weight: 500;">• M. Aman
+            <p style="margin: 0; padding-left: 12px; font-size: 1.0em; color: #000000; font-weight: 500;">• M. Aman
               Hidayat, S.T.<br><span style="font-size: 0.8em; color: #27ae60;">(2025 – Sekarang)</span></p>
           </div>
         </div>
@@ -284,7 +284,7 @@
             Pembina
           </p>
           <p style="font-size: 1em; margin: 0;">
-            Dr. Suci Cahyati, S.Pd., M.Or.
+            Heri Yansah, S.Pd.
           </p>
 
           <p style="font-size: 1.05em; font-weight: 600; margin: 10px 0 6px;">
@@ -1377,6 +1377,31 @@
         showPage2(currentPage2);
       }
 
+      // Paging for Seasons III modal
+      let currentPage3 = 1;
+
+      function getPages3() {
+        return document.querySelectorAll(".klasmen-grid.page3");
+      }
+
+      function showPage3(pageNumber) {
+        const pages = getPages3();
+        const total = pages.length;
+        if (total === 0) return;
+        for (let i = 0; i < total; i++) {
+          pages[i].style.display = (i + 1 === pageNumber) ? "grid" : "none";
+        }
+      }
+
+      function changePage3(step) {
+        const total = getPages3().length;
+        if (total === 0) return;
+        currentPage3 += step;
+        if (currentPage3 < 1) currentPage3 = total;
+        if (currentPage3 > total) currentPage3 = 1;
+        showPage3(currentPage3);
+      }
+
       // Register handlers after DOM is loaded so button (which is later in the file)
       // can be found. This avoids null when script runs before the button exists.
       document.addEventListener('DOMContentLoaded', () => {
@@ -1394,14 +1419,78 @@
 
         if (span2 && modal2) span2.onclick = () => (modal2.style.display = "none");
 
+        const modal3 = document.getElementById("klasmenModal3");
+        const btn3 = document.querySelector(".lihat-klasmen3");
+        const span3 = document.querySelector(".close3");
+
+        if (btn3 && modal3) {
+          btn3.addEventListener("click", () => {
+            modal3.style.display = "block";
+            currentPage3 = 1;
+            showPage3(currentPage3);
+          });
+        }
+
+        if (span3 && modal3) span3.onclick = () => (modal3.style.display = "none");
+
         window.addEventListener("click", (event) => {
           if (event.target == modal2) modal2.style.display = "none";
+          if (event.target == modal3) modal3.style.display = "none";
         });
 
         // Initialize first page for modal2
         showPage2(currentPage2);
+        showPage3(currentPage3);
       });
     </script>
+
+    <!-- Modal Lightbox Klasmen Seasons III -->
+    <div id="klasmenModal3" class="modal">
+      <div class="modal-content">
+        <span class="close3">&times;</span>
+        <h2 class="season-title">
+          Seasons III<br /><span>Juli - Desember 2026</span>
+        </h2>
+
+        <div class="klasmen-grid page3" data-page="1" style="display: grid;">
+          <div>Informasi Klasmen Seasons III</div>
+          <div class="klasmen-item">
+            <img src="umum1234s3.png" alt="Klasmen Seasons III" class="zoomable" />
+            <p>Minggu 1 2 3 dan 4 UMUM PUTERA</p>
+          </div>
+            <div class="klasmen-item">
+            <img src="umumputeri1234s3.png" alt="Klasmen Seasons III" class="zoomable" />
+            <p>Minggu 1 2 3 dan 4 UMUM PUTERI</p>
+          </div>
+          
+        </div>
+        <div class="klasmen-grid page3" data-page="1" style="display: grid;">
+          <div>Informasi Klasmen Seasons III</div>
+          <div class="klasmen-item">
+            <img src="umum5678s3.png" alt="Klasmen Seasons III" class="zoomable" />
+            <p>Minggu 5 6 7 dan 8 UMUM PUTERA</p>
+          </div>
+            <div class="klasmen-item">
+            <img src="umumputeri5678s3.png" alt="Klasmen Seasons III" class="zoomable" />
+            <p>Minggu 5 6 7 dan 8 UMUM PUTERI</p>
+          </div>
+          
+        </div>
+
+        <div style="text-align:center; margin-top:50px; font-family:'Segoe UI', Roboto, sans-serif; color:#222;">
+          <div style="margin-top:25px;">
+            <button onclick="changePage3(-1)"
+              style="background:linear-gradient(135deg,#444,#222); color:white; border:none; padding:10px 22px; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; margin:0 10px; box-shadow:0 4px 10px rgba(0,0,0,0.3); transition:all 0.2s ease;">
+              ⬅ Sebelumnya
+            </button>
+            <button onclick="changePage3(1)"
+              style="background:linear-gradient(135deg,#1a73e8,#0a4abf); color:white; border:none; padding:10px 22px; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; margin:0 10px; box-shadow:0 4px 10px rgba(0,0,0,0.3); transition:all 0.2s ease;">
+              Selanjutnya ➡
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Tombol Pagination -->
     <div style="text-align: center; margin-top: 20px">
@@ -1565,19 +1654,30 @@
           <li><b>Periode:</b> Juli - Desember 2025 <b>SELESAI</b></li>
           <li>
             <b>Klasmen & Jadwal Seasons I:</b>
-            <button class="lihat-klasmen btn-primary" style="
-      margin-left: 10px;
-      padding: 8px 16px;
-      border: none;
-      background: linear-gradient(45deg, #ff4ecd, #4f7cff);
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    ">
+            <button onclick="document.getElementById('klasmenModal').style.display='block'; currentPage1 = 1; showPage1(currentPage1);" style="
+                  margin-left: 10px;
+                  padding: 8px 16px;
+                  border: none;
+                  background: linear-gradient(45deg, #ff4ecd, #4f7cff);
+                  color: white;
+                  border-radius: 8px;
+                  cursor: pointer;
+                  font-weight: bold;
+                  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                ">
               Lihat Detail
             </button>
+
+            <div id="detailKlasmen1" style="
+                  display: none;
+                  margin-top: 15px;
+                  padding: 15px;
+                  border-radius: 12px;
+                  background: #f9f9ff;
+                  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+                ">
+              <p>Informasi klasmen dan jadwal Seasons I dapat dilihat melalui detail ini.</p>
+            </div>
           </li>
 
           <li>
@@ -1608,47 +1708,47 @@
                 <li>
                   <b>Umum Putera:</b>
                   <ol>
-                    <li>Juara 1: M. Fahri Akbar Siregar</li>
-                    <li>Juara 2: Rezeki</li>
-                    <li>Juara 3: Bima Kaparali</li>
+                    <li>Juara 1: M. Fahri Akbar Siregar , VIII E</li>
+                    <li>Juara 2: Rezeki, VIII G</li>
+                    <li>Juara 3: Bima Kaparali, VIII G</li>
                   </ol>
                 </li>
                 <li>
                   <b>Umum Puteri:</b>
                   <ol>
-                    <li>Juara 1: Keysha Azzahra</li>
-                    <li>Juara 2: Vinni Violeta Kemala Sari</li>
-                    <li>Juara 3: Azzahra Purnamasari</li>
+                    <li>Juara 1: Keysha Azzahra, VIII C</li>
+                    <li>Juara 2: Vinni Violeta Kemala Sari, VIII F</li>
+                    <li>Juara 3: Azzahra Purnamasari, VIII C</li>
                   </ol>
                 </li>
 
                 <li>
                   <b>Divisi MOBA:</b>
                   <ol>
-                    <li>Juara 1: M. Fahri Akbar Siregar</li>
-                    <li>Juara 2: Keysha Azzahra</li>
-                    <li>Juara 3: Vinni Violeta Kemala Sari</li>
+                    <li>Juara 1: M. Fahri Akbar Siregar , VIII E</li>
+                    <li>Juara 2: Keysha Azzahra, VIII C</li>
+                    <li>Juara 3: Vinni Violeta Kemala Sari, VIII F</li>
                   </ol>
                 </li>
                 <li>
                   <b>Divisi Battle Royale:</b>
                   <ol>
-                    <li>Juara 1: Rezeki</li>
-                    <li>Juara 2: Bima Kaparali</li>
-                    <li>Juara 3: Satria Wisesa</li>
+                    <li>Juara 1: Rezeki, VIII G</li>
+                    <li>Juara 2: Bima Kaparali, VIII G</li>
+                    <li>Juara 3: Satria Wisesa, VIII A</li>
                   </ol>
                 </li>
                 <li>
                   <b>Anggota Terdisiplin:</b>
                   <ol>
-                    <li>Juara 1: Rezeki</li>
-                    <li>Juara 2: M. Zavri Aryono</li>
-                    <li>Juara 3: Afgan Pratama</li>
+                    <li>Juara 1: Rezeki, VIII G</li>
+                    <li>Juara 2: M. Zavri Aryono, VIII G</li>
+                    <li>Juara 3: Afgan Pratama, VII D</li>
                   </ol>
                 </li>
                 <li><b>Anggota Terbaik:</b></li>
                 <ol>
-                  <li>Juara: Fajri Bahar Rhafsanjani</li>
+                  <li>Juara: Fajri Bahar Rhafsanjani, VIII F</li>
 
                 </ol>
               </ul>
@@ -1656,9 +1756,9 @@
           </li>
         </ul>
 
-        <section id="galeri-penyerahan-juara" class="section">
+        <section id="galeri-penyerahan-juara-1" class="section">
           <h2>Galeri Seasons I Angkatan IV</h2>
-          <div class="gallery" id="gallery-penyerahan-juara">
+          <div class="gallery" id="gallery-penyerahan-juara-1">
             <div class="gallery-item">
               <img src="pembukaseason1.jpg" alt="13 DESEMBER 2025" />
               <div class="caption">Pembukaan Juli 2025</div>
@@ -1707,86 +1807,84 @@
         <h3 class="subtitle">Informasi Liga #LES32OKU Seasons II</h3>
         <ul class="info-list">
           <li>
-            <b>Penyelenggara</b>
+            <b>Penyelenggara:</b>
             <a href="https://smqresports.netlify.app/" target="_blank"
               style="color: rgb(255, 0, 0); text-decoration: none;">
               SMQR ESPORTS
             </a>
           </li>
           <li>
-            <b>Game Yang dipertandingkan : </b>
-            <a>MOBA (Mobile Legends) & BATTLE ROYALE (Free Fire)</a>
-
+            <b>Game Yang dipertandingkan:</b>
+            <span>MOBA (Mobile Legends) & BATTLE ROYALE (Free Fire)</span>
           </li>
-          <section aria-labelledby="sponsor-title">
-            <center>
-              <!-- Ornamen emas (SVG) -->
-              <svg width="220" height="32" viewBox="0 0 220 32" role="img" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" focusable="false">
-                <g fill="none" stroke="none">
-                  <path d="M10 16 Q40 2 80 16 T150 16 T210 16" fill="none" stroke="#b88b1f" stroke-width="2" />
-                  <circle cx="110" cy="16" r="4" fill="#b88b1f" />
-                </g>
-              </svg>
+          <li>
+            <section aria-labelledby="sponsor-title-2">
+              <center>
+                <svg width="220" height="32" viewBox="0 0 220 32" role="img" aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg" focusable="false">
+                  <g fill="none" stroke="none">
+                    <path d="M10 16 Q40 2 80 16 T150 16 T210 16" fill="none" stroke="#b88b1f" stroke-width="2" />
+                    <circle cx="110" cy="16" r="4" fill="#b88b1f" />
+                  </g>
+                </svg>
 
-              <h3 id="sponsor-title">Didukung oleh</h3>
+                <h3 id="sponsor-title-2">Didukung oleh</h3>
 
-              <hr />
+                <hr />
 
-              <figure>
-                <figcaption>
-                  <address>
-                    <p>
-                      <strong>Martin Arikardi, S.H., M.H.</strong><br />
-                      <a href="https://www.instagram.com/martinarikardi/" target="_blank" rel="noopener noreferrer">
-                        @martinarikardi
-                      </a>
-                    </p>
-                    <p>
-                      <strong>M. Aman Hidayat, S.T.</strong><br />
-                      <a href="https://www.instagram.com/muhammadamann71/" target="_blank" rel="noopener noreferrer">
-                        @muhammadamann71
-                      </a>
-                    </p>
-                    <p>
-                      <strong>ESI KAB OKU</strong><br />
-                      <a href="https://www.instagram.com/esi_kab_oku/" target="_blank" rel="noopener noreferrer">
-                        @esi_kab_oku
+                <figure>
+                  <figcaption>
+                    <address>
+                      <p>
+                        <strong>Martin Arikardi, S.H., M.H.</strong><br />
+                        <a href="https://www.instagram.com/martinarikardi/" target="_blank" rel="noopener noreferrer">
+                          @martinarikardi
+                        </a>
+                      </p>
+                      <p>
+                        <strong>M. Aman Hidayat, S.T.</strong><br />
+                        <a href="https://www.instagram.com/muhammadamann71/" target="_blank" rel="noopener noreferrer">
+                          @muhammadamann71
+                        </a>
+                      </p>
+                      <p>
+                        <strong>ESI KAB OKU</strong><br />
+                        <a href="https://www.instagram.com/esi_kab_oku/" target="_blank" rel="noopener noreferrer">
+                          @esi_kab_oku
+                        </a>
+                      </p>
+                    </address>
+                  </figcaption>
+                </figure>
 
-                      </a>
-                    </p>
+                <hr />
 
-                  </address>
-                </figcaption>
-              </figure>
-
-              <hr />
-
-              <p>
-                <small>&#10022; Terima kasih atas dukungan dan kontribusi berharga.</small>
-              </p>
-            </center>
-          </section>
-          <li><b>Peserta Seasons II:</b> 57 Orang Siswa Siswi</li>
-          <li> <b>Anggota Terdisiplin Angkatan IV:</b> 16 Siswa Siswi SMPN 32 OKU</li>
+                <p>
+                  <small>&#10022; Terima kasih atas dukungan dan kontribusi berharga.</small>
+                </p>
+              </center>
+            </section>
+          </li>
+          <li><b>Peserta:</b> 57 Orang Siswa Siswi</li>
+          <li><b>Anggota Terdisiplin Angkatan IV:</b> 16 Siswa Siswi SMPN 32 OKU</li>
           <li><b>Periode:</b> Januari - Juni 2026 <b>SELESAI</b></li>
           <li>
             <b>Klasmen & Jadwal Seasons II:</b>
-            <button class="lihat-klasmen1 btn-primary" style="
-      margin-left: 10px;
-      padding: 8px 16px;
-      border: none;
-      background: linear-gradient(45deg, #ff4ecd, #4f7cff);
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    ">
+            <button onclick="document.getElementById('klasmenModal2').style.display='block'; currentPage2 = 1; showPage2(currentPage2);" style="
+                  margin-left: 10px;
+                  padding: 8px 16px;
+                  border: none;
+                  background: linear-gradient(45deg, #ff4ecd, #4f7cff);
+                  color: white;
+                  border-radius: 8px;
+                  cursor: pointer;
+                  font-weight: bold;
+                  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                ">
               Lihat Detail
             </button>
 
-            <div id="detailPemenangg2" style="
+            <div id="detailKlasmen2" style="
                   display: none;
                   margin-top: 15px;
                   padding: 15px;
@@ -1794,7 +1892,7 @@
                   background: #f9f9ff;
                   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
                 ">
-              <p>Data pemenang akan diupdate setelah kompetisi selesai.</p>
+              <p>Data klasmen dan jadwal Seasons II akan diupdate setelah kompetisi selesai.</p>
             </div>
           </li>
           <li>
@@ -1825,56 +1923,55 @@
                 <li>
                   <b>Umum Putera:</b>
                   <ol>
-                    <li>Juara 1: M. Zavri Aryono </li>
-                    <li>Juara 2: Rezeki </li>
-                    <li>Juara 3: M. Faiz Alfattah </li>
+                    <li>Juara 1: M. Zavri Aryono, VIII G </li>
+                    <li>Juara 2: Rezeki, VIII G </li>
+                    <li>Juara 3: M. Faiz Alfattah, VII D </li>
                   </ol>
                 </li>
                 <li>
                   <b>Umum Puteri:</b>
                   <ol>
-                    <li>Juara 1: Keysha Azzahra </li>
-                    <li>Juara 2: Aela Zafirah Taqqiyaah </li>
-                    <li>Juara 3: Vinni Violeta Kemala Sari </li>
+                    <li>Juara 1: Keysha Azzahra, VIII C </li>
+                    <li>Juara 2: Aela Zafirah Taqiyyah, VIII E </li>
+                    <li>Juara 3: Vinni Violeta Kemala Sari, VIII F </li>
                   </ol>
                 </li>
 
                 <li>
                   <b>Divisi MOBA:</b>
                   <ol>
-                    <li>Juara 1: M. Faiz Alfattah </li>
-                    <li>Juara 2: M. Raihan Taufiqurahman </li>
-                    <li>Juara 3: M. Bagas Raditya </li>
+                    <li>Juara 1: M. Faiz Alfattah, VII D </li>
+                    <li>Juara 2: M. Raihan Taufiqurahman, VIII C </li>
+                    <li>Juara 3: M. Bagas Raditya, VII D </li>
                   </ol>
                 </li>
                 <li>
                   <b>Divisi Battle Royale:</b>
                   <ol>
-                    <li>Juara 1: M. Zavri Aryono </li>
-                    <li>Juara 2: Rezeki </li>
-                    <li>Juara 3: Kenza Alvino</li>
+                    <li>Juara 1: M. Zavri Aryono, VIII G </li>
+                    <li>Juara 2: Rezeki, VIII G </li>
+                    <li>Juara 3: Kenza Alvino, VIII B</li>
                   </ol>
                 </li>
                 <li>
                   <b>Anggota Terdisiplin:</b>
                   <ol>
-                    <li>Juara 1: Rezeki </li>
-                    <li>Juara 2: M. Arkan Anugerah R </li>
-                    <li>Juara 3: Aela Zafirah Taqqiyaah </li>
+                    <li>Juara 1: Rezeki, VIII G </li>
+                    <li>Juara 2: M. Arkan Anugerah R, VIII E </li>
+                    <li>Juara 3: Aela Zafirah Taqiyyah, VIII E </li>
                   </ol>
                 </li>
                 <li><b>Anggota Terbaik:</b></li>
                 <ol>
-                  <li>Juara: Ahmad Fathan Alghiffari </li>
-
+                  <li>Juara: Ahmad Fathan Alghiffari, VI A </li>
                 </ol>
               </ul>
             </div>
           </li>
         </ul>
-        <section id="galeri-penyerahan-juara" class="section">
+        <section id="galeri-penyerahan-juara-2" class="section">
           <h2>Galeri Seasons II Angkatan IV</h2>
-          <div class="gallery" id="gallery-penyerahan-juara">
+          <div class="gallery" id="gallery-penyerahan-juara-2">
             <div class="gallery-item">
               <img src="TourangkatanIV.jpeg" alt="Januari 2026" />
               <div class="caption">Pembukaan Januari 2026</div>
@@ -1918,7 +2015,7 @@
         <h3 class="subtitle">Informasi Liga #LES32OKU Seasons III</h3>
         <ul class="info-list">
           <li>
-            <b>Penyelenggara</b>
+            <b>Penyelenggara:</b>
             <a href="https://smqresports.netlify.app/" target="_blank"
               style="color: rgb(255, 0, 0); text-decoration: none;">
               SMQR ESPORTS
@@ -1926,14 +2023,63 @@
           </li>
           <li>
             <b>Game Yang dipertandingkan:</b>
-            <a>MOBA (Mobile Legends) , BATTLE ROYALE (Free Fire) dan Desain Grafis</a>
+            <span>MOBA (Mobile Legends), BATTLE ROYALE (Free Fire), dan Desain Grafis</span>
           </li>
-          <li><b>Peserta Seasons III:</b> 86 Orang Siswa Siswi</li>
-          <li><b>Anggota Terdisiplin Angkatan V:</b> 16 Siswa Siswi SMPN 32 OKU</li>
+          <li>
+            <section aria-labelledby="sponsor-title-3">
+              <center>
+                <svg width="220" height="32" viewBox="0 0 220 32" role="img" aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg" focusable="false">
+                  <g fill="none" stroke="none">
+                    <path d="M10 16 Q40 2 80 16 T150 16 T210 16" fill="none" stroke="#b88b1f" stroke-width="2" />
+                    <circle cx="110" cy="16" r="4" fill="#b88b1f" />
+                  </g>
+                </svg>
+
+                <h3 id="sponsor-title-3">Didukung oleh</h3>
+
+                <hr />
+
+                <figure>
+                  <figcaption>
+                    <address>
+                      
+                      <p>
+                        <strong>Martin Arikardi, S.H., M.H.</strong><br />
+                        <a href="https://www.instagram.com/martinarikardi/" target="_blank" rel="noopener noreferrer">
+                          @martinarikardi
+                        </a>
+                      </p>
+                      <p>
+                        <strong>M. Aman Hidayat, S.T.</strong><br />
+                        <a href="https://www.instagram.com/muhammadamann71/" target="_blank" rel="noopener noreferrer">
+                          @muhammadamann71
+                        </a>
+                      </p>
+                      <p>
+                        <strong>ESI KAB OKU</strong><br />
+                        <a href="https://www.instagram.com/esi_kab_oku/" target="_blank" rel="noopener noreferrer">
+                          @esi_kab_oku
+                        </a>
+                      </p>
+                    </address>
+                  </figcaption>
+                </figure>
+
+                <hr />
+
+                <p>
+                  <small>&#10022; Terima kasih atas dukungan dan kontribusi berharga.</small>
+                </p>
+              </center>
+            </section>
+          </li>
+          <li><b>Peserta:</b> 82 Orang Siswa Siswi</li>
+          <li><b>Anggota Terdisiplin Angkatan V:</b> 17 Siswa Siswi SMPN 32 OKU</li>
           <li><b>Periode:</b> Juli - Desember 2026 <b>SEDANG BERLANGSUNG</b></li>
           <li>
             <b>Klasmen & Jadwal Seasons III:</b>
-            <button onclick="toggleDetail('detailKlasmen3')" style="
+            <button class="lihat-klasmen3" onclick="document.getElementById('klasmenModal3').style.display='block'; currentPage3 = 1; showPage3(currentPage3);" style="
                   margin-left: 10px;
                   padding: 8px 16px;
                   border: none;
@@ -1988,9 +2134,9 @@
         </ul>
         <section class="section">
           <h2>Galeri Seasons III Angkatan V</h2>
-          <div class="gallery">
+          <div class="gallery" id="gallery-penyerahan-juara-3">
             <div class="gallery-item">
-              <img src="" alt="Juli 2026" />
+              <img src="s3.jpg" alt="Juli 2026" />
               <div class="caption">Pembukaan Juli 2026</div>
             </div>
             <div class="gallery-item">
