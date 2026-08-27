@@ -728,15 +728,22 @@
 
       let current = 0;
 
-      function showPage(i) {
-        if (!track || !pages.length) return;
-        current = Math.max(0, Math.min(i, pages.length - 1));
-        track.style.transform = `translateX(-${current * 100}%)`;
-        indicator.textContent = `${current + 1} / ${pages.length}`;
-        prevBtn.disabled = current === 0;
-        nextBtn.disabled = current === pages.length - 1;
-        prevBtn.style.opacity = current === 0 ? ".4" : "1";
-        nextBtn.style.opacity = current === pages.length - 1 ? ".4" : "1";
+      function showPage(i, activePages = pages) {
+        if (!track || !activePages.length) return;
+        let targetIndex = Math.max(0, Math.min(i, activePages.length - 1));
+        current = pages.indexOf(activePages[targetIndex]);
+        if (current < 0) current = 0;
+
+        const visibleIndex = activePages.indexOf(pages[current]);
+        const safeIndex = visibleIndex >= 0 ? visibleIndex : 0;
+
+        track.style.transform = `translateX(-${safeIndex * 100}%)`;
+        const total = activePages.length;
+        indicator.textContent = `${safeIndex + 1} / ${total}`;
+        prevBtn.disabled = safeIndex === 0;
+        nextBtn.disabled = safeIndex === total - 1;
+        prevBtn.style.opacity = safeIndex === 0 ? ".4" : "1";
+        nextBtn.style.opacity = safeIndex === total - 1 ? ".4" : "1";
       }
 
       openBtn.onclick = () => {
@@ -793,7 +800,7 @@
             page.style.pointerEvents = "auto";
           });
           pagination.style.display = "flex";
-          showPage(current);
+          showPage(current, pages);
           return;
         }
 
@@ -803,7 +810,8 @@
         allItems.forEach(item => {
           const text = [
             item.querySelector("p")?.textContent || "",
-            item.querySelector("img")?.alt || ""
+            item.querySelector("img")?.alt || "",
+            item.querySelector("img")?.getAttribute("src") || ""
           ].join(" ").toLowerCase();
           const isMatch = text.includes(query);
           item.style.display = isMatch ? "block" : "none";
@@ -814,9 +822,9 @@
           }
         });
 
-        pages.forEach((page, index) => {
+        pages.forEach(page => {
           const hasVisible = Array.from(page.children).some(child => child.style.display === "block");
-          page.style.display = "grid";
+          page.style.display = hasVisible ? "grid" : "none";
           page.style.visibility = hasVisible ? "visible" : "hidden";
           page.style.pointerEvents = hasVisible ? "auto" : "none";
           if (hasVisible && !matchingPages.includes(page)) {
@@ -824,15 +832,19 @@
           }
         });
 
-        const firstMatchIndex = pages.findIndex(page => {
-          return Array.from(page.children).some(child => child.style.display === "block");
-        });
-
-        if (firstMatchIndex >= 0) {
-          showPage(firstMatchIndex);
+        if (matchingPages.length) {
+          showPage(0, matchingPages);
         } else {
           current = 0;
-          showPage(0);
+          pages.forEach(page => {
+            page.style.display = "none";
+            page.style.visibility = "hidden";
+          });
+          indicator.textContent = "0 / 0";
+          prevBtn.disabled = true;
+          nextBtn.disabled = true;
+          prevBtn.style.opacity = ".4";
+          nextBtn.style.opacity = ".4";
         }
       }
 
