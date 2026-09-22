@@ -1017,35 +1017,76 @@ a:hover {
 }
 
 #pencapaianModal .klasmen-page > div {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(148, 163, 184, 0.12);
   border-radius: 12px;
   padding: 8px;
   scroll-snap-align: start;
+  min-width: 0;
+  overflow: hidden;
 }
 
 #pencapaianModal .klasmen-page > div img {
   width: 100%;
   height: 110px;
   object-fit: cover;
+  display: block;
   border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 10px 20px rgba(15, 23, 42, 0.25);
+  background: rgba(15, 23, 42, 0.3);
 }
 
 #pencapaianModal .klasmen-page > div p {
   color: #e2e8f0;
   font-size: 12px;
   line-height: 1.5;
+  margin: 8px 0 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: center;
 }
 
 @media (max-width: 480px) {
+  #pencapaianModal .modal-content {
+    width: min(92vw, 420px);
+    padding: 14px 12px 12px;
+  }
+
   #pencapaianModal .klasmen-page {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 6px 4px 8px;
+  }
+
+  #pencapaianModal .klasmen-page > div {
+    padding: 6px;
   }
 
   #pencapaianModal .klasmen-page > div img {
-    height: 88px;
+    height: 120px;
+  }
+
+  #pencapaianModal .klasmen-page > div p {
+    font-size: 11px;
+    line-height: 1.4;
+    -webkit-line-clamp: 4;
+  }
+}
+
+@media (max-width: 360px) {
+  #pencapaianModal .klasmen-page {
+    grid-template-columns: 1fr;
+  }
+
+  #pencapaianModal .klasmen-page > div img {
+    height: 150px;
   }
 }
 
