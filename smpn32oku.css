@@ -844,6 +844,133 @@ button:hover {
   }
 }
 
+/* Registration */
+.registration-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 72px 24px;
+}
+
+.registration-card {
+  padding: clamp(24px, 5vw, 42px);
+  border: 1px solid rgba(99, 102, 241, .16);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(124, 58, 237, .15), transparent 32%),
+    linear-gradient(145deg, #ffffff, #f4f7ff);
+  box-shadow: 0 20px 48px rgba(30, 41, 59, .1);
+}
+
+.registration-heading {
+  max-width: 650px;
+  margin-bottom: 26px;
+}
+
+.registration-badge {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #4338ca;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.registration-heading h2 {
+  margin: 0;
+  color: #172554;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+}
+
+.registration-heading p {
+  margin: 10px 0 0;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.registration-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.registration-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #334155;
+  font-size: .88rem;
+  font-weight: 700;
+}
+
+.registration-full {
+  grid-column: 1 / -1;
+}
+
+.registration-form input,
+.registration-form select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 11px;
+  outline: none;
+  background: rgba(255, 255, 255, .9);
+  color: #1e293b;
+  font: inherit;
+  font-weight: 400;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.registration-form input:focus,
+.registration-form select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, .14);
+}
+
+.registration-submit {
+  width: auto;
+  margin: 24px 0 0;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  box-shadow: 0 10px 22px rgba(22, 163, 74, .2);
+}
+
+.registration-submit:hover {
+  box-shadow: 0 14px 28px rgba(22, 163, 74, .28);
+}
+
+.registration-note {
+  margin: 10px 0 0;
+  color: #64748b;
+  font-size: .78rem;
+}
+
+@media (max-width: 600px) {
+  .registration-section {
+    padding: 48px 16px;
+  }
+
+  .registration-card {
+    padding: 24px 18px;
+    border-radius: 18px;
+  }
+
+  .registration-fields {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .registration-full {
+    grid-column: auto;
+  }
+
+  .registration-submit {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
 section {
   scroll-margin-top: 80px;
   /* tinggi navbar */
@@ -1104,6 +1231,159 @@ button:hover {
 /* utility */
 .hidden {
   display: none
+}
+
+/* Winner details */
+.winner-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.winner-toggle {
+  margin: 0;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: .88rem;
+}
+
+.winner-details {
+  display: none;
+  margin-top: 16px;
+  padding: 20px;
+  border: 1px solid rgba(99, 102, 241, .18);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(124, 58, 237, .12), transparent 34%),
+    linear-gradient(145deg, #ffffff, #f5f7ff);
+  box-shadow: 0 16px 34px rgba(30, 41, 59, .12);
+}
+
+.winner-intro {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(99, 102, 241, .14);
+}
+
+.winner-trophy {
+  display: grid;
+  flex: 0 0 44px;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fbbf24, #f97316);
+  font-size: 1.35rem;
+  box-shadow: 0 8px 18px rgba(249, 115, 22, .24);
+}
+
+.winner-intro h3 {
+  margin: 0;
+  color: #172554;
+  font-size: 1.1rem;
+}
+
+.winner-intro p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: .86rem;
+}
+
+.winner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.winner-card {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid rgba(148, 163, 184, .2);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .78);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, .05);
+}
+
+.winner-card h4 {
+  margin: 0 0 10px;
+  color: #3730a3;
+  font-size: .92rem;
+}
+
+.winner-card ol {
+  margin: 0;
+  padding-left: 20px;
+  color: #475569;
+  font-size: .8rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .winner-heading {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .winner-toggle {
+    width: 100%;
+  }
+
+  .winner-details {
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .winner-intro {
+    align-items: flex-start;
+    gap: 9px;
+    padding-bottom: 10px;
+  }
+
+  .winner-intro h3 {
+    font-size: .92rem;
+  }
+
+  .winner-intro p {
+    margin-top: 2px;
+    font-size: .74rem;
+  }
+
+  .winner-trophy {
+    flex-basis: 34px;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+
+  .winner-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    margin-top: 10px;
+  }
+
+  .winner-card {
+    padding: 8px;
+    border-radius: 10px;
+  }
+
+  .winner-card h4 {
+    margin-bottom: 5px;
+    font-size: .72rem;
+    line-height: 1.2;
+  }
+
+  .winner-card ol {
+    padding-left: 15px;
+    font-size: .66rem;
+    line-height: 1.3;
+  }
 }
 
 
