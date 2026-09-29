@@ -29,12 +29,13 @@
       <h4 class="brand-title">SMPN 32 OKU Ekstrakurikuler Esports</h4>
     </div>
 
-    <div class="hamburger" onclick="document.querySelector('.navbar ul').classList.toggle('active')">
+    <button class="hamburger" type="button" aria-label="Buka menu navigasi" aria-expanded="false"
+      aria-controls="primaryNavigation">
       <span></span>
       <span></span>
       <span></span>
-    </div>
-    <ul>
+    </button>
+    <ul id="primaryNavigation">
       <li><a href="#tentang">Tentang</a></li>
       <li><a href="#program">Program</a></li>
       <li><a href="#galeri">Galeri</a></li>
@@ -112,7 +113,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 24px;
-    ">
+    " class="struktur-perangkat-grid">
       <!-- STRUKTUR INTI -->
       <div style="
     position: relative;
@@ -152,11 +153,11 @@
 
           <!-- PEMBINA -->
           <div style="margin-bottom: 10px;">
-            <h4 style="margin: 0 0 8px 0; font-size: 1.1em; font-weight: bold; color: #2c3e50;">PEMBINA</h4>
+            <h4 style="margin: 0 0 8px 0; font-size: 1.1em; font-weight: bold; color: #2c3e50;">GURU PEMBINA</h4>
             <p style="margin: 0 0 4px 0; padding-left: 12px; font-size: 0.9em; color: #7f8c8d;">• Dr. Suci Cahyati,
               S.Pd., M.Or.<br><span style="font-size: 0.8em; color: #95a5a6;">(2022 – 2024)</span></p>
             <p style="margin: 0; padding-left: 12px; font-size: 1.1em; color: #000000; font-weight: 500;">• Heri Yansah,
-              S.Pd.<br><span style="font-size: 0.8em; color: #27ae60;">(2024 – Sekarang)</span></p>
+              S.Pd.<br><span style="font-size: 0.8em; color: #27ae60;">(2025 – Sekarang)</span></p>
           </div>
 
           <hr
@@ -164,7 +165,7 @@
 
           <!-- PELATIH -->
           <div>
-            <h4 style="margin: 0 0 8px 0; font-size: 1.1em; font-weight: bold; color: #2c3e50;">PELATIH</h4>
+            <h4 style="margin: 0 0 8px 0; font-size: 1.1em; font-weight: bold; color: #2c3e50;">GURU PELATIH</h4>
             <p style="margin: 0 0 4px 0; padding-left: 12px; font-size: 0.9em; color: #7f8c8d;">• Albert
               Saputra<br><span style="font-size: 0.8em; color: #95a5a6;">(2022 – 2024)</span></p>
             <p style="margin: 0; padding-left: 12px; font-size: 1.0em; color: #000000; font-weight: 500;">• M. Aman
@@ -292,7 +293,7 @@
             Pembina
           </p>
           <p style="font-size: 1em; margin: 0;">
-            Heri Yansah, S.Pd.
+            Dr. Suci Cahyati, S.Pd., M.Or.
           </p>
 
           <p style="font-size: 1.05em; font-weight: 600; margin: 10px 0 6px;">
@@ -313,6 +314,7 @@
       <!-- ANGKATAN IV -->
       <div style="
     position: relative;
+    
     background-image: url('LOGO.jpg');
     background-size: cover;
     background-position: center;
@@ -417,7 +419,7 @@
 
 
   <!-- PROGRAM -->
-  <section id="program" class="section dark">
+  <section id="program" class="section dark  ">
     <h2>Program Unggulan</h2>
     <div class="cards">
       <div class="card">
@@ -1850,7 +1852,7 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
                       </p>
                       <p>
                         <strong>ESI KAB OKU</strong><br />
-                        <a href="https://www.instagram.com/esi_kab_oku/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.instagram.com/p/DSMDWDgge43/?img_index=1" target="_blank" rel="noopener noreferrer">
                           @esi_kab_oku
 
                         </a>
@@ -2019,7 +2021,7 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
       color: #000000;
       letter-spacing: 0.5px;
     ">
-              <strong>Seasons II</strong> (Sekarang Berlangsung)
+              <strong>Seasons II</strong> (SELESAI)
             </figcaption>
           </figure>
 
@@ -2071,9 +2073,7 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
                       </p>
                       <p>
                         <strong>ESI KAB OKU</strong><br />
-                        <a href="https://www.instagram.com/esi_kab_oku/" target="_blank" rel="noopener noreferrer">
-                          @esi_kab_oku
-                        </a>
+                        
                       </p>
                     </address>
                   </figcaption>
@@ -2217,21 +2217,118 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
     border-radius: 16px;
     text-align: center;
   ">
-            <img src="les32.jpeg" alt="Liga Esports SMPN 32 OKU" style="
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-      margin-bottom: 12px;
-    " />
+            <div class="season-intro-media" id="seasonThreeIntro">
+              <img class="season-intro-poster" src="les32.jpeg" alt="Putar video intro Liga Esports SMPN 32 OKU" />
+              <video class="season-intro-video" playsinline preload="none" poster="les32.jpeg" hidden>
+                <source src="introles32oku.mp4" type="video/mp4" />
+                Browser Anda tidak mendukung pemutaran video.
+              </video>
+              <button type="button" class="intro-play-toggle" aria-label="Putar video intro LES32OKU">
+                <span class="intro-play-icon" aria-hidden="true">▶</span>
+              </button>
+              <p class="season-intro-error" role="status" aria-live="polite"></p>
+            </div>
+            <p class="season-intro-caption">Lagu LES32OKU</p>
             <figcaption style="
       font-size: 0.95em;
       color: #000000;
       letter-spacing: 0.5px;
     ">
-              <strong>Seasons III</strong> (Sekarang Berlangsung)
+              <strong>Seasons III</strong> (SEDANG BERLANGSUNG)
             </figcaption>
           </figure>
         </div>
+
+        <script>
+          (() => {
+            const intro = document.getElementById("seasonThreeIntro");
+            const poster = intro.querySelector(".season-intro-poster");
+            const video = intro.querySelector(".season-intro-video");
+            const errorMessage = intro.querySelector(".season-intro-error");
+            let playRequestId = 0;
+
+            const updatePlaybackButton = () => {
+              const isPlaying = !video.paused && !video.ended;
+              const button = intro.querySelector(".intro-play-toggle");
+              button.setAttribute("aria-label", isPlaying ? "Jeda video intro LES32OKU" : "Putar video intro LES32OKU");
+              button.querySelector(".intro-play-icon").textContent = isPlaying ? "Ⅱ" : "▶";
+              intro.classList.toggle("is-playing", isPlaying);
+            };
+
+            const playIntroVideo = async () => {
+              const requestId = ++playRequestId;
+              errorMessage.textContent = "";
+              poster.hidden = true;
+              video.hidden = false;
+              video.muted = false;
+              video.volume = 1;
+
+              try {
+                await video.play();
+              } catch (error) {
+                if (requestId !== playRequestId || error.name === "AbortError") {
+                  updatePlaybackButton();
+                  return;
+                }
+
+                poster.hidden = false;
+                video.hidden = true;
+                errorMessage.textContent = "Video belum dapat diputar. Silakan coba lagi.";
+                console.error("Gagal memutar video intro LES32OKU:", error);
+              } finally {
+                updatePlaybackButton();
+              }
+            };
+
+            const returnToPoster = () => {
+              playRequestId++;
+              video.pause();
+              video.currentTime = 0;
+              video.hidden = true;
+              poster.hidden = false;
+              errorMessage.textContent = "";
+              updatePlaybackButton();
+            };
+
+            intro.querySelector(".intro-play-toggle").addEventListener("click", () => {
+              if (video.paused || video.ended) {
+                playIntroVideo();
+              } else {
+                playRequestId++;
+                video.pause();
+                updatePlaybackButton();
+              }
+            });
+
+            video.addEventListener("play", updatePlaybackButton);
+            video.addEventListener("pause", updatePlaybackButton);
+
+            let swipeStartX = 0;
+            intro.addEventListener("touchstart", event => {
+              swipeStartX = event.changedTouches[0].clientX;
+            }, { passive: true });
+
+            intro.addEventListener("touchend", event => {
+              const swipeDistance = event.changedTouches[0].clientX - swipeStartX;
+              if (swipeDistance > 50) {
+                playIntroVideo();
+              } else if (swipeDistance < -50) {
+                returnToPoster();
+              }
+            });
+
+            video.addEventListener("ended", () => {
+              returnToPoster();
+            });
+
+            video.addEventListener("error", () => {
+              video.hidden = true;
+              poster.hidden = false;
+              errorMessage.textContent = "Video intro tidak dapat dimuat. Periksa file introles32oku.mp4.";
+              updatePlaybackButton();
+            });
+          })();
+        </script>
 
         <hr />
         <h3 class="subtitle">Informasi Liga #LES32OKU Seasons III</h3>
@@ -2559,8 +2656,46 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
   <!-- FOOTER -->
   <footer>Copyright © 2022 All Right Reserved. SMPN 32 OKU ESPORTS</footer>
 
+  <button type="button" id="backToTop" class="back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas">
+    <span aria-hidden="true">↑</span>
+  </button>
+
   <!-- SCRIPT MODAL -->
   <script>
+    const navigationMenu = document.getElementById("primaryNavigation");
+    const navigationToggle = document.querySelector(".navbar .hamburger");
+
+    const setNavigationMenuOpen = (isOpen) => {
+      navigationMenu.classList.toggle("active", isOpen);
+      navigationToggle.setAttribute("aria-expanded", String(isOpen));
+      navigationToggle.setAttribute("aria-label", isOpen ? "Tutup menu navigasi" : "Buka menu navigasi");
+    };
+
+    navigationToggle.addEventListener("click", () => {
+      setNavigationMenuOpen(navigationToggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    navigationMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setNavigationMenuOpen(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && navigationToggle.getAttribute("aria-expanded") === "true") {
+        setNavigationMenuOpen(false);
+        navigationToggle.focus();
+      }
+    });
+
+    const backToTopButton = document.getElementById("backToTop");
+    const updateBackToTopVisibility = () => {
+      backToTopButton.classList.toggle("is-visible", window.scrollY > 480);
+    };
+
+    window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+    backToTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
     // Modal Zoom Gambar (guarded selectors)
     const zoomModal = document.getElementById("zoomModal");
     const zoomedImg = document.querySelector(".zoomed-image");
