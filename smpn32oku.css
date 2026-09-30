@@ -281,9 +281,99 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  z-index: 0;
+  z-index: 1;
   filter: brightness(0.55) contrast(1.03) saturate(1.05);
   pointer-events: none;
+}
+
+.hero .hero-logo-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 0;
+}
+
+.hero .hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+  filter: brightness(0.55) contrast(1.03) saturate(1.05);
+}
+
+.hero .hero-slide[data-hero-media="prestasi"] {
+  object-fit: contain;
+  background: #111827;
+  filter: none;
+}
+
+.hero #bgVideo[hidden],
+.hero .hero-slide[hidden] {
+  display: none;
+}
+
+.hero-carousel {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: calc(100% - 32px);
+  transform: translateX(-50%);
+}
+
+.hero .hero-subtitle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: min(90%, 760px);
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+  transform: translate(-50%, -50%);
+}
+
+.hero-carousel button {
+  padding: 9px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  background: transparent !important;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: none !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+  transition: border-color 0.2s ease;
+}
+
+.hero-carousel button:hover,
+.hero-carousel button[aria-pressed="true"] {
+  border-color: #fff;
+  background: transparent !important;
+}
+
+.hero-carousel button:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.hero-carousel button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
 }
 
 /* Soft overlay specifically for hero so text remains legible */
@@ -291,23 +381,13 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
     linear-gradient(180deg, rgba(79, 124, 255, 0.06), rgba(255, 76, 188, 0.04));
 }
 
 /* Ensure hero content sits above video/overlay */
-.hero .hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 24px;
-  color: #ffffff;
-  /* teks putih */
-  text-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
-  /* meningkatkan keterbacaan */
-}
-
 /* Responsive typography and button sizing inside hero */
 .hero h1 {
   font-size: 2.2rem;
@@ -546,6 +626,146 @@ body {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
 }
 
+#tourangkatanModal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: hidden;
+  background: rgba(8, 15, 29, .78);
+  backdrop-filter: blur(12px);
+}
+
+#tourangkatanModal .modal-content {
+  position: relative;
+  width: min(100%, 1080px);
+  max-width: 1080px;
+  max-height: min(88vh, 900px);
+  margin: 0;
+  padding: 30px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid rgba(176, 141, 87, .32);
+  border-radius: 22px;
+  background: linear-gradient(145deg, #fff 0%, #f7f8fb 100%);
+  box-shadow: 0 30px 90px rgba(2, 6, 23, .4);
+}
+
+#tourangkatanModal .close-tourangkatan {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(51, 65, 85, .12);
+  border-radius: 50%;
+  background: #fff !important;
+  color: #334155 !important;
+  box-shadow: none !important;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+#tourangkatanModal .season-title {
+  margin: 0 42px 24px;
+  color: #17253a;
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  line-height: 1.25;
+  text-align: center;
+}
+
+#tourangkatanModal .season-title span {
+  display: block;
+  margin-top: 8px;
+  color: #9a7944;
+  font-size: .62em;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+
+#tourangkatanModal .klasmen-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+#tourangkatanModal .klasmen-item {
+  padding: 12px;
+  border: 1px solid rgba(148, 163, 184, .2);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .07);
+}
+
+#tourangkatanModal .klasmen-item img {
+  display: block;
+  width: 100%;
+  height: clamp(150px, 19vw, 230px);
+  object-fit: cover;
+  border-radius: 11px;
+}
+
+#tourangkatanModal .klasmen-item p {
+  margin: 12px 2px 2px;
+  color: #334155;
+  font-size: .95rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+#tourangkatanModal .klasmen-item[style*="display: none"] {
+  display: none !important;
+}
+
+#tourangkatanModal .tourangkatan-pagination {
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 24px !important;
+}
+
+#tourangkatanModal .tourangkatan-pagination button {
+  width: auto;
+  min-width: 150px;
+  margin: 0;
+  border: 1px solid rgba(176, 141, 87, .42);
+  border-radius: 999px;
+  background: #17253a !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+#tourangkatanModal .tourangkatan-pagination button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+#program .tourangkatan-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  max-width: none;
+  min-height: 42px;
+  margin: 10px 0 0;
+  padding: 10px 16px;
+  border: 1px solid rgba(176, 141, 87, .42);
+  border-radius: 999px;
+  background: #17253a !important;
+  color: #fff !important;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, .12) !important;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#tourangkatanModal .tourangkatan-trigger:hover {
+  background: #263750 !important;
+  transform: translateY(-1px);
+}
+
 /* Tombol close */
 .close {
   color: #333;
@@ -622,6 +842,60 @@ button:hover {
     background: url("smpn32.png") center top / contain no-repeat;
     background-color: rgba(0, 0, 0, 0.85);
     background-attachment: scroll;
+  }
+
+  #tourangkatanModal {
+    align-items: center;
+    padding: 12px;
+  }
+
+  #tourangkatanModal .modal-content {
+    width: 100%;
+    max-height: 92vh;
+    padding: 22px 16px 18px;
+    border-radius: 18px;
+  }
+
+  #tourangkatanModal .season-title {
+    margin: 4px 32px 18px;
+    font-size: 1.25rem;
+  }
+
+  #tourangkatanModal .klasmen-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  #tourangkatanModal .klasmen-item {
+    display: grid !important;
+    grid-template-columns: minmax(110px, 38%) minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    padding: 9px;
+    text-align: left;
+  }
+
+  #tourangkatanModal .klasmen-item img {
+    height: 112px;
+  }
+
+  #tourangkatanModal .klasmen-item p {
+    margin: 0;
+    font-size: .88rem;
+  }
+
+  #tourangkatanModal .tourangkatan-pagination {
+    flex-direction: row !important;
+    gap: 10px !important;
+    margin-top: 18px !important;
+  }
+
+  #tourangkatanModal .tourangkatan-pagination button {
+    width: auto;
+    min-width: 0;
+    flex: 1 1 0;
+    padding: 10px 12px;
+    font-size: .88rem;
   }
 
   /* Mobile achievement modal: horizontally scrollable cards for swipe left/right */
@@ -833,20 +1107,6 @@ button:hover {
   }
 }
 
-/* HERO: teks putih dan kontras agar terbaca di atas video */
-.hero .hero-content {
-  color: #ffffff;
-  /* teks putih */
-  text-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
-  /* meningkatkan keterbacaan */
-}
-
-.hero .hero-content h1,
-.hero .hero-content p {
-  color: inherit;
-  /* pastikan heading & paragraf ikut putih */
-}
-
 /* Jika tombol butuh warna gelap teks ubah di sini (tetap putih di desain sekarang) */
 .btn-primary {
   color: #fff;
@@ -1055,12 +1315,7 @@ a:hover {
 
 .hero {
   border: 1px solid rgba(255, 255, 255, 0.3);
-  background: linear-gradient(135deg, rgba(17, 24, 39, 0.42), rgba(31, 41, 55, 0.34));
   box-shadow: 0 18px 45px rgba(22, 31, 54, 0.12);
-}
-
-.hero .hero-content {
-  max-width: 760px;
 }
 
 .hero h1 {
@@ -2016,5 +2271,414 @@ footer {
     transition-duration: .01ms !important;
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-carousel {
+    bottom: 12px;
+    width: calc(100% - 20px);
+    gap: 6px;
+  }
+
+  .hero-carousel button {
+    width: auto;
+    max-width: none;
+    min-height: 34px;
+    margin: 0;
+    padding: 7px 10px;
+    font-size: .75rem;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 900px) {
+  #liga .season-btn,
+  #liga .season-btn:hover {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  #liga .season-btn {
+    color: #000 !important;
+  }
+
+  #liga .season-locked-notice {
+    margin: 8px 12px 0;
+    color: #000;
+    font-size: .9rem;
+    font-weight: 700;
+  }
+}
+
+#season3 .season-three-standings-item {
+  list-style: none;
+}
+
+#season3 .season-three-standings-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: clamp(18px, 3vw, 26px);
+  border: 1px solid rgba(176, 141, 87, .3);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(176, 141, 87, .1), transparent 38%),
+    linear-gradient(135deg, #fff 0%, #f8f7f3 100%);
+  box-shadow: 0 14px 34px rgba(23, 37, 58, .09);
+}
+
+#season3 .season-three-standings-copy {
+  display: grid;
+  gap: 5px;
+}
+
+#season3 .season-three-standings-copy > span {
+  color: #9a7944;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+#season3 .season-three-standings-copy > strong {
+  color: #17253a;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.2;
+}
+
+#season3 .season-three-standings-copy > small {
+  color: #64748b;
+  font-size: .88rem;
+}
+
+#season3 .season-three-standings-toggle {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 44px;
+  margin: 0;
+  padding: 10px 17px;
+  border: 1px solid rgba(176, 141, 87, .48);
+  border-radius: 999px;
+  background: #17253a !important;
+  color: #fff !important;
+  box-shadow: 0 8px 18px rgba(23, 37, 58, .12) !important;
+  font: inherit;
+  font-size: .88rem;
+  font-weight: 700;
+  transition: background-color .2s ease, transform .2s ease;
+}
+
+#season3 .season-three-standings-toggle:hover {
+  background: #263750 !important;
+  transform: translateY(-1px);
+}
+
+#season3 .season-three-standings-toggle span[aria-hidden="true"] {
+  color: #e2c98f;
+  font-size: 1rem;
+}
+
+#season3 .season-three-standings-details {
+  margin-top: 14px;
+  padding: 18px 20px;
+  border: 1px solid rgba(176, 141, 87, .22);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(23, 37, 58, .06);
+}
+
+#season3 .season-three-standings-details p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  #season3 .season-three-standings-card {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  #season3 .season-three-standings-toggle {
+    width: 100%;
+  }
+
+  #season3 .season-three-standings-details {
+    padding: 15px;
+  }
+}
+
+.hero {
+  background: #111827;
+}
+
+.hero .hero-slide[data-hero-media="prestasi"] {
+  background: transparent;
+}
+
+.hero .hero-carousel button:not(.intro-play-toggle):not(.registration-submit):not(.hamburger),
+.hero .hero-carousel button:not(.intro-play-toggle):not(.registration-submit):not(.hamburger):hover {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#klasmenModal3 {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: hidden;
+  background: rgba(10, 18, 32, .78);
+  backdrop-filter: blur(12px);
+}
+
+#klasmenModal3 .season-three-standings-modal {
+  position: relative;
+  width: min(100%, 1080px);
+  max-width: 1080px;
+  max-height: min(90vh, 920px);
+  margin: 0;
+  padding: clamp(22px, 3vw, 36px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid rgba(176, 141, 87, .3);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(176, 141, 87, .11), transparent 34%),
+    linear-gradient(145deg, #fff 0%, #f6f8fc 100%);
+  box-shadow: 0 32px 90px rgba(2, 6, 23, .4);
+}
+
+#klasmenModal3 .season-three-standings-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(51, 65, 85, .12);
+  border-radius: 50%;
+  background: #fff !important;
+  color: #334155 !important;
+  box-shadow: none !important;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+#klasmenModal3 .season-three-standings-header {
+  margin: 0 40px 26px;
+  text-align: center;
+}
+
+#klasmenModal3 .season-three-standings-eyebrow {
+  color: #9a7944;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+#klasmenModal3 .season-title {
+  margin: 8px 0 0;
+  color: #17253a;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.2;
+}
+
+#klasmenModal3 .season-title span {
+  display: block;
+  margin-top: 7px;
+  color: #9a7944;
+  font-size: .52em;
+  font-weight: 600;
+  letter-spacing: .06em;
+}
+
+#klasmenModal3 .season-three-standings-header > p {
+  margin: 12px 0 0;
+  color: #64748b;
+  font-size: .92rem;
+  line-height: 1.5;
+}
+
+#klasmenModal3 .season-three-standings-page {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+#klasmenModal3 .season-three-standings-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 12px 15px;
+  border: 1px solid rgba(176, 141, 87, .2);
+  border-radius: 12px;
+  background: rgba(176, 141, 87, .08);
+  color: #715a31;
+  font-size: .86rem;
+  font-weight: 700;
+  letter-spacing: .025em;
+}
+
+#klasmenModal3 .klasmen-item {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid rgba(148, 163, 184, .2);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, .07);
+}
+
+#klasmenModal3 .klasmen-item img {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 32vw, 390px);
+  object-fit: contain;
+  border: 1px solid rgba(148, 163, 184, .16);
+  border-radius: 12px;
+  background: #f1f5f9;
+  cursor: zoom-in;
+}
+
+#klasmenModal3 .klasmen-item p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 12px 2px 0;
+  color: #334155;
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+#klasmenModal3 .klasmen-item p span {
+  color: #9a7944;
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+#klasmenModal3 .season-three-standings-pagination {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 14px;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(148, 163, 184, .2);
+}
+
+#klasmenModal3 .season-three-standings-pagination button {
+  width: auto;
+  min-height: 42px;
+  margin: 0;
+  padding: 9px 16px;
+  border: 1px solid rgba(176, 141, 87, .38);
+  border-radius: 999px;
+  background: #17253a !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  font: inherit;
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+#klasmenModal3 .season-three-standings-pagination button:last-child {
+  justify-self: end;
+}
+
+#klasmenModal3 .season-three-standings-pagination button:disabled {
+  opacity: .42;
+  cursor: not-allowed;
+}
+
+#klasmenModal3 #pageIndicator3 {
+  color: #64748b;
+  font-size: .82rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  #klasmenModal3 {
+    align-items: center;
+    padding: 12px;
+  }
+
+  #klasmenModal3 .season-three-standings-modal {
+    width: 100%;
+    max-height: 94vh;
+    padding: 24px 14px 16px;
+    border-radius: 18px;
+  }
+
+  #klasmenModal3 .season-three-standings-close {
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+  }
+
+  #klasmenModal3 .season-three-standings-header {
+    margin: 22px 8px 18px;
+  }
+
+  #klasmenModal3 .season-three-standings-header > p {
+    font-size: .84rem;
+  }
+
+  #klasmenModal3 .season-three-standings-page {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  #klasmenModal3 .season-three-standings-note {
+    padding: 10px 12px;
+    font-size: .8rem;
+  }
+
+  #klasmenModal3 .klasmen-item {
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  #klasmenModal3 .klasmen-item img {
+    height: clamp(190px, 58vw, 280px);
+  }
+
+  #klasmenModal3 .klasmen-item p {
+    flex-wrap: wrap;
+    font-size: .84rem;
+  }
+
+  #klasmenModal3 .season-three-standings-pagination {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 18px;
+    padding-top: 14px;
+  }
+
+  #klasmenModal3 #pageIndicator3 {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    text-align: center;
+  }
+
+  #klasmenModal3 .season-three-standings-pagination button {
+    grid-row: 2;
+    width: 100%;
+    min-width: 0;
+    padding: 9px 10px;
+    font-size: .78rem;
   }
 }
