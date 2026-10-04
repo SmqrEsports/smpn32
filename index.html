@@ -49,13 +49,14 @@
     <video id="bgVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true" data-hero-media="video">
       <source src="angkatan4.mp4" type="video/mp4" />
     </video>
-    <img id="heroPrestasi" class="hero-slide" src="sentosadepan2.jpeg" alt="Tim SMPN 32 OKU Esports meraih Juara 2 Festival SMAS Sentosa Bhakti 2026" data-hero-media="prestasi" hidden />
+    <img id="heroCarouselImage" class="hero-slide" src="sentosadepan2.jpeg" alt="Tim SMPN 32 OKU Esports meraih Juara 2 Festival SMAS Sentosa Bhakti 2026" data-hero-media="prestasi" hidden />
 
     <p class="hero-subtitle">Website Resmi Ekstrakurikuler Esports SMPN 32 Ogan Komering Ulu</p>
 
     <nav class="hero-carousel" aria-label="Pilih tampilan beranda">
       <button type="button" data-hero-slide="video" aria-pressed="true">Sejak Juli 2025</button>
-      <button type="button" data-hero-slide="prestasi" aria-pressed="false">Hall of Fame</button>
+      <button type="button" data-hero-slide="prestasi" aria-pressed="false">Yang Tak Terlupakan</button>
+      <button type="button" data-hero-slide="kepengurusan" aria-pressed="false">Kepengurusan</button>
     </nav>
   </header>
 
@@ -2451,8 +2452,8 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
               </center>
             </section>
           </li>
-          <li><b>Peserta:</b> 102 Orang Siswa Siswi</li>
-          <li><b>Anggota Terdisiplin Angkatan V:</b> 16 + 7 = 23 Siswa Siswi SMPN 32 OKU</li>
+          <li><b>Peserta:</b> 109 Orang Siswa Siswi</li>
+          <li><b>Anggota Terdisiplin Angkatan V:</b> 16 + 8 = 24 Siswa Siswi SMPN 32 OKU</li>
           <li><b>Periode:</b> Juli - Desember 2026 <b>SEDANG BERLANGSUNG</b></li>
           <li class="season-three-standings-item">
             <div class="season-three-standings-card">
@@ -2742,9 +2743,10 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
   <script>
     const heroVideo = document.getElementById("bgVideo");
     const heroLogoBackground = document.querySelector(".hero-logo-background");
+    const heroSubtitle = document.querySelector(".hero-subtitle");
     const heroMedia = document.querySelectorAll("[data-hero-media]");
     const heroSlideButtons = document.querySelectorAll("[data-hero-slide]");
-    const heroPrestasi = document.getElementById("heroPrestasi");
+    const heroCarouselImage = document.getElementById("heroCarouselImage");
     const achievementSlides = [
       {
         src: "sentosadepan2.jpeg",
@@ -2755,8 +2757,18 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
         alt: "Tim SMPN 32 OKU Esports meraih Juara 3 IKMB Universitas Sriwijaya 2026"
       }
     ];
-    let achievementSlideIndex = 0;
-    let achievementSlideInterval;
+    const managementSlides = [
+      {
+        src: "pengurusIVBanner.jpeg",
+        alt: "Banner kepengurusan SMPN 32 OKU Esports Angkatan IV"
+      },
+      {
+        src: "pengurusVBanner.jpeg",
+        alt: "Banner kepengurusan SMPN 32 OKU Esports Angkatan V"
+      }
+    ];
+    let imageSlideIndex = 0;
+    let imageSlideInterval;
 
     const playHeroVideo = () => {
       heroVideo.play().catch((error) => {
@@ -2766,15 +2778,15 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
       });
     };
 
-    const startAchievementSlideshow = () => {
-      window.clearInterval(achievementSlideInterval);
-      achievementSlideIndex = 0;
-      heroPrestasi.src = achievementSlides[achievementSlideIndex].src;
-      heroPrestasi.alt = achievementSlides[achievementSlideIndex].alt;
-      achievementSlideInterval = window.setInterval(() => {
-        achievementSlideIndex = (achievementSlideIndex + 1) % achievementSlides.length;
-        heroPrestasi.src = achievementSlides[achievementSlideIndex].src;
-        heroPrestasi.alt = achievementSlides[achievementSlideIndex].alt;
+    const startImageSlideshow = (slides) => {
+      window.clearInterval(imageSlideInterval);
+      imageSlideIndex = 0;
+      heroCarouselImage.src = slides[imageSlideIndex].src;
+      heroCarouselImage.alt = slides[imageSlideIndex].alt;
+      imageSlideInterval = window.setInterval(() => {
+        imageSlideIndex = (imageSlideIndex + 1) % slides.length;
+        heroCarouselImage.src = slides[imageSlideIndex].src;
+        heroCarouselImage.alt = slides[imageSlideIndex].alt;
       }, 5000);
     };
 
@@ -2784,20 +2796,22 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
       button.addEventListener("click", () => {
         const selectedSlide = button.dataset.heroSlide;
         heroLogoBackground.hidden = selectedSlide === "video";
+        heroSubtitle.hidden = selectedSlide !== "video";
 
         heroMedia.forEach((media) => {
-          media.hidden = media.dataset.heroMedia !== selectedSlide;
+          media.hidden = media !== (selectedSlide === "video" ? heroVideo : heroCarouselImage);
         });
+        heroCarouselImage.dataset.heroMedia = selectedSlide;
         heroSlideButtons.forEach((slideButton) => {
           slideButton.setAttribute("aria-pressed", String(slideButton === button));
         });
 
         if (selectedSlide === "video") {
-          window.clearInterval(achievementSlideInterval);
+          window.clearInterval(imageSlideInterval);
           playHeroVideo();
         } else {
           heroVideo.pause();
-          startAchievementSlideshow();
+          startImageSlideshow(selectedSlide === "prestasi" ? achievementSlides : managementSlides);
         }
       });
     });

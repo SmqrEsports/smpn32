@@ -306,7 +306,8 @@ body {
   filter: brightness(0.55) contrast(1.03) saturate(1.05);
 }
 
-.hero .hero-slide[data-hero-media="prestasi"] {
+.hero .hero-slide[data-hero-media="prestasi"],
+.hero .hero-slide[data-hero-media="kepengurusan"] {
   object-fit: contain;
   background: #111827;
   filter: none;
@@ -323,11 +324,18 @@ body {
   left: 50%;
   z-index: 3;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: center;
   justify-content: center;
   gap: 10px;
   width: calc(100% - 32px);
+  overflow-x: auto;
+  scrollbar-width: none;
   transform: translateX(-50%);
+}
+
+.hero-carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .hero .hero-subtitle {
@@ -2278,16 +2286,17 @@ footer {
   .hero-carousel {
     bottom: 12px;
     width: calc(100% - 20px);
-    gap: 6px;
+    gap: 5px;
   }
 
   .hero-carousel button {
+    flex: 0 0 auto;
     width: auto;
     max-width: none;
     min-height: 34px;
     margin: 0;
-    padding: 7px 10px;
-    font-size: .75rem;
+    padding: 6px 8px;
+    font-size: .68rem;
     line-height: 1.1;
     white-space: nowrap;
   }
@@ -2420,7 +2429,8 @@ footer {
   background: #111827;
 }
 
-.hero .hero-slide[data-hero-media="prestasi"] {
+.hero .hero-slide[data-hero-media="prestasi"],
+.hero .hero-slide[data-hero-media="kepengurusan"] {
   background: transparent;
 }
 
