@@ -3835,3 +3835,208 @@ footer {
   display: block;
   background: rgba(160, 160, 160, .9) !important;
 }
+
+#liga {
+  width: min(calc(100% - 32px), 1240px);
+  margin: 28px auto;
+  padding: clamp(22px, 4vw, 44px);
+  border: 1px solid rgba(184, 139, 31, .3);
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse at top, rgba(248, 238, 211, .42), transparent 58%),
+    linear-gradient(145deg, #fff 0%, #fbfaf6 100%);
+  box-shadow: 0 22px 60px rgba(23, 37, 58, .09);
+}
+
+#liga > .title {
+  margin: 0 auto 22px;
+  padding: 0 0 17px;
+  border-bottom: 1px solid rgba(184, 139, 31, .34);
+  color: #172338 !important;
+  letter-spacing: -.035em;
+}
+
+#liga .season-container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+#liga .season > .gallery {
+  display: block;
+  margin: 0 auto 16px;
+}
+
+#liga .season > .gallery > figure {
+  width: min(100%, 520px);
+  margin: 0 auto 16px !important;
+  padding: 12px !important;
+  border: 1px solid rgba(184, 139, 31, .36);
+  border-radius: 18px !important;
+  background: linear-gradient(145deg, #172338, #243754) !important;
+  box-shadow: 0 16px 36px rgba(23, 35, 56, .18);
+}
+
+#liga .season > .gallery > figure img {
+  overflow: hidden;
+  border-radius: 12px !important;
+}
+
+#liga .season > .gallery > figure figcaption {
+  color: #fff !important;
+  line-height: 1.5;
+}
+
+#liga .season > .gallery > figure .season-intro-caption {
+  margin: 9px 0 6px;
+  color: #f2d78c;
+}
+
+#liga .season > hr {
+  margin: 18px 0 12px;
+  border: 0;
+  border-top: 1px solid rgba(184, 139, 31, .3);
+}
+
+#liga .subtitle {
+  margin: 0 0 14px;
+  padding: 0 0 9px;
+  border-bottom: 2px solid #c5a04a;
+  color: #172338;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: -.015em;
+}
+
+#liga .info-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#liga .info-list > li {
+  padding: 13px 16px;
+  border: 1px solid rgba(184, 139, 31, .2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .9);
+  box-shadow: 0 5px 16px rgba(23, 35, 56, .045);
+  color: #344256;
+  line-height: 1.65;
+}
+
+#liga .info-list > li > b {
+  color: #172338;
+}
+
+#liga .info-list > li > a {
+  color: #8a6d3b !important;
+  font-weight: 750;
+}
+
+#liga .info-list > li > section {
+  padding: 14px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(248, 238, 211, .48), rgba(255, 255, 255, .92));
+  text-align: center;
+}
+
+#liga .info-list > li > section h3 {
+  margin: 3px 0 10px;
+  color: #172338;
+}
+
+#liga .info-list > li > section hr {
+  width: min(100%, 520px);
+  margin: 12px auto;
+  border: 0;
+  border-top: 1px solid rgba(184, 139, 31, .3);
+}
+
+#liga .info-list > li > section figure,
+#liga .info-list > li > section address,
+#liga .info-list > li > section address p {
+  margin: 0;
+}
+
+#liga .info-list > li > section address p + p {
+  margin-top: 10px;
+}
+
+#liga .info-list > li > section address a {
+  color: #8a6d3b !important;
+}
+
+#liga .season > section.section {
+  width: 100%;
+  max-width: none;
+  margin: 20px 0 0;
+  padding: clamp(18px, 3vw, 30px);
+  border: 1px solid rgba(184, 139, 31, .22);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .78);
+}
+
+#liga .season > section.section h2 {
+  margin: 0 0 18px;
+  color: #172338 !important;
+  font-size: clamp(1.35rem, 2.5vw, 1.8rem) !important;
+  text-align: center;
+}
+
+#liga > div[style*="text-align:center"] {
+  margin-top: 18px !important;
+}
+
+@media (max-width: 640px) {
+  #liga {
+    width: calc(100% - 24px);
+    margin: 18px auto;
+    padding: 18px 14px 22px;
+    border-radius: 18px;
+  }
+
+  #liga > .title {
+    margin-bottom: 16px;
+    padding-bottom: 13px;
+    font-size: clamp(1.45rem, 7vw, 1.9rem) !important;
+  }
+
+  #liga .season > .gallery > figure {
+    margin-bottom: 12px !important;
+    padding: 9px !important;
+    border-radius: 14px !important;
+  }
+
+  #liga .season > hr {
+    margin: 14px 0 10px;
+  }
+
+  #liga .info-list {
+    gap: 8px;
+  }
+
+  #liga .info-list > li {
+    padding: 11px 12px;
+    font-size: .92rem;
+    line-height: 1.55;
+  }
+
+  #liga .info-list > li > section {
+    padding: 10px;
+  }
+
+  #liga .season > section.section {
+    margin-top: 14px;
+    padding: 16px 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #liga *,
+  #liga *::before,
+  #liga *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
