@@ -25,8 +25,8 @@
       <img src="LOGO.jpg" alt="logo" />
 
     </div>
-    <div>
-      <h4 class="brand-title">SMPN 32 OKU Ekstrakurikuler Esports</h4>
+    <div class="navbar-brand">
+      <h4 class="brand-title">Ekstrakurikuler Esports SMPN 32 OKU</h4>
     </div>
 
     <button class="hamburger" type="button" aria-label="Buka menu navigasi" aria-expanded="false"
@@ -116,7 +116,7 @@
       gap: 24px;
     " class="struktur-perangkat-grid">
       <!-- STRUKTUR INTI -->
-      <div style="
+      <div class="struktur-inti" style="
     position: relative;
     background-image: url('smpn32.png');
     background-size: cover;
@@ -175,9 +175,9 @@
         </div>
       </div>
 
-
+      <div class="struktur-angkatan-carousel" aria-label="Struktur kepengurusan tiap angkatan">
       <!-- ANGKATAN I -->
-      <div style="
+      <div class="struktur-angkatan struktur-angkatan-i" style="
     position: relative;
     background:
       linear-gradient(
@@ -222,7 +222,7 @@
 
 
       <!-- ANGKATAN II -->
-      <div style="
+      <div class="struktur-angkatan struktur-angkatan-ii" style="
     position: relative;
     background:
       linear-gradient(
@@ -267,7 +267,7 @@
 
 
       <!-- ANGKATAN III -->
-      <div style="
+      <div class="struktur-angkatan struktur-angkatan-iii" style="
     position: relative;
     background:
       linear-gradient(
@@ -313,7 +313,7 @@
 
 
       <!-- ANGKATAN IV -->
-      <div style="
+      <div class="struktur-angkatan struktur-angkatan-iv" style="
     position: relative;
     
     background-image: url('LOGO.jpg');
@@ -364,7 +364,7 @@
         </div>
       </div>
 
-      <div style="
+      <div class="struktur-angkatan struktur-angkatan-v" style="
     position: relative;
     background-image: url('LOGO.jpg');
     background-size: cover;
@@ -410,11 +410,20 @@
           <p>• Wakil Ketua: Fajri Bahar Rhafsanjani</p>
           <p>• Sekretaris: Rezeki</p>
           <p>• Bendahara: Afgan Pratama</p>
-          <p>• Kepala Bidang Desain Grafis:</p>
-          <p> Ulipa Geatri</p>
+          <p>• Kadiv Desain Grafis: Ulipa Geatri</p>
+          <p>• Kadiv Website: Dimas Bagus Oka</p>
         </div>
       </div>
 
+      </div>
+      <div class="struktur-angkatan-controls" aria-label="Navigasi angkatan">
+        <button type="button" class="struktur-angkatan-prev" aria-label="Geser kartu ke kiri">
+          &larr; Berikutnya
+        </button>
+        <button type="button" class="struktur-angkatan-next" aria-label="Geser kartu ke kanan">
+          Sebelumnya &rarr;
+        </button>
+      </div>
     </div>
   </section>
 
@@ -2868,6 +2877,49 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
     window.addEventListener("click", (event) => {
       if (event.target == zoomModal) zoomModal.style.display = "none";
     });
+  </script>
+  <script>
+    (() => {
+      const carousel = document.querySelector(".struktur-angkatan-carousel");
+      const controls = document.querySelector(".struktur-angkatan-controls");
+      const previousButton = document.querySelector(".struktur-angkatan-prev");
+      const nextButton = document.querySelector(".struktur-angkatan-next");
+
+      if (!carousel || !controls || !previousButton || !nextButton) {
+        return;
+      }
+
+      const updateControls = () => {
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        previousButton.disabled = carousel.scrollLeft <= 1;
+        nextButton.disabled = carousel.scrollLeft >= maxScroll - 1;
+      };
+
+      const scrollToAdjacentCard = (direction) => {
+        const cards = [...carousel.querySelectorAll(".struktur-angkatan")].sort(
+          (first, second) => first.getBoundingClientRect().left - second.getBoundingClientRect().left
+        );
+        const currentLeft = carousel.getBoundingClientRect().left;
+        const currentCard = cards.find((card) => card.getBoundingClientRect().left >= currentLeft - 2);
+
+        if (!currentCard) {
+          return;
+        }
+
+        const currentIndex = cards.indexOf(currentCard);
+        const targetCard = cards[currentIndex + direction];
+
+        if (targetCard) {
+          targetCard.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+        }
+      };
+
+      previousButton.addEventListener("click", () => scrollToAdjacentCard(-1));
+      nextButton.addEventListener("click", () => scrollToAdjacentCard(1));
+      carousel.addEventListener("scroll", updateControls, { passive: true });
+      window.addEventListener("resize", updateControls);
+      updateControls();
+    })();
   </script>
 </body>
 
