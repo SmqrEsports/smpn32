@@ -4040,3 +4040,94 @@ footer {
     transition-duration: .01ms !important;
   }
 }
+
+#liga .official-roster-entry {
+  min-width: 0;
+  padding: 10px !important;
+}
+
+#liga .official-roster-entry > div:first-child {
+  flex-wrap: wrap;
+  border: 1px solid rgba(184, 139, 31, .28);
+  background: #fff !important;
+  box-shadow: 0 5px 15px rgba(23, 35, 56, .07) !important;
+}
+
+#liga .official-roster-entry > div:first-child > div > div {
+  color: #111827 !important;
+}
+
+#liga .official-roster-toggle {
+  min-height: 40px;
+}
+
+#liga .official-roster-detail {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+#liga .official-roster-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)) !important;
+}
+
+#liga .official-roster-grid > div {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  #liga .official-roster-entry {
+    padding: 9px !important;
+  }
+
+  #liga .official-roster-entry > div:first-child {
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+
+  #liga .official-roster-toggle {
+    padding: 9px 11px !important;
+  }
+
+  #liga .official-roster-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #liga .official-roster-grid {
+    display: flex !important;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+    gap: 8px !important;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(79, 124, 255, .4) transparent;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-inline: contain;
+    touch-action: pan-x;
+  }
+
+  #liga .official-roster-grid::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  #liga .official-roster-grid::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: rgba(79, 124, 255, .4);
+  }
+
+  #liga .official-roster-grid > div {
+    flex: 0 0 auto;
+    width: max-content;
+    max-width: none;
+  }
+}
