@@ -57,6 +57,7 @@
       <button type="button" data-hero-slide="video" aria-pressed="true">Sejak Juli 2025</button>
       <button type="button" data-hero-slide="prestasi" aria-pressed="false">Yang Tak Terlupakan</button>
       <button type="button" data-hero-slide="kepengurusan" aria-pressed="false">Kepengurusan</button>
+      <a class="hero-carousel-game-link" href="#mini-game">Game Buatan Kami</a>
     </nav>
   </header>
 
@@ -409,9 +410,9 @@
     <h2>Program Unggulan</h2>
     <div class="cards">
       <div class="card">
-        <h3>Guru Pembinaan Divisi Esports</h3>
+        <h3>Peningkatan Keterampilan Siswa-Siswi</h3>
         <p>
-          Berbagai cabang Esports seperti Mobile Legends dan Free Fire dengan
+          Berbagai cabang Esports seperti Mobile Legends dan Free Fire beserta Desain Grafis dengan
           jadwal teratur serta bimbingan Guru Pelatih Berlinsensi C Nasional, berpengalaman dan juga
           merupakan Wakil Ketua ESI Kab OKU Sekaligus Pemilik dari
           <a href="https://smqresports.netlify.app/" target="_blank" style="
@@ -451,10 +452,10 @@
           </p>
       </div>
       <div class="card">
-        <h3>Guru Pembinaan Karakter</h3>
+        <h3>Pembinaan Karakter</h3>
         <p>
           Pembentukan sikap disiplin, sportivitas, serta kepemimpinan agar
-          siswa menjadi teladan positif di dalam maupun luar sekolah.
+          siswa menjadi teladan positif di dalam maupun luar sekolah. Serta Setiap Tahun 1 anak dengan nilai matematika 90 keatas di rapor untuk Kelas VIII akan diajarkan ilmu pemograman Coding untuk membuat website dan game.
         </p>
       </div>
       <div class="card">
@@ -1348,6 +1349,35 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
     <img class="zoomed-image" src="" alt="Zoomed" />
   </div>
 
+  <!-- MINI GAME -->
+  <section id="mini-game" class="section dark game-section">
+    <h2>Game Buatan Kami</h2>
+    <p class="game-description">Kalahkan minion di setiap level, lalu hancurkan turet lawan. Gunakan tombol arah atau tombol panah/WASD untuk bergerak.</p>
+    <div class="game-panel">
+      <div class="game-stats" aria-live="polite">
+        <span>Nyawa: <strong id="health">200</strong></span>
+        <span>Level: <strong id="level">1</strong></span>
+        <span>Minion: <strong id="kills">0/5</strong></span>
+        <span>Nyawa turet: <strong id="tower-health">300/300</strong></span>
+      </div>
+      <canvas id="arena" width="720" height="400" aria-label="Arena permainan Jaga Arena"></canvas>
+      <p id="game-status" class="game-status" role="status">Karya DIMAS BAGUS OKA VIII A Kadiv Website Angkatan V</p>
+      <div class="game-actions">
+        <button id="start-game" type="button">Mulai Game</button>
+        <button id="attack" type="button">Serang</button>
+        <button id="heal" type="button" disabled>Pulihkan Darah (+100)</button>
+      </div>
+      <div class="game-controls" aria-label="Kontrol gerakan">
+        <button type="button" data-direction="up" aria-label="Bergerak ke atas">↑</button>
+        <div>
+          <button type="button" data-direction="left" aria-label="Bergerak ke kiri">←</button>
+          <button type="button" data-direction="down" aria-label="Bergerak ke bawah">↓</button>
+          <button type="button" data-direction="right" aria-label="Bergerak ke kanan">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- GALERI -->
   <section id="galeri" class="section">
     <h2>Galeri Kegiatan</h2>
@@ -1358,11 +1388,11 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
         <div class="caption">Liga Esports SMPN32 OKU By SMQR Esports #LES32OKU</div>
       </div>
       <div class="gallery-item">
-        <img src="sentosadepan2.jpeg" alt="Guru Pembinaan Karakter" />
+        <img src="sentosadepan2.jpeg" alt="Pembinaan Karakter" />
         <div class="caption">(Juara 2) Festival SMASEBHA HAMUEBHA Tahun 2026</div>
       </div>
       <div class="gallery-item">
-        <img src="ikmbunsri20263.jpeg" alt="Guru Pembinaan Karakter" />
+        <img src="ikmbunsri20263.jpeg" alt="Pembinaan Karakter" />
         <div class="caption">(Juara 3) Esports IKMB Universitas Sriwijaya Tahun 2026</div>
       </div>
       <div class="gallery-item">
@@ -1370,19 +1400,19 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
         <div class="caption">(Quarter Finals) GYC Esports SMAN 10 Palembang Tahun 2026</div>
       </div>
       <div class="gallery-item">
-        <img src="xeona26.jpeg" alt="Guru Pembinaan Karakter" />
+        <img src="xeona26.jpeg" alt="Pembinaan Karakter" />
         <div class="caption">SMPN 32 OKU A , XEON CYCLONE STUDENTS CUP 2026 S72</div>
       </div>
        <div class="gallery-item">
-        <img src="xeonb26.jpeg" alt="Guru Pembinaan Karakter" />
+        <img src="xeonb26.jpeg" alt="Pembinaan Karakter" />
         <div class="caption">SMPN 32 OKU B , XEON CYCLONE STUDENTS CUP 2026 S72</div>
       </div>
        <div class="gallery-item">
-        <img src="codashopa26.jpeg" alt="Guru Pembinaan Karakter" />
+        <img src="codashopa26.jpeg" alt="Pembinaan Karakter" />
         <div class="caption">SMPN 32 OKU A , CODASHOP ARENA FREE FIRE 2026</div>
       </div>
        <div class="gallery-item">
-        <img src="codashopb26.jpeg" alt="Guru Pembinaan Karakter" />
+        <img src="codashopb26.jpeg" alt="Pembinaan Karakter" />
         <div class="caption">SMPN 32 OKU B , CODASHOP ARENA FREE FIRE 2026</div>
       </div>
       <div class="gallery-item">
@@ -1390,20 +1420,20 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
         <div class="caption">Angkatan V Tahun 2026</div>
       </div>
       <div class="gallery-item">
-        <img src="pengurusIVV.jpeg" alt="Guru Pembinaan Karakter" />
+        <img src="pengurusIVV.jpeg" alt="Pembinaan Karakter" />
         <div class="caption">Guru Pelatih dan Pengurus Angkatan IV dan V Tahun 2026</div>
       </div>
        
       <div class="gallery-item">
-        <img src="TourangkatanIV.jpeg" alt="Guru Pembinaan Karakter" />
+        <img src="TourangkatanIV.jpeg" alt="Pembinaan Karakter" />
         <div class="caption">Tournament Esports Angkatan IV 2026</div>
       </div>
       <div class="gallery-item">
-        <img src="putera - Copy.jpeg" alt="Guru Pembinaan Karakter" />
+        <img src="putera - Copy.jpeg" alt="Pembinaan Karakter" />
         <div class="caption">Liga Esports Nasional Pelajar Tahun 2025</div>
       </div>
       <div class="gallery-item">
-        <img src="makanbersama.jpeg" alt="Guru Pembinaan Karakter" />
+        <img src="makanbersama.jpeg" alt="Pembinaan Karakter" />
         <div class="caption">Memasak & makan makan bersama Angkatan IV 2025</div>
       </div>
       
@@ -3083,6 +3113,7 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
       updateControls();
     })();
   </script>
+  <script src="game.js" defer></script>
 </body>
 
 </html>
