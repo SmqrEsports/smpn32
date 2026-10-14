@@ -3388,29 +3388,51 @@ footer {
   font: 40px/1 Arial, sans-serif;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 900px) {
   #beranda .hero-carousel {
     bottom: 12px;
     width: 100%;
-    gap: 3px;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0px, .5vw, 3px);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
   }
 
   #beranda .hero-carousel button,
   #beranda .hero-carousel button:hover,
-  #beranda .hero-carousel button[aria-pressed="true"] {
+  #beranda .hero-carousel button[aria-pressed="true"],
+  #beranda .hero-carousel .hero-carousel-game-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
     min-height: 40px;
-    padding: 8px 2px;
+    margin: 0 !important;
+    padding: 8px 1px;
     border: 0 !important;
     border-radius: 0;
     background: transparent !important;
     background-image: none !important;
     box-shadow: none !important;
     color: #fff !important;
-    font-size: clamp(.64rem, 2.8vw, .76rem);
+    font-size: clamp(.5rem, 2.3vw, .7rem);
+    font-weight: 650;
+    line-height: 1.1;
+    text-decoration: none;
     text-shadow: 0 1px 4px rgba(0, 0, 0, .95);
+    white-space: nowrap;
+    width: auto !important;
+    max-width: none;
+    flex: 0 0 auto !important;
+    align-self: center;
+    scroll-snap-align: center;
   }
 
-  #beranda .hero-carousel button:focus-visible {
+  #beranda .hero-carousel button:focus-visible,
+  #beranda .hero-carousel .hero-carousel-game-link:focus-visible {
     outline: 2px solid #fff;
     outline-offset: -2px;
   }
@@ -4156,25 +4178,6 @@ footer {
   background: transparent;
   color: #fff;
   box-shadow: none;
-}
-
-@media (max-width: 640px) {
-  #beranda .hero-carousel .hero-carousel-game-link {
-    min-height: 40px;
-    padding: 8px 2px;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    color: #fff !important;
-    font-size: clamp(.64rem, 2.8vw, .76rem);
-    box-shadow: none;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, .95);
-  }
-
-  #beranda .hero-carousel .hero-carousel-game-link:focus-visible {
-    outline: 2px solid #fff;
-    outline-offset: -2px;
-  }
 }
 
 .game-section {

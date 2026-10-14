@@ -83,7 +83,7 @@ function heal() {
     hero.hp = Math.min(200, hero.hp + 100);
     healCooldown = 10;
     healthText.textContent = hero.hp;
-    statusText.textContent = "ini untuk tmbah darahnyo pak 100";
+    
     updateHealButton();
 }
 
