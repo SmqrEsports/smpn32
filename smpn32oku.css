@@ -1137,6 +1137,357 @@ button:hover {
   }
 }
 
+.game-fullscreen-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  min-height: 42px;
+  margin-bottom: 8px;
+}
+
+.game-fullscreen-bar button {
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid rgba(226, 196, 130, .42);
+  border-radius: 10px;
+  background: #203e30;
+  color: #fff4d5;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.game-fullscreen-bar button:hover,
+.game-fullscreen-bar button:focus-visible {
+  background: #2d6242;
+}
+
+.game-fullscreen-bar button[hidden] {
+  display: none;
+}
+
+.game-fullscreen-hint {
+  display: none;
+  color: #e2d5b7;
+  font-size: .78rem;
+}
+
+.game-panel:fullscreen,
+.game-panel.is-fullscreen {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  margin: 0;
+  padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: #0b1913;
+}
+
+.game-panel:fullscreen .game-fullscreen-bar,
+.game-panel.is-fullscreen .game-fullscreen-bar {
+  flex: 0 0 40px;
+  margin: 0;
+}
+
+.game-panel:fullscreen .game-fullscreen-bar button,
+.game-panel.is-fullscreen .game-fullscreen-bar button {
+  box-sizing: border-box;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 1.8rem;
+}
+
+.game-panel:fullscreen .game-stage,
+.game-panel.is-fullscreen .game-stage {
+  display: grid;
+  flex: 1 1 auto;
+  place-items: center;
+  min-height: 0;
+  aspect-ratio: auto;
+  border-radius: 10px;
+}
+
+.game-panel:fullscreen #arena,
+.game-panel.is-fullscreen #arena {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.game-panel:fullscreen .game-setup,
+.game-panel.is-fullscreen .game-setup {
+  overflow: auto;
+}
+
+.game-panel:fullscreen .game-stats,
+.game-panel.is-fullscreen .game-stats {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.game-panel:fullscreen .game-status,
+.game-panel.is-fullscreen .game-status {
+  flex: 0 0 auto;
+  min-height: 0;
+  margin: 0;
+}
+
+.game-panel:fullscreen .game-screen-controls,
+.game-panel.is-fullscreen .game-screen-controls {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+}
+
+.game-panel:fullscreen .game-actions,
+.game-panel.is-fullscreen .game-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.game-panel:fullscreen .game-actions button,
+.game-panel.is-fullscreen .game-actions button {
+  min-height: 44px;
+  padding: 8px 16px;
+  font-size: 1rem;
+}
+
+.game-panel:fullscreen .game-controls,
+.game-panel.is-fullscreen .game-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+}
+
+.game-panel:fullscreen .game-controls > div,
+.game-panel.is-fullscreen .game-controls > div {
+  gap: 4px;
+}
+
+.game-panel:fullscreen .game-controls button,
+.game-panel.is-fullscreen .game-controls button {
+  box-sizing: border-box;
+  width: 44px;
+  min-height: 40px;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .game-fullscreen-bar {
+    min-height: 38px;
+    margin-bottom: 6px;
+  }
+
+  .game-fullscreen-bar button {
+    min-height: 38px;
+    padding: 7px 12px;
+    font-size: .85rem;
+  }
+
+  .game-panel:fullscreen .game-fullscreen-hint,
+  .game-panel.is-fullscreen .game-fullscreen-hint {
+    display: block;
+    margin-right: auto;
+    font-size: .7rem;
+  }
+
+  .game-panel:fullscreen .game-screen-controls,
+  .game-panel.is-fullscreen .game-screen-controls {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 116px;
+    padding: 4px 0 max(4px, env(safe-area-inset-bottom));
+    pointer-events: auto;
+  }
+
+  .game-panel:fullscreen .game-actions,
+  .game-panel.is-fullscreen .game-actions {
+    display: flex;
+    flex: 0 0 112px;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .game-panel:fullscreen .game-actions button,
+  .game-panel.is-fullscreen .game-actions button {
+    box-sizing: border-box;
+    width: 112px;
+    min-height: 44px;
+    padding: 8px;
+    touch-action: manipulation;
+  }
+
+  .game-panel:fullscreen .game-controls,
+  .game-panel.is-fullscreen .game-controls {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    padding: 4px;
+    border: 1px solid rgba(226, 196, 130, .3);
+    border-radius: 12px;
+    background: rgba(5, 17, 12, .78);
+  }
+
+  .game-panel:fullscreen .game-controls > div,
+  .game-panel.is-fullscreen .game-controls > div {
+    display: flex;
+    gap: 4px;
+  }
+
+  .game-panel:fullscreen .game-controls button,
+  .game-panel.is-fullscreen .game-controls button {
+    box-sizing: border-box;
+    width: 40px;
+    min-height: 38px;
+    padding: 0;
+    touch-action: none;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+  .game-panel:fullscreen,
+  .game-panel.is-fullscreen {
+    position: relative;
+    display: block;
+    padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
+  }
+
+  .game-panel:fullscreen .game-fullscreen-bar,
+  .game-panel.is-fullscreen .game-fullscreen-bar {
+    position: absolute;
+    z-index: 5;
+    top: max(4px, env(safe-area-inset-top));
+    right: max(8px, env(safe-area-inset-right));
+    left: max(8px, env(safe-area-inset-left));
+    display: flex;
+    justify-content: flex-end;
+    height: 44px;
+    min-height: 0;
+  }
+
+  .game-panel:fullscreen .game-fullscreen-hint,
+  .game-panel.is-fullscreen .game-fullscreen-hint {
+    display: none;
+  }
+
+  .game-panel:fullscreen .game-stats,
+  .game-panel.is-fullscreen .game-stats {
+    position: absolute;
+    z-index: 4;
+    top: 48px;
+    left: max(8px, env(safe-area-inset-left));
+    gap: 4px;
+    margin: 0;
+  }
+
+  .game-panel:fullscreen .game-stats span,
+  .game-panel.is-fullscreen .game-stats span {
+    padding: 5px 9px;
+    font-size: .72rem;
+  }
+
+  .game-panel:fullscreen .game-stage,
+  .game-panel.is-fullscreen .game-stage {
+    position: absolute;
+    inset: 82px 8px 8px;
+    display: grid;
+    min-height: 0;
+  }
+
+  .game-panel:fullscreen .game-status,
+  .game-panel.is-fullscreen .game-status {
+    position: absolute;
+    z-index: 4;
+    top: 52px;
+    right: 60px;
+    left: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    font-size: .72rem;
+  }
+
+  .game-panel:fullscreen .game-screen-controls,
+  .game-panel.is-fullscreen .game-screen-controls {
+    position: absolute;
+    z-index: 4;
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    left: max(12px, env(safe-area-inset-left));
+    display: block;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .game-panel:fullscreen .game-actions,
+  .game-panel.is-fullscreen .game-actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    pointer-events: auto;
+  }
+
+  .game-panel:fullscreen .game-actions button,
+  .game-panel.is-fullscreen .game-actions button {
+    min-height: 36px;
+    padding: 6px 10px;
+    font-size: .78rem;
+  }
+
+  .game-panel:fullscreen .game-controls,
+  .game-panel.is-fullscreen .game-controls {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 4px;
+    pointer-events: auto;
+  }
+
+  .game-panel:fullscreen .game-controls > div,
+  .game-panel.is-fullscreen .game-controls > div {
+    gap: 2px;
+  }
+
+  .game-panel:fullscreen .game-controls button,
+  .game-panel.is-fullscreen .game-controls button {
+    width: 38px;
+    min-height: 34px;
+  }
+
+  .game-panel.is-finished:fullscreen .game-screen-controls,
+  .game-panel.is-finished.is-fullscreen .game-screen-controls {
+    display: block;
+  }
+}
+
 /* Small phones: ensure video shows, adjust sizing and readability */
 @media (max-width: 420px) {
 
@@ -4262,9 +4613,8 @@ footer {
 
 .game-setup-options {
   display: grid;
-  grid-template-columns: minmax(0, .9fr) minmax(0, 1.5fr);
-  align-items: center;
-  gap: 20px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
 }
 
 .game-finish-message {
@@ -4303,7 +4653,7 @@ footer {
 }
 
 .character-choices {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .weapon-choices {
@@ -4365,16 +4715,28 @@ footer {
   font-size: 1.2rem;
 }
 
-.male-emblem {
+.role-fighter {
   border-color: rgba(83, 169, 237, .35);
   background: rgba(83, 169, 237, .13);
   color: #79c3ff;
 }
 
-.female-emblem {
-  border-color: rgba(241, 108, 167, .35);
-  background: rgba(241, 108, 167, .13);
-  color: #ff91bf;
+.role-mage {
+  border-color: rgba(184, 154, 255, .35);
+  background: rgba(184, 154, 255, .13);
+  color: #c9b4ff;
+}
+
+.role-tank {
+  border-color: rgba(103, 199, 163, .35);
+  background: rgba(103, 199, 163, .13);
+  color: #8ce0bd;
+}
+
+.role-marksman {
+  border-color: rgba(255, 145, 191, .35);
+  background: rgba(255, 145, 191, .13);
+  color: #ffadd0;
 }
 
 .choice-copy {
@@ -4598,6 +4960,10 @@ footer {
     gap: 10px;
   }
 
+  .game-panel:not(.is-playing) .game-stage {
+    min-height: 340px;
+  }
+
   .game-choice-group legend {
     margin-bottom: 6px;
     font-size: .83rem;
@@ -4608,7 +4974,7 @@ footer {
   }
 
   .weapon-choices .game-choice-card {
-    min-height: 76px;
+    min-height: 62px;
     flex-direction: column;
     justify-content: center;
     gap: 4px;
@@ -4647,12 +5013,16 @@ footer {
   }
 
   .game-stage {
-    min-height: 310px;
+    min-height: 360px;
   }
 
   .game-panel.is-playing .game-stage {
     min-height: 0;
     aspect-ratio: 1.8;
+  }
+
+  .game-panel.is-finished .game-stage {
+    min-height: 440px;
   }
 
   .game-screen-controls .game-actions {
@@ -4691,29 +5061,41 @@ footer {
   }
 
   .character-choices {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .character-choices .game-choice-card {
-    min-height: 48px;
-    gap: 6px;
-    padding: 6px 22px 6px 6px;
-    border-radius: 10px;
+    min-height: 52px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    padding: 5px 3px;
+    border-radius: 9px;
   }
 
   .character-choices .choice-emblem {
-    width: 27px;
-    height: 27px;
-    flex-basis: 27px;
-    font-size: 1rem;
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+    border-radius: 6px;
+    font-size: .78rem;
   }
 
   .character-choices .choice-copy strong {
-    font-size: .75rem;
+    font-size: .67rem;
   }
 
   .character-choices .choice-copy small {
-    font-size: .61rem;
+    font-size: .55rem;
+    white-space: nowrap;
+  }
+
+  .character-choices .choice-check {
+    top: 4px;
+    right: 4px;
+    width: 13px;
+    height: 13px;
+    font-size: .58rem;
   }
 
   #mini-game .game-setup #start-game {
@@ -4748,6 +5130,14 @@ footer {
 }
 
 @media (max-width: 360px) {
+  .game-panel:not(.is-playing) .game-stage {
+    min-height: 360px;
+  }
+
+  .game-panel.is-finished .game-stage {
+    min-height: 440px;
+  }
+
   .game-screen-controls .game-actions {
     flex-basis: 104px;
     gap: 5px;

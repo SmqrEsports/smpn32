@@ -7,11 +7,14 @@ const statusText = document.querySelector("#game-status");
 const levelText = document.querySelector("#level");
 const killsText = document.querySelector("#kills");
 const gamePanel = document.querySelector(".game-panel");
+const enterFullscreenButton = document.querySelector("#enter-game-fullscreen");
+const exitFullscreenButton = document.querySelector("#exit-game-fullscreen");
 const gameSetupOptions = document.querySelector(".game-setup-options");
 const finishMessage = document.querySelector(".game-finish-message");
 const keys = new Set();
 const characterInputs = document.querySelectorAll('input[name="character"]');
 const weaponInputs = document.querySelectorAll('input[name="weapon"]');
+const minionStrengthMultiplier = 3;
 const levels = [
     { name: "Junior Minion", enemies: 5, enemyHp: 50, enemySpeed: 48, enemyDamage: 8 },
     { name: "Senior Minion", enemies: 7, enemyHp: 65, enemySpeed: 58, enemyDamage: 10 },
@@ -26,11 +29,37 @@ const weapons = {
     magic: { damage: 30, range: 210, cooldown: 0.75, color: "#b89aff" },
     bow: { damage: 32, range: 270, cooldown: 0.62, color: "#8fe0c0" }
 };
-const hero = { x: 100, y: 200, hp: 200, maxHp: 200, cooldown: 0, character: "male", weapon: "sword" };
-const playerTower = { x: 55, y: 211, hp: 300, maxHp: 300 };
-const enemyTower = { x: 665, y: 183, hp: 300, maxHp: 300 };
+const characters = {
+    dimas: { name: "Dimas", role: "Fighter", animal: "rhino", color: "#53a9ed" },
+    azzahra: { name: "Azzahra", role: "Mage", animal: "rabbit", color: "#b89aff" },
+    gea: { name: "Gea", role: "Fighter", animal: "fox", color: "#f16ca7" },
+    keysha: { name: "Keysha", role: "Tank", animal: "koala", color: "#67c7a3" },
+    fajri: { name: "Fajri", role: "Tank", animal: "lion", color: "#e9b957" },
+    afgan: { name: "Afgan", role: "Mage", animal: "ant", color: "#8b9dff" },
+    fira: { name: "Fira", role: "Marksman", animal: "turtle", color: "#ff91bf" },
+    rezeki: { name: "Rezeki", role: "Marksman", animal: "bull", color: "#8fe0c0" }
+};
+const roleStats = {
+    Fighter: { hp: 115, damage: 16, range: 48, cooldown: 0.85, speed: 68, aggroRange: 620 },
+    Mage: { hp: 90, damage: 14, range: 145, cooldown: 1.2, speed: 44, aggroRange: 620 },
+    Tank: { hp: 160, damage: 11, range: 52, cooldown: 1.1, speed: 36, aggroRange: 620 },
+    Marksman: { hp: 95, damage: 12, range: 185, cooldown: 0.9, speed: 46, aggroRange: 620 }
+};
+const hero = { x: 100, y: 200, hp: 200, maxHp: 200, cooldown: 0, character: "dimas", weapon: "sword" };
+const playerTowers = [
+    { x: 55, y: 91, hp: 300, maxHp: 300, label: "TIM 1" },
+    { x: 55, y: 211, hp: 300, maxHp: 300, label: "TIM 2" },
+    { x: 55, y: 331, hp: 300, maxHp: 300, label: "TIM 3" }
+];
+const enemyTowers = [
+    { x: 665, y: 91, hp: 300, maxHp: 300, label: "MUSUH 1" },
+    { x: 665, y: 211, hp: 300, maxHp: 300, label: "MUSUH 2" },
+    { x: 665, y: 331, hp: 300, maxHp: 300, label: "MUSUH 3" }
+];
 let enemy = null;
-let turtle = createTurtle();
+let yayat = createYayat();
+let playerTeam = [];
+let enemyTeam = [];
 let kills = 0;
 let levelIndex = 0;
 let active = false;
@@ -39,6 +68,67 @@ let attackAnimation = null;
 let gameWon = false;
 let gameFinished = false;
 let healCooldown = 0;
+let welcomeTime = 0;
+let minionSpawnDelay = 0;
+let lastMinionCountdown = -1;
+
+function createTeamMember(characterId, side, index) {
+    const character = characters[characterId];
+    const isPlayerTeam = side === "player";
+    const stats = roleStats[character.role];
+    const towerIndex = isPlayerTeam ? index : index < 2 ? 0 : index - 1;
+    const tower = (isPlayerTeam ? playerTowers : enemyTowers)[towerIndex];
+    const towerMemberIndex = !isPlayerTeam && index < 2 ? index : 0;
+    const spawn = {
+        x: tower.x + (isPlayerTeam ? 48 : -48),
+        y: tower.y + (isPlayerTeam ? 0 : towerMemberIndex === 0 ? -24 : 24)
+    };
+    return {
+        kind: "character",
+        characterId,
+        name: character.name,
+        role: character.role,
+        x: spawn.x,
+        y: spawn.y,
+        hp: stats.hp,
+        maxHp: stats.hp,
+        damage: stats.damage,
+        range: stats.range,
+        cooldown: stats.cooldown,
+        speed: stats.speed,
+        aggroRange: stats.aggroRange,
+        attackCooldown: index * 0.15,
+        side,
+        homeX: spawn.x,
+        homeY: spawn.y
+    };
+}
+
+function assignTeams(selectedCharacter) {
+    const remainingCharacters = Object.keys(characters).filter((characterId) => characterId !== selectedCharacter);
+    for (let index = remainingCharacters.length - 1; index > 0; index--) {
+        const randomIndex = Math.floor(Math.random() * (index + 1));
+        [remainingCharacters[index], remainingCharacters[randomIndex]] = [remainingCharacters[randomIndex], remainingCharacters[index]];
+    }
+    playerTeam = remainingCharacters.slice(0, 3).map((characterId, index) =>
+        createTeamMember(characterId, "player", index)
+    );
+    enemyTeam = remainingCharacters.slice(3).map((characterId, index) =>
+        createTeamMember(characterId, "enemy", index)
+    );
+    // Compare health plus eight seconds of sustained damage when balancing the uneven team sizes.
+    const getTeamPower = (team) => team.reduce((total, member) => {
+        const stats = roleStats[member.role];
+        return total + stats.hp + (stats.damage / stats.cooldown) * 8;
+    }, 0);
+    const enemyStrengthMultiplier = getTeamPower(playerTeam) / getTeamPower(enemyTeam);
+    enemyTeam.forEach((member) => {
+        const stats = roleStats[member.role];
+        member.hp = Math.round(stats.hp * enemyStrengthMultiplier);
+        member.maxHp = member.hp;
+        member.damage = Math.max(1, Math.round(stats.damage * enemyStrengthMultiplier));
+    });
+}
 
 function startGame() {
     const character = document.querySelector('input[name="character"]:checked');
@@ -47,10 +137,11 @@ function startGame() {
 
     hero.character = character.value;
     hero.weapon = weapon.value;
-    hero.x = 360; hero.y = 200; hero.hp = hero.maxHp; hero.cooldown = 0; attackAnimation = null; healCooldown = 0;
-    playerTower.hp = playerTower.maxHp;
-    enemyTower.hp = enemyTower.maxHp;
-    enemy = null; turtle = createTurtle(); kills = 0; levelIndex = 0; gameWon = false; gameFinished = false; active = true; lastFrame = 0; keys.clear();
+    assignTeams(hero.character);
+    const heroSpawnTower = playerTowers[1];
+    hero.x = heroSpawnTower.x + 38; hero.y = heroSpawnTower.y + 34; hero.hp = hero.maxHp; hero.cooldown = 0; attackAnimation = null; healCooldown = 0;
+    [...playerTowers, ...enemyTowers].forEach((tower) => { tower.hp = tower.maxHp; });
+    enemy = null; yayat = createYayat(); kills = 0; levelIndex = 0; gameWon = false; gameFinished = false; active = true; lastFrame = 0; keys.clear(); welcomeTime = 3; minionSpawnDelay = 10; lastMinionCountdown = 10;
     gamePanel.classList.add("has-started", "is-playing");
     gamePanel.classList.remove("is-finished");
     gameSetupOptions.hidden = false;
@@ -58,8 +149,8 @@ function startGame() {
     setSelectionDisabled(true);
     updateHealButton();
     updateProgress();
-    statusText.textContent = `Level 1 ${levels[0].name}: lawan minion merah dan jaga nyawamu`;
-    startButton.textContent = "Sedang Bermain...";
+    statusText.textContent = "WELCOME TO LAND OF HERI";
+    startButton.textContent = "Mulai Game";
     startButton.disabled = true;
     requestAnimationFrame(play);
 }
@@ -69,47 +160,104 @@ function updateProgress() {
     killsText.textContent = `${kills}/${levels[levelIndex].enemies}`;
 }
 
-function createTurtle() {
+function createYayat() {
     const bush = bushes[Math.floor(Math.random() * bushes.length)];
     return {
-        kind: "turtle",
-        name: "Fira",
+        kind: "cow",
+        name: "Yayat",
         x: bush.x + (Math.random() - 0.5) * 12,
         y: bush.y + (Math.random() - 0.5) * 8,
-        hp: 180,
-        maxHp: 180,
-        speed: 64,
-        damage: 16,
+        hp: 500,
+        maxHp: 500,
+        speed: 54,
+        damage: 22,
         allegiance: null,
+        retaliationSide: null,
+        retaliationTarget: null,
         attackCooldown: 0
     };
 }
 
-function getTurtleLabel() {
-    if (turtle.allegiance === "player") return "Fira • TIM Dimas";
-    if (turtle.allegiance === "enemy") return "Fira • TIM MUSUH";
-    return "Fira • NETRAL";
+function getYayatLabel() {
+    return "YAYAT";
+}
+
+function damageYayat(damage, attackingSide, attacker) {
+    if (!yayat || yayat.allegiance === attackingSide) return;
+    if (!yayat.allegiance) {
+        yayat.retaliationSide = attackingSide;
+        yayat.retaliationTarget = attacker;
+    }
+    yayat.hp = Math.max(0, yayat.hp - damage);
+    if (yayat.hp === 0) {
+        yayat.allegiance = attackingSide;
+        yayat.hp = yayat.maxHp;
+        yayat.attackCooldown = 0;
+        yayat.retaliationSide = null;
+        yayat.retaliationTarget = null;
+        statusText.textContent = `Yayat bergabung dengan tim ${attackingSide === "player" ? "pemain" : "musuh"}!`;
+    }
+}
+
+function damageTeamMember(member, damage) {
+    const damageMultiplier = member.role === "Tank" ? 0.65 : 1;
+    member.hp = Math.max(0, member.hp - Math.ceil(damage * damageMultiplier));
+}
+
+function getNearestTower(towers, x, y) {
+    return towers
+        .filter((tower) => tower.hp > 0)
+        .reduce((nearest, tower) => {
+            const distance = Math.hypot(x - tower.x, y - tower.y);
+            return !nearest || distance < nearest.distance ? { tower, distance } : nearest;
+        }, null)?.tower ?? null;
+}
+
+function getNearestEnemyTower(x, y) {
+    return getNearestTower(enemyTowers, x, y);
+}
+
+function areEnemyTowersDestroyed() {
+    return enemyTowers.every((tower) => tower.hp <= 0);
+}
+
+function arePlayerTowersDestroyed() {
+    return playerTowers.every((tower) => tower.hp <= 0);
+}
+
+function getNearestAliveUnit(units, x, y) {
+    return units
+        .filter((unit) => unit.hp > 0)
+        .reduce((nearest, unit) => {
+            const distance = Math.hypot(x - unit.x, y - unit.y);
+            return !nearest || distance < nearest.distance ? { unit, distance } : nearest;
+        }, null);
 }
 
 function attack() {
     if (!active || hero.cooldown > 0) return;
     const weapon = weapons[hero.weapon];
     hero.cooldown = weapon.cooldown;
+    const enemyCharacterTarget = getNearestAliveUnit(enemyTeam, hero.x, hero.y);
     const enemyDistance = enemy ? Math.hypot(hero.x - enemy.x, hero.y - enemy.y) : Infinity;
-    const turtleDistance = turtle ? Math.hypot(hero.x - turtle.x, hero.y - turtle.y) : Infinity;
-    const towerDistance = Math.hypot(hero.x - enemyTower.x, hero.y - enemyTower.y);
-    const hitsEnemy = enemyDistance < weapon.range;
-    const hitsTurtle = !hitsEnemy && turtle && turtle.allegiance !== "player" && turtleDistance < weapon.range;
-    const hitsTower = !hitsEnemy && !hitsTurtle && enemyTower.hp && towerDistance < weapon.range;
-    const target = hitsEnemy
-        ? { x: enemy.x, y: enemy.y }
-        : hitsTurtle
-            ? { x: turtle.x, y: turtle.y }
-            : hitsTower
-            ? { x: enemyTower.x, y: enemyTower.y }
-            : enemy ? { x: enemy.x, y: enemy.y } : turtle && turtle.allegiance !== "player"
-                ? { x: turtle.x, y: turtle.y }
-                : { x: enemyTower.x, y: enemyTower.y };
+    const yayatDistance = yayat ? Math.hypot(hero.x - yayat.x, hero.y - yayat.y) : Infinity;
+    const targetTower = getNearestEnemyTower(hero.x, hero.y);
+    const towerDistance = targetTower ? Math.hypot(hero.x - targetTower.x, hero.y - targetTower.y) : Infinity;
+    const hitsEnemyCharacter = Boolean(enemyCharacterTarget && enemyCharacterTarget.distance < weapon.range);
+    const hitsEnemy = !hitsEnemyCharacter && enemyDistance < weapon.range;
+    const hitsYayat = !hitsEnemyCharacter && !hitsEnemy && yayat && yayat.allegiance !== "player" && yayatDistance < weapon.range;
+    const hitsTower = !hitsEnemyCharacter && !hitsEnemy && !hitsYayat && Boolean(targetTower && towerDistance < weapon.range);
+    const target = hitsEnemyCharacter
+        ? { x: enemyCharacterTarget.unit.x, y: enemyCharacterTarget.unit.y }
+        : hitsEnemy
+            ? { x: enemy.x, y: enemy.y }
+            : hitsYayat
+                ? { x: yayat.x, y: yayat.y }
+                : hitsTower
+                    ? { x: targetTower.x, y: targetTower.y }
+                    : enemy ? { x: enemy.x, y: enemy.y } : yayat && yayat.allegiance !== "player"
+                        ? { x: yayat.x, y: yayat.y }
+                        : targetTower ? { x: targetTower.x, y: targetTower.y } : { x: hero.x, y: hero.y };
     attackAnimation = {
         weapon: hero.weapon,
         elapsed: 0,
@@ -118,20 +266,20 @@ function attack() {
         startY: hero.y,
         targetX: target.x,
         targetY: target.y,
-        targetUnit: hitsEnemy ? enemy : hitsTurtle ? turtle : null,
-        hitsTarget: hitsEnemy || hitsTurtle || hitsTower,
+        targetUnit: hitsEnemyCharacter ? enemyCharacterTarget.unit : hitsEnemy ? enemy : hitsYayat ? yayat : null,
+        hitsTarget: hitsEnemyCharacter || hitsEnemy || hitsYayat || hitsTower,
         angle: Math.atan2(target.y - hero.y, target.x - hero.x)
     };
-    if (hitsEnemy) {
+    if (hitsEnemyCharacter) {
+        damageTeamMember(enemyCharacterTarget.unit, weapon.damage);
+    } else if (hitsEnemy) {
         enemy.hp -= weapon.damage;
         if (enemy.hp <= 0) defeatEnemy();
-    } else if (hitsTurtle) {
-        if (!turtle.allegiance) turtle.allegiance = "player";
-        turtle.hp -= weapon.damage;
-        if (turtle.hp <= 0) turtle = null;
+    } else if (hitsYayat) {
+        damageYayat(weapon.damage, "player", hero);
     } else if (hitsTower) {
-        enemyTower.hp = Math.max(0, enemyTower.hp - weapon.damage);
-        if (!enemyTower.hp) {
+        targetTower.hp = Math.max(0, targetTower.hp - weapon.damage);
+        if (areEnemyTowersDestroyed()) {
             finish(true);
         }
     }
@@ -142,10 +290,10 @@ function defeatEnemy() {
     kills++;
     if (kills === levels[levelIndex].enemies) {
         if (levelIndex === levels.length - 1) {
-            statusText.textContent = enemyTower.hp
-                ? "Semua minion telah dikalahkan. Hancurkan turet lawan!"
-                : "Terima kasih telah bermain!";
-            if (!enemyTower.hp) finish(true);
+            statusText.textContent = areEnemyTowersDestroyed()
+                ? "Semua minion dan turet lawan telah dikalahkan!"
+                : "Semua minion dikalahkan. Hancurkan semua turet lawan!";
+            if (areEnemyTowersDestroyed()) finish(true);
         } else {
             levelIndex++;
             kills = 0;
@@ -180,12 +328,13 @@ function finish(won) {
     gameSetupOptions.hidden = false;
     finishMessage.hidden = false;
     finishMessage.textContent = won
-        ? "Dimas menang!"
-        : "Dimas kalah!";
+        ? `${characters[hero.character].name} menang!`
+        : `${characters[hero.character].name} kalah!`;
     setSelectionDisabled(false);
     updateHealButton();
     startButton.disabled = false;
-    startButton.textContent = "Main Lagi";
+    startButton.hidden = false;
+    startButton.textContent = "Mulai Game";
     statusText.textContent = won ? "Terima kasih sudah bermain!" : "Ganti pilihan dan coba lagi!";
 }
 
@@ -193,6 +342,23 @@ function play(now) {
     if (!active) { draw(); return; }
     const dt = Math.min((now - (lastFrame || now)) / 1000, 0.04);
     lastFrame = now;
+    const wasWelcomeVisible = welcomeTime > 0;
+    if (welcomeTime > 0) {
+        welcomeTime = Math.max(0, welcomeTime - dt);
+    }
+    if (minionSpawnDelay > 0) {
+        minionSpawnDelay = Math.max(0, minionSpawnDelay - dt);
+        const countdown = Math.ceil(minionSpawnDelay);
+        if (countdown !== lastMinionCountdown && !wasWelcomeVisible) {
+            lastMinionCountdown = countdown;
+            statusText.textContent = countdown
+                ? `Minion muncul dalam ${countdown} detik.`
+                : "Minion mulai berdatangan!";
+        }
+    } else if (!wasWelcomeVisible && welcomeTime === 0 && lastMinionCountdown > 0) {
+        lastMinionCountdown = 0;
+        statusText.textContent = "Minion mulai berdatangan!";
+    }
     moveHero(dt);
     hero.cooldown = Math.max(0, hero.cooldown - dt);
     healCooldown = Math.max(0, healCooldown - dt);
@@ -202,21 +368,22 @@ function play(now) {
         if (attackAnimation.elapsed >= attackAnimation.duration) attackAnimation = null;
     }
     const level = levels[levelIndex];
-    if (!enemy && kills < level.enemies && !(attackAnimation && attackAnimation.targetUnit)) {
+    if (!enemy && minionSpawnDelay === 0 && kills < level.enemies && !(attackAnimation && attackAnimation.targetUnit)) {
         enemy = {
             x: 650,
             y: 80 + Math.random() * 240,
-            hp: level.enemyHp,
-            maxHp: level.enemyHp,
+            hp: level.enemyHp * minionStrengthMultiplier,
+            maxHp: level.enemyHp * minionStrengthMultiplier,
             speed: level.enemySpeed,
-            damage: level.enemyDamage,
+            damage: level.enemyDamage * minionStrengthMultiplier,
             level: levelIndex,
             name: level.name,
             hit: 0
         };
     }
     if (enemy) moveEnemy(dt);
-    if (turtle) moveTurtle(dt);
+    if (yayat) moveYayat(dt);
+    updateTeams(dt);
     draw();
     if (active) requestAnimationFrame(play);
 }
@@ -232,10 +399,15 @@ function moveHero(dt) {
 function moveEnemy(dt) {
     const targets = [
         { unit: hero, kind: "hero", x: hero.x, y: hero.y },
-        { unit: playerTower, kind: "tower", x: playerTower.x, y: playerTower.y }
+        ...playerTeam
+            .filter((member) => member.hp > 0)
+            .map((member) => ({ unit: member, kind: "character", x: member.x, y: member.y })),
+        ...playerTowers
+            .filter((tower) => tower.hp > 0)
+            .map((tower) => ({ unit: tower, kind: "tower", x: tower.x, y: tower.y }))
     ];
-    if (turtle && turtle.allegiance !== "enemy") {
-        targets.push({ unit: turtle, kind: "turtle", x: turtle.x, y: turtle.y });
+    if (yayat && yayat.allegiance !== "enemy") {
+        targets.push({ unit: yayat, kind: "yayat", x: yayat.x, y: yayat.y });
     }
     const target = targets.reduce((nearest, candidate) => {
         const distance = Math.hypot(candidate.x - enemy.x, candidate.y - enemy.y);
@@ -243,7 +415,7 @@ function moveEnemy(dt) {
     }, { ...targets[0], distance: Infinity });
     const dx = target.x - enemy.x, dy = target.y - enemy.y;
     const distance = Math.hypot(dx, dy) || 1;
-    const attackRange = target.kind === "hero" ? 34 : target.kind === "turtle" ? 40 : 40;
+    const attackRange = target.kind === "hero" ? 34 : target.kind === "yayat" ? 42 : 40;
     if (distance > attackRange) {
         enemy.x += dx / distance * enemy.speed * dt;
         enemy.y += dy / distance * enemy.speed * dt;
@@ -254,48 +426,129 @@ function moveEnemy(dt) {
             if (target.kind === "hero") {
                 hero.hp = Math.max(0, hero.hp - enemy.damage);
                 if (!hero.hp) finish(false);
-            } else if (target.kind === "turtle") {
-                if (!turtle.allegiance) turtle.allegiance = "enemy";
-                turtle.hp -= enemy.damage;
-                if (turtle.hp <= 0) turtle = null;
+            } else if (target.kind === "yayat") {
+                damageYayat(enemy.damage, "enemy", enemy);
+            } else if (target.kind === "character") {
+                damageTeamMember(target.unit, enemy.damage);
             } else {
-                playerTower.hp = Math.max(0, playerTower.hp - enemy.damage);
-                if (!playerTower.hp) finish(false);
+                target.unit.hp = Math.max(0, target.unit.hp - enemy.damage);
+                if (arePlayerTowersDestroyed()) finish(false);
             }
         }
     }
 }
 
-function moveTurtle(dt) {
-    if (!turtle.allegiance) return;
-    turtle.attackCooldown = Math.max(0, turtle.attackCooldown - dt);
-    const alliedToPlayer = turtle.allegiance === "player";
-    const target = alliedToPlayer && enemy ? enemy : alliedToPlayer ? enemyTower : playerTower;
-    const dx = target.x - turtle.x, dy = target.y - turtle.y;
-    const distance = Math.hypot(dx, dy) || 1;
+function moveYayat(dt) {
+    yayat.attackCooldown = Math.max(0, yayat.attackCooldown - dt);
+    const isPlayerAlly = yayat.allegiance === "player";
+    const targets = !yayat.allegiance
+        ? yayat.retaliationSide === "player"
+            ? [hero, ...playerTeam.filter((member) => member.hp > 0)]
+            : yayat.retaliationSide === "enemy"
+                ? [...enemyTeam.filter((member) => member.hp > 0), ...(enemy ? [enemy] : [])]
+                : []
+        : isPlayerAlly
+            ? [
+            ...enemyTeam.filter((member) => member.hp > 0),
+            ...(enemy ? [enemy] : []),
+            ...enemyTowers.filter((tower) => tower.hp > 0)
+            ]
+            : [
+            hero,
+            ...playerTeam.filter((member) => member.hp > 0),
+            ...playerTowers.filter((tower) => tower.hp > 0)
+            ];
+    const target = getNearestAliveUnit(targets, yayat.x, yayat.y)?.unit;
+    if (!target) return;
+    const distance = Math.hypot(target.x - yayat.x, target.y - yayat.y) || 1;
     const attackRange = target === enemy ? 36 : 42;
 
     if (distance > attackRange) {
-        turtle.x += dx / distance * turtle.speed * dt;
-        turtle.y += dy / distance * turtle.speed * dt;
+        yayat.x += (target.x - yayat.x) / distance * yayat.speed * dt;
+        yayat.y += (target.y - yayat.y) / distance * yayat.speed * dt;
         return;
     }
-    if (turtle.attackCooldown > 0) return;
+    if (yayat.attackCooldown > 0) return;
 
-    turtle.attackCooldown = 1;
-    if (target === enemy) {
-        enemy.hp -= turtle.damage;
-        if (enemy.hp <= 0) defeatEnemy();
-    } else if (alliedToPlayer) {
-        enemyTower.hp = Math.max(0, enemyTower.hp - turtle.damage);
-        if (!enemyTower.hp) finish(true);
-    } else {
-        playerTower.hp = Math.max(0, playerTower.hp - turtle.damage);
-        if (!playerTower.hp) finish(false);
+    yayat.attackCooldown = 1;
+    if (target.role) damageTeamMember(target, yayat.damage);
+    else target.hp = Math.max(0, target.hp - yayat.damage);
+    if (target === enemy && target.hp === 0) defeatEnemy();
+    if (enemyTeam.includes(target) && target.hp === 0) target.hp = 0;
+    if (target === hero && target.hp === 0) finish(false);
+    if (enemyTowers.includes(target) && areEnemyTowersDestroyed()) finish(true);
+    if (playerTowers.includes(target) && arePlayerTowersDestroyed()) finish(false);
+}
+
+function updateTeamMember(member, targets, dt) {
+    if (member.hp <= 0) return;
+    member.attackCooldown = Math.max(0, member.attackCooldown - dt);
+    const inRangeTargets = targets
+        .filter((candidate) => candidate.unit.hp > 0)
+        .map((candidate) => ({
+            ...candidate,
+            distance: Math.hypot(candidate.unit.x - member.x, candidate.unit.y - member.y)
+        }))
+        .filter((candidate) => candidate.distance <= member.aggroRange);
+    const priority = ["character", "minion", "yayat", "tower", "hero"];
+    const targetKind = priority.find((kind) => inRangeTargets.some((candidate) => candidate.kind === kind));
+    const target = inRangeTargets
+        .filter((candidate) => candidate.kind === targetKind)
+        .reduce((nearest, candidate) => !nearest || candidate.distance < nearest.distance ? candidate : nearest, null);
+    if (!target) {
+        const homeDistance = Math.hypot(member.homeX - member.x, member.homeY - member.y);
+        if (homeDistance > 2) {
+            member.x += (member.homeX - member.x) / homeDistance * Math.min(homeDistance, member.speed * dt);
+            member.y += (member.homeY - member.y) / homeDistance * Math.min(homeDistance, member.speed * dt);
+        }
+        return;
+    }
+    if (target.distance > member.range) {
+        const distanceToEngage = target.distance - member.range * 0.9;
+        member.x += (target.unit.x - member.x) / target.distance * Math.min(distanceToEngage, member.speed * dt);
+        member.y += (target.unit.y - member.y) / target.distance * Math.min(distanceToEngage, member.speed * dt);
+        return;
+    }
+    if (member.attackCooldown > 0) return;
+
+    member.attackCooldown = member.cooldown;
+    if (target.kind === "yayat") damageYayat(member.damage, member.side, member);
+    else if (target.kind === "character") damageTeamMember(target.unit, member.damage);
+    else target.unit.hp = Math.max(0, target.unit.hp - member.damage);
+    if (target.kind === "hero" && target.unit.hp === 0) finish(false);
+    if (target.kind === "tower" && target.unit.hp === 0) {
+        if (target.side === "enemy" && areEnemyTowersDestroyed()) finish(true);
+        if (target.side === "player" && arePlayerTowersDestroyed()) finish(false);
+    }
+    if (target.kind === "minion" && target.unit.hp === 0) defeatEnemy();
+}
+
+function updateTeams(dt) {
+    const liveEnemyCharacters = enemyTeam.filter((member) => member.hp > 0);
+    const livePlayerCharacters = playerTeam.filter((member) => member.hp > 0);
+    for (const member of playerTeam) {
+        const targets = [
+            ...liveEnemyCharacters.map((unit) => ({ unit, kind: "character", side: "enemy" })),
+            ...(enemy ? [{ unit: enemy, kind: "minion", side: "enemy" }] : []),
+            ...(yayat && yayat.allegiance !== "player" ? [{ unit: yayat, kind: "yayat", side: "enemy" }] : []),
+            ...enemyTowers.filter((tower) => tower.hp > 0).map((unit) => ({ unit, kind: "tower", side: "enemy" }))
+        ];
+        updateTeamMember(member, targets, dt);
+    }
+
+    for (const member of enemyTeam) {
+        const targets = [
+            ...livePlayerCharacters.map((unit) => ({ unit, kind: "character", side: "player" })),
+            ...(!livePlayerCharacters.length ? [{ unit: hero, kind: "hero", side: "player" }] : []),
+            ...(yayat && yayat.allegiance !== "enemy" ? [{ unit: yayat, kind: "yayat", side: "player" }] : []),
+            ...playerTowers.filter((tower) => tower.hp > 0).map((unit) => ({ unit, kind: "tower", side: "player" }))
+        ];
+        updateTeamMember(member, targets, dt);
     }
 }
 
 function draw() {
+    drawnLabels.length = 0;
     const grass = ctx.createLinearGradient(0, 0, 720, 400);
     grass.addColorStop(0, "#2b6748"); grass.addColorStop(1, "#173c35");
     ctx.fillStyle = grass; ctx.fillRect(0, 0, 720, 400);
@@ -309,8 +562,18 @@ function draw() {
     ctx.strokeStyle = "#c9b77b"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, 181); ctx.lineTo(720, 140); ctx.moveTo(0, 252); ctx.lineTo(720, 232); ctx.stroke();
     ctx.strokeStyle = "#e9d591"; ctx.lineWidth = 2; ctx.setLineDash([12, 12]);
     ctx.beginPath(); ctx.moveTo(0, 217); ctx.lineTo(720, 185); ctx.stroke(); ctx.setLineDash([]);
-    drawTower(playerTower.x, playerTower.y, "#53a9ed", playerTower.hp, playerTower.maxHp);
-    drawTower(enemyTower.x, enemyTower.y, "#ea6657", enemyTower.hp, enemyTower.maxHp);
+    for (const tower of playerTowers) {
+        drawTower(tower.x, tower.y, "#53a9ed", tower.hp, tower.maxHp, tower.label, "#68e078");
+    }
+    for (const tower of enemyTowers) {
+        drawTower(tower.x, tower.y, "#ea6657", tower.hp, tower.maxHp, tower.label, "#f05b5b");
+    }
+    ctx.textAlign = "center";
+    ctx.font = "bold 10px Arial";
+    ctx.fillStyle = "#d9efff";
+    ctx.fillText("TIM PEMAIN", 105, 30);
+    ctx.fillStyle = "#ffe2dc";
+    ctx.fillText("TIM MUSUH", 615, 30);
     for (const bush of bushes) {
         const { x, y } = bush;
         ctx.fillStyle = "#164337";
@@ -329,28 +592,50 @@ function draw() {
         ctx.arc(x + 9, y - 2, 4, 0, Math.PI * 2);
         ctx.fill();
     }
-    if (turtle) drawUnit(turtle.x, turtle.y, "#70a866", getTurtleLabel(), turtle);
-    const heroColor = hero.character === "female" ? "#f16ca7" : "#53a9ed";
+    if (yayat) drawUnit(yayat.x, yayat.y, "#f4f0dd", getYayatLabel(), yayat);
+    for (const member of playerTeam) {
+        if (member.hp > 0) drawUnit(member.x, member.y, characters[member.characterId].color, member.name, member);
+    }
+    for (const member of enemyTeam) {
+        if (member.hp > 0) drawUnit(member.x, member.y, characters[member.characterId].color, member.name, member);
+    }
+    const character = characters[hero.character];
     const lunge = attackAnimation && attackAnimation.weapon === "sword"
         ? Math.sin(Math.min(1, attackAnimation.elapsed / attackAnimation.duration) * Math.PI) * 7
         : 0;
     const heroX = hero.x + (attackAnimation && attackAnimation.weapon === "sword" ? Math.cos(attackAnimation.angle) * lunge : 0);
     const heroY = hero.y + (attackAnimation && attackAnimation.weapon === "sword" ? Math.sin(attackAnimation.angle) * lunge : 0);
-    drawUnit(heroX, heroY, heroColor, "Dimas", null);
+    drawUnit(heroX, heroY, character.color, character.name, null);
     drawWeapon(heroX, heroY);
     if (enemy) drawUnit(enemy.x, enemy.y, "#ff2929", enemy.name, enemy);
-    else if (attackAnimation && attackAnimation.targetUnit) {
+    else if (attackAnimation && attackAnimation.targetUnit?.level !== undefined) {
         drawUnit(attackAnimation.targetX, attackAnimation.targetY, "#ff2929", attackAnimation.targetUnit.name, attackAnimation.targetUnit);
     }
 
     if (attackAnimation) drawAttackAnimation();
+
+    if (welcomeTime > 0) {
+        ctx.fillStyle = "#f5d68e";
+        ctx.strokeStyle = "rgba(5, 18, 13, .9)";
+        ctx.lineWidth = 5;
+        ctx.font = "bold 24px Arial";
+        ctx.textAlign = "center";
+        ctx.strokeText("WELCOME TO LAND OF HERI", 360, 196);
+        ctx.fillText("WELCOME TO LAND OF HERI", 360, 196);
+        ctx.fillStyle = "#f3f2e8";
+        ctx.font = "bold 11px Arial";
+        ctx.strokeText("3 REKAN TIM  •  4 MUSUH", 360, 217);
+        ctx.fillText("3 REKAN TIM  •  4 MUSUH", 360, 217);
+        ctx.lineWidth = 1;
+        ctx.textAlign = "start";
+    }
 
     if (!active) {
         ctx.fillStyle = "#111111";
         ctx.font = "bold 24px Arial";
         ctx.textAlign = "center";
         const endMessage = gameFinished
-            ? gameWon ? "Kemenangan Milik Anda Loh Ya" : "Dimas KALAH,COBA LAGI"
+            ? gameWon ? "Kemenangan Milik Anda Loh Ya" : `${character.name} KALAH, COBA LAGI`
             : "Pilih karakter & senjata untuk memulai";
         ctx.fillStyle = "rgba(9, 23, 17, 0.78)";
         ctx.fillRect(158, 179, 404, 46);
@@ -503,8 +788,9 @@ function drawWeapon(x, y) {
     ctx.lineWidth = 3;
     ctx.lineCap = "round";
     if (hero.weapon === "sword") {
-        const targetX = enemy ? enemy.x : enemyTower.x;
-        const targetY = enemy ? enemy.y : enemyTower.y;
+        const targetTower = getNearestEnemyTower(x, y);
+        const targetX = enemy ? enemy.x : targetTower ? targetTower.x : x + 1;
+        const targetY = enemy ? enemy.y : targetTower ? targetTower.y : y;
         const angle = active ? Math.atan2(targetY - y, targetX - x) : -Math.PI / 4;
         const directionX = Math.cos(angle);
         const directionY = Math.sin(angle);
@@ -544,18 +830,18 @@ function drawWeapon(x, y) {
     ctx.restore();
 }
 
-function drawTower(x, y, color, hp, maxHp) {
+function drawTower(x, y, color, hp, maxHp, label = "TURET TIM", healthColor = "#68e078") {
     const uiScale = getCanvasUiScale();
-    ctx.fillStyle = color;
+    ctx.fillStyle = hp > 0 ? color : "#59665e";
     ctx.fillRect(x - 18, y - 24, 36, 48);
     ctx.fillStyle = "#263238";
     ctx.fillRect(x - 23, y - 29, 46, 10);
     ctx.fillRect(x - 23, y + 19, 46, 10);
     ctx.fillRect(x - 7, y - 33, 14, 66);
-    ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 12px Arial";
+    ctx.fillStyle = hp > 0 ? "#ffffff" : "#c6cec9";
+    ctx.font = "bold 9px Arial";
     ctx.textAlign = "center";
-    ctx.fillText("TURET", x, y + 5);
+    ctx.fillText(hp > 0 ? label : "HANCUR", x, y + 5);
     ctx.textAlign = "start";
     const healthBarWidth = 46 * uiScale;
     drawHealthBar(
@@ -563,55 +849,273 @@ function drawTower(x, y, color, hp, maxHp) {
         y - 33 - 7 * uiScale,
         healthBarWidth,
         hp / maxHp,
-        5 * uiScale
+        5 * uiScale,
+        healthColor
     );
 }
 
 function drawUnit(x, y, color, label, unit) {
     const uiScale = getCanvasUiScale();
     if (unit) {
-        if (unit.kind === "turtle") drawTurtle(x, y, unit.allegiance);
+        if (unit.kind === "cow") drawCow(x, y, unit.allegiance);
+        else if (unit.kind === "character") drawAnimalCharacter(x, y, characters[unit.characterId]);
         else drawMinion(x, y, unit.level);
     } else {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
-        ctx.beginPath();
-        ctx.ellipse(x, y + 12, 17, 8, 0, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.arc(x, y, 15, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = "#ffffff";
-        ctx.beginPath();
-        ctx.arc(x - 5, y - 3, 2, 0, Math.PI * 2);
-        ctx.arc(x + 5, y - 3, 2, 0, Math.PI * 2);
-        ctx.fill();
+        drawAnimalCharacter(x, y, characters[hero.character]);
     }
-    ctx.textAlign = "center";
     if (unit) {
-        ctx.fillStyle = unit.kind === "turtle"
-            ? unit.allegiance === "player" ? "rgba(17, 74, 54, 0.95)" : unit.allegiance === "enemy" ? "rgba(87, 10, 17, 0.95)" : "rgba(72, 75, 34, 0.95)"
-            : "rgba(87, 10, 17, 0.9)";
-        ctx.font = `bold ${9 * uiScale}px Arial`;
-        const labelWidth = Math.max(unit.kind === "turtle" ? 92 * uiScale : 74 * uiScale, ctx.measureText(label.toUpperCase()).width + 12 * uiScale);
-        const labelX = Math.max(
-            labelWidth / 2 + 2 * uiScale,
-            Math.min(canvas.width - labelWidth / 2 - 2 * uiScale, x)
-        );
-        const labelOffset = unit.kind === "turtle" && uiScale > 1 ? 45 : 49;
-        const labelTop = y - labelOffset * uiScale;
-        ctx.fillRect(labelX - labelWidth / 2, labelTop, labelWidth, 13 * uiScale);
-        ctx.fillStyle = "#fff4f1";
-        ctx.fillText(label.toUpperCase(), labelX, labelTop + 9 * uiScale);
-        const healthBarWidth = (unit.kind === "turtle" ? 48 : 40 + unit.level * 5) * uiScale;
-        drawHealthBar(x - healthBarWidth / 2, y - 32 * uiScale, healthBarWidth, unit.hp / unit.maxHp, 5 * uiScale);
+        const labelColor = unit.kind === "character" && unit.side === "player" || unit.kind === "cow" && unit.allegiance === "player"
+            ? "rgba(15, 49, 38, .95)"
+            : "rgba(24, 20, 21, .95)";
+        const labelOffset = unit.kind === "character" ? 46 : unit.kind === "cow" ? 49 : 53;
+        drawNameLabel(label.toUpperCase(), x, y, labelColor, 9 * uiScale, labelOffset * uiScale);
+        const healthBarWidth = (unit.kind === "cow" ? 58 : unit.kind === "character" ? 38 : 40 + unit.level * 5) * uiScale;
+        const healthBarHeight = (unit.kind === "cow" ? 10 : 5) * uiScale;
+        const healthColor = unit.kind === "cow"
+            ? unit.allegiance === "enemy" ? "#f05b5b" : "#68e078"
+            : unit.kind === "character" && unit.side === "player" ? "#68e078" : "#f05b5b";
+        drawHealthBar(x - healthBarWidth / 2, y - (unit.kind === "cow" ? 34 : 32) * uiScale, healthBarWidth, unit.hp / unit.maxHp, healthBarHeight, healthColor);
     } else {
-        ctx.fillStyle = "#17221c";
-        ctx.font = `${12 * uiScale}px Arial`;
-        ctx.fillText(label, x, y - 39 * uiScale);
-        drawHealthBar(x - 22 * uiScale, y - 32 * uiScale, 44 * uiScale, hero.hp / hero.maxHp, 5 * uiScale);
+        drawNameLabel(label, x, y, "rgba(10, 25, 18, .95)", 12 * uiScale, 43 * uiScale, "#ffffff");
+        drawHealthBar(x - 22 * uiScale, y - 32 * uiScale, 44 * uiScale, hero.hp / hero.maxHp, 5 * uiScale, "#68e078");
     }
+}
+
+function drawNameLabel(text, x, y, outlineColor, fontSize, preferredOffset, fillColor = "#fff4f1") {
+    ctx.font = `bold ${fontSize}px Arial`;
+    ctx.textAlign = "center";
+    const width = ctx.measureText(text).width;
+    const labelX = Math.max(width / 2 + 3, Math.min(canvas.width - width / 2 - 3, x));
+    const candidates = Array.from({ length: 15 }, (_, index) => preferredOffset + fontSize * 1.45 * index);
+    candidates.push(-fontSize * 2.5, -fontSize * 4);
+    let baseline = y - preferredOffset;
+    for (const offset of candidates) {
+        const candidateBaseline = y - offset;
+        const bounds = {
+            left: labelX - width / 2 - 2,
+            right: labelX + width / 2 + 2,
+            top: candidateBaseline - fontSize,
+            bottom: candidateBaseline + 3
+        };
+        const fits = bounds.top >= 3 && bounds.bottom <= canvas.height - 3;
+        const overlaps = drawnLabels.some((label) =>
+            bounds.left < label.right && bounds.right > label.left &&
+            bounds.top < label.bottom && bounds.bottom > label.top
+        );
+        if (fits && !overlaps) {
+            baseline = candidateBaseline;
+            drawnLabels.push(bounds);
+            break;
+        }
+    }
+    ctx.lineWidth = Math.max(2, fontSize * .28);
+    ctx.lineJoin = "round";
+    ctx.strokeStyle = outlineColor;
+    ctx.strokeText(text, labelX, baseline);
+    ctx.fillStyle = fillColor;
+    ctx.fillText(text, labelX, baseline);
     ctx.textAlign = "start";
+}
+
+function drawCow(x, y, allegiance) {
+    const outline = allegiance === "player" ? "#6ac7ec" : allegiance === "enemy" ? "#f07a75" : "#e0c878";
+    ctx.save();
+    ctx.fillStyle = "rgba(0, 0, 0, .32)";
+    ctx.beginPath();
+    ctx.ellipse(x, y + 17, 26, 8, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#f4f0dd";
+    ctx.strokeStyle = outline;
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.ellipse(x - 2, y + 1, 20, 14, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = "#34343a";
+    ctx.beginPath();
+    ctx.ellipse(x - 8, y - 5, 6, 7, -.35, 0, Math.PI * 2);
+    ctx.ellipse(x + 5, y + 4, 7, 6, .35, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#f4f0dd";
+    ctx.beginPath();
+    ctx.arc(x + 18, y - 5, 11, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = "#e9c7b8";
+    ctx.beginPath();
+    ctx.ellipse(x + 24, y, 7, 5, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#f7f0d3";
+    ctx.beginPath();
+    ctx.moveTo(x + 12, y - 13);
+    ctx.lineTo(x + 10, y - 21);
+    ctx.lineTo(x + 17, y - 16);
+    ctx.moveTo(x + 23, y - 15);
+    ctx.lineTo(x + 29, y - 21);
+    ctx.lineTo(x + 29, y - 12);
+    ctx.fill();
+    ctx.fillStyle = "#303039";
+    ctx.beginPath();
+    ctx.arc(x + 21, y - 8, 1.7, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "#f4f0dd";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(x - 13, y + 11);
+    ctx.lineTo(x - 13, y + 18);
+    ctx.moveTo(x + 7, y + 11);
+    ctx.lineTo(x + 7, y + 18);
+    ctx.stroke();
+    ctx.restore();
+}
+
+function drawAnimalCharacter(x, y, character) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.lineJoin = "round";
+
+    ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
+    ctx.beginPath();
+    ctx.ellipse(0, 13, 19, 8, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (character.animal === "turtle") {
+        drawTurtle(0, 0, "player");
+        ctx.restore();
+        return;
+    }
+
+    ctx.fillStyle = character.color;
+    if (character.animal === "rabbit") {
+        ctx.beginPath();
+        ctx.ellipse(-7, -19, 5, 13, -.22, 0, Math.PI * 2);
+        ctx.ellipse(7, -19, 5, 13, .22, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = "#f4b8d5";
+        ctx.beginPath();
+        ctx.ellipse(-7, -19, 2, 8, -.22, 0, Math.PI * 2);
+        ctx.ellipse(7, -19, 2, 8, .22, 0, Math.PI * 2);
+        ctx.fill();
+    } else if (character.animal === "fox" || character.animal === "koala" || character.animal === "bull") {
+        ctx.beginPath();
+        if (character.animal === "koala") {
+            ctx.arc(-14, -9, 8, 0, Math.PI * 2);
+            ctx.arc(14, -9, 8, 0, Math.PI * 2);
+        } else {
+            ctx.moveTo(-14, -8);
+            ctx.lineTo(-17, -22);
+            ctx.lineTo(-4, -15);
+            ctx.lineTo(0, -11);
+            ctx.lineTo(4, -15);
+            ctx.lineTo(17, -22);
+            ctx.lineTo(14, -8);
+            ctx.closePath();
+        }
+        ctx.fill();
+        if (character.animal === "koala") {
+            ctx.fillStyle = "#d7b6a3";
+            ctx.beginPath();
+            ctx.arc(-14, -9, 4, 0, Math.PI * 2);
+            ctx.arc(14, -9, 4, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    } else if (character.animal === "lion") {
+        ctx.beginPath();
+        ctx.arc(0, 0, 19, 0, Math.PI * 2);
+        ctx.fill();
+    } else if (character.animal === "ant") {
+        ctx.fillStyle = "#5961a9";
+        ctx.beginPath();
+        ctx.arc(-13, 1, 8, 0, Math.PI * 2);
+        ctx.arc(13, 1, 8, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = "#5961a9";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(-5, -12);
+        ctx.quadraticCurveTo(-15, -24, -17, -20);
+        ctx.moveTo(5, -12);
+        ctx.quadraticCurveTo(15, -24, 17, -20);
+        ctx.stroke();
+    } else if (character.animal === "rhino") {
+        ctx.fillStyle = "#a4d7f5";
+        ctx.beginPath();
+        ctx.moveTo(5, -9);
+        ctx.lineTo(18, -14);
+        ctx.lineTo(12, -3);
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    ctx.fillStyle = character.color;
+    ctx.beginPath();
+    ctx.arc(0, 0, character.animal === "lion" ? 15 : 14, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (character.animal === "fox") {
+        ctx.fillStyle = "#fff0dc";
+        ctx.beginPath();
+        ctx.moveTo(-9, 2);
+        ctx.lineTo(0, 14);
+        ctx.lineTo(9, 2);
+        ctx.quadraticCurveTo(0, -1, -9, 2);
+        ctx.fill();
+    } else if (character.animal === "lion") {
+        ctx.fillStyle = "#f5d08a";
+        ctx.beginPath();
+        ctx.arc(0, 1, 10, 0, Math.PI * 2);
+        ctx.fill();
+    } else if (character.animal === "bull") {
+        ctx.fillStyle = "#f5e5c8";
+        ctx.beginPath();
+        ctx.moveTo(-8, -9);
+        ctx.quadraticCurveTo(-20, -20, -14, -4);
+        ctx.quadraticCurveTo(-11, 0, -8, -2);
+        ctx.moveTo(8, -9);
+        ctx.quadraticCurveTo(20, -20, 14, -4);
+        ctx.quadraticCurveTo(11, 0, 8, -2);
+        ctx.fill();
+    } else if (character.animal === "rhino") {
+        ctx.fillStyle = "#d9edfa";
+        ctx.beginPath();
+        ctx.moveTo(8, -4);
+        ctx.lineTo(19, -9);
+        ctx.lineTo(14, 1);
+        ctx.closePath();
+        ctx.fill();
+    } else if (character.animal === "koala") {
+        ctx.fillStyle = "#26343e";
+        ctx.beginPath();
+        ctx.ellipse(0, 4, 4, 6, 0, 0, Math.PI * 2);
+        ctx.fill();
+    } else if (character.animal === "ant") {
+        ctx.fillStyle = "#424b91";
+        ctx.beginPath();
+        ctx.ellipse(0, 10, 6, 4, 0, 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    ctx.fillStyle = "#ffffff";
+    ctx.beginPath();
+    ctx.arc(-5, -3, 2, 0, Math.PI * 2);
+    ctx.arc(5, -3, 2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#263238";
+    ctx.beginPath();
+    ctx.arc(-5, -3, 1, 0, Math.PI * 2);
+    ctx.arc(5, -3, 1, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (character.animal === "rabbit") {
+        ctx.fillStyle = "#f19fbe";
+        ctx.beginPath();
+        ctx.arc(0, 4, 2, 0, Math.PI * 2);
+        ctx.fill();
+    }
+    ctx.restore();
 }
 
 function drawTurtle(x, y, allegiance) {
@@ -741,10 +1245,10 @@ function drawMinion(x, y, level) {
     ctx.fill();
 }
 
-function drawHealthBar(x, y, width, ratio, height = 5) {
+function drawHealthBar(x, y, width, ratio, height = 5, fillColor = "#68e078") {
     ctx.fillStyle = "#401f25";
     ctx.fillRect(x, y, width, height);
-    ctx.fillStyle = "#68e078";
+    ctx.fillStyle = fillColor;
     ctx.fillRect(x, y, width * Math.max(0, Math.min(1, ratio)), height);
 }
 
@@ -758,6 +1262,7 @@ const movementKeys = new Map([
     ["ArrowLeft", "left"], ["a", "left"], ["A", "left"],
     ["ArrowRight", "right"], ["d", "right"], ["D", "right"]
 ]);
+const drawnLabels = [];
 
 function updateSelection() {
     document.querySelectorAll(".game-choice").forEach((choice) => {
@@ -779,11 +1284,44 @@ function setSelectionDisabled(disabled) {
     updateSelection();
 }
 
+async function enterGameFullscreen() {
+    if (!gamePanel.requestFullscreen) {
+        statusText.textContent = "Layar penuh tidak didukung browser ini.";
+        return;
+    }
+    try {
+        await gamePanel.requestFullscreen();
+    } catch (error) {
+        console.error("Tidak dapat membuka game dalam layar penuh.", error);
+        statusText.textContent = "Layar penuh tidak dapat dibuka. Coba gunakan browser lain.";
+    }
+}
+
+async function exitGameFullscreen() {
+    if (!document.fullscreenElement) return;
+    try {
+        await document.exitFullscreen();
+    } catch (error) {
+        console.error("Tidak dapat keluar dari layar penuh.", error);
+        statusText.textContent = "Layar penuh tidak dapat ditutup. Gunakan tombol kembali browser.";
+    }
+}
+
+document.addEventListener("fullscreenchange", () => {
+    const isFullscreen = document.fullscreenElement === gamePanel;
+    gamePanel.classList.toggle("is-fullscreen", isFullscreen);
+    enterFullscreenButton.hidden = isFullscreen;
+    exitFullscreenButton.hidden = !isFullscreen;
+    if (!isFullscreen) keys.clear();
+});
+
 characterInputs.forEach((input) => input.addEventListener("change", updateSelection));
 weaponInputs.forEach((input) => input.addEventListener("change", updateSelection));
 startButton.addEventListener("click", startGame);
 attackButton.addEventListener("click", attack);
 healButton.addEventListener("click", heal);
+enterFullscreenButton.addEventListener("click", enterGameFullscreen);
+exitFullscreenButton.addEventListener("click", exitGameFullscreen);
 
 document.addEventListener("keydown", (event) => {
     const direction = movementKeys.get(event.key);

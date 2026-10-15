@@ -1353,32 +1353,85 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
   <section id="mini-game" class="section dark game-section">
     <p class="game-eyebrow">Game Buatan Kami</p>
     <h2></h2>
-    <p class="game-description">Pilih karaktermu dan satu senjata, hadapi minion di setiap level, lalu hancurkan turet lawan. Serang Fira lebih dulu agar ia membantumu; jika minion menyerangnya lebih dulu, ia akan berpihak pada musuh. Bergerak dengan tombol WASD/panah atau kontrol di layar.</p>
+    <p class="game-description">Pilih karaktermu: tiga karakter acak dari timmu berjaga di tiga turet, sementara empat musuh berjaga di turet lawan. Kekuatan total kedua regu disesuaikan dengan jumlah dan role agar pertarungan seimbang. Karakter pilihanmu mulai di dekat turet tengah timmu. Semua karakter langsung bergerak menghadapi lawan dan kembali ke pos jika area aman. Fighter dan Tank menyerang dari dekat, Mage dan Marksman menjaga jarak serang; Tank juga lebih tahan terhadap serangan. Minion pertama muncul 10 detik setelah permainan dimulai, dengan darah dan serangan tiga kali lipat. Yayat si sapi dapat melawan balik saat diserang, lalu bergabung dengan tim yang mengalahkannya. Gerakkan karaktermu dengan tombol WASD/panah atau kontrol di layar.</p>
     <div class="game-panel">
+      <div class="game-fullscreen-bar">
+        <button id="enter-game-fullscreen" type="button" aria-label="Buka game dalam layar penuh">Layar penuh</button>
+        <span class="game-fullscreen-hint">Putar HP ke posisi mendatar untuk area bermain lebih luas.</span>
+        <button id="exit-game-fullscreen" type="button" aria-label="Keluar dari layar penuh" title="Keluar dari layar penuh" hidden>&times;</button>
+      </div>
       <div class="game-stats" aria-live="polite">
         <span>Level: <strong id="level">1</strong></span>
         <span>Minion: <strong id="kills">0/5</strong></span>
       </div>
       <div class="game-stage">
-        <canvas id="arena" width="720" height="400" aria-label="Arena permainan Jaga Arena"></canvas>
+        <canvas id="arena" width="720" height="400" aria-label="Arena permainan dengan tiga turet tim pemain dan tiga turet tim musuh"></canvas>
         <div class="game-setup" aria-label="Pengaturan karakter permainan">
           <div class="game-setup-options">
             <fieldset class="game-choice-group">
               <legend><span>01</span> Pilih karakter</legend>
               <div class="game-choice-grid character-choices">
                 <label class="game-choice">
-                  <input type="radio" name="character" value="male" />
+                  <input type="radio" name="character" value="dimas" />
                   <span class="game-choice-card">
-                    <span class="choice-emblem character-emblem male-emblem" aria-hidden="true">♂</span>
-                    <span class="choice-copy"><strong>Ksatria</strong><small>Pria</small></span>
+                    <span class="choice-emblem character-emblem role-fighter" aria-hidden="true">🦏</span>
+                    <span class="choice-copy"><strong>Dimas</strong><small>Fighter</small></span>
                     <span class="choice-check" aria-hidden="true">✓</span>
                   </span>
                 </label>
                 <label class="game-choice">
-                  <input type="radio" name="character" value="female" />
+                  <input type="radio" name="character" value="azzahra" />
                   <span class="game-choice-card">
-                    <span class="choice-emblem character-emblem female-emblem" aria-hidden="true">♀</span>
-                    <span class="choice-copy"><strong>Srikandi</strong><small>Perempuan</small></span>
+                    <span class="choice-emblem character-emblem role-mage" aria-hidden="true">🐰</span>
+                    <span class="choice-copy"><strong>Azzahra</strong><small>Mage</small></span>
+                    <span class="choice-check" aria-hidden="true">✓</span>
+                  </span>
+                </label>
+                <label class="game-choice">
+                  <input type="radio" name="character" value="gea" />
+                  <span class="game-choice-card">
+                    <span class="choice-emblem character-emblem role-fighter" aria-hidden="true">🦊</span>
+                    <span class="choice-copy"><strong>Gea</strong><small>Fighter</small></span>
+                    <span class="choice-check" aria-hidden="true">✓</span>
+                  </span>
+                </label>
+                <label class="game-choice">
+                  <input type="radio" name="character" value="keysha" />
+                  <span class="game-choice-card">
+                    <span class="choice-emblem character-emblem role-tank" aria-hidden="true">🐨</span>
+                    <span class="choice-copy"><strong>Keysha</strong><small>Tank</small></span>
+                    <span class="choice-check" aria-hidden="true">✓</span>
+                  </span>
+                </label>
+                <label class="game-choice">
+                  <input type="radio" name="character" value="fajri" />
+                  <span class="game-choice-card">
+                    <span class="choice-emblem character-emblem role-tank" aria-hidden="true">🦁</span>
+                    <span class="choice-copy"><strong>Fajri</strong><small>Tank</small></span>
+                    <span class="choice-check" aria-hidden="true">✓</span>
+                  </span>
+                </label>
+                <label class="game-choice">
+                  <input type="radio" name="character" value="afgan" />
+                  <span class="game-choice-card">
+                    <span class="choice-emblem character-emblem role-mage" aria-hidden="true">🐜</span>
+                    <span class="choice-copy"><strong>Afgan</strong><small>Mage</small></span>
+                    <span class="choice-check" aria-hidden="true">✓</span>
+                  </span>
+                </label>
+                <label class="game-choice">
+                  <input type="radio" name="character" value="fira" />
+                  <span class="game-choice-card">
+                    <span class="choice-emblem character-emblem role-marksman" aria-hidden="true">🐢</span>
+                    <span class="choice-copy"><strong>Fira</strong><small>Marksman</small></span>
+                    <span class="choice-check" aria-hidden="true">✓</span>
+                  </span>
+                </label>
+                <label class="game-choice">
+                  <input type="radio" name="character" value="rezeki" />
+                  <span class="game-choice-card">
+                    <span class="choice-emblem character-emblem role-marksman" aria-hidden="true">🐂</span>
+                    <span class="choice-copy"><strong>Rezeki</strong><small>Marksman</small></span>
                     <span class="choice-check" aria-hidden="true">✓</span>
                   </span>
                 </label>
