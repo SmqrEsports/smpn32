@@ -1218,9 +1218,15 @@ button:hover {
 
 .game-panel:fullscreen #arena,
 .game-panel.is-fullscreen #arena {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 1.8;
+  transform: translate(-50%, -50%);
 }
 
 .game-panel:fullscreen .game-setup,
@@ -1269,7 +1275,7 @@ button:hover {
 .game-panel.is-fullscreen .game-controls {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   margin: 0;
 }
 
@@ -1410,9 +1416,17 @@ button:hover {
   .game-panel:fullscreen .game-stage,
   .game-panel.is-fullscreen .game-stage {
     position: absolute;
-    inset: 82px 8px 8px;
+    inset: 82px 8px 90px;
     display: grid;
     min-height: 0;
+  }
+
+  .game-panel:fullscreen #arena,
+  .game-panel.is-fullscreen #arena {
+    width: auto;
+    height: min(100%, calc(100dvh - 178px));
+    max-width: 100%;
+    max-height: 100%;
   }
 
   .game-panel:fullscreen .game-status,
@@ -1433,11 +1447,16 @@ button:hover {
   .game-panel.is-fullscreen .game-screen-controls {
     position: absolute;
     z-index: 4;
-    right: max(12px, env(safe-area-inset-right));
-    bottom: max(12px, env(safe-area-inset-bottom));
-    left: max(12px, env(safe-area-inset-left));
-    display: block;
-    height: 0;
+    right: max(8px, env(safe-area-inset-right));
+    bottom: max(4px, env(safe-area-inset-bottom));
+    left: max(8px, env(safe-area-inset-left));
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 80px;
+    min-height: 0;
+    width: auto;
+    padding: 0;
     pointer-events: none;
   }
 
@@ -1447,16 +1466,16 @@ button:hover {
     bottom: 0;
     left: 0;
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    flex-direction: row;
+    gap: 6px;
     pointer-events: auto;
   }
 
   .game-panel:fullscreen .game-actions button,
   .game-panel.is-fullscreen .game-actions button {
-    min-height: 36px;
-    padding: 6px 10px;
-    font-size: .78rem;
+    min-height: 34px;
+    padding: 5px 8px;
+    font-size: .72rem;
   }
 
   .game-panel:fullscreen .game-controls,
@@ -1478,8 +1497,8 @@ button:hover {
 
   .game-panel:fullscreen .game-controls button,
   .game-panel.is-fullscreen .game-controls button {
-    width: 38px;
-    min-height: 34px;
+    width: 30px;
+    min-height: 22px;
   }
 
   .game-panel.is-finished:fullscreen .game-screen-controls,
