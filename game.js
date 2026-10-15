@@ -624,8 +624,8 @@ function draw() {
         ctx.fillText("WELCOME TO LAND OF HERI", 360, 196);
         ctx.fillStyle = "#f3f2e8";
         ctx.font = "bold 11px Arial";
-        ctx.strokeText("3 REKAN TIM  •  4 MUSUH", 360, 217);
-        ctx.fillText("3 REKAN TIM  •  4 MUSUH", 360, 217);
+        ctx.strokeText("SELAMAT BERMAIN", 360, 217);
+        ctx.fillText("SELAMAT BERMAIN", 360, 217);
         ctx.lineWidth = 1;
         ctx.textAlign = "start";
     }
