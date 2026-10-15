@@ -1351,30 +1351,89 @@ Tournament GARENA YOUTH CHAMPIONSHIP 2026 (GYC) Online
 
   <!-- MINI GAME -->
   <section id="mini-game" class="section dark game-section">
-    <h2>Game Buatan Kami</h2>
-    <p class="game-description">Kalahkan minion di setiap level, lalu hancurkan turet lawan. Gunakan tombol arah/WASD Pada Komputer atau tombol panah untuk bergerak.</p>
+    <p class="game-eyebrow">Game Buatan Kami</p>
+    <h2></h2>
+    <p class="game-description">Pilih karaktermu dan satu senjata, hadapi minion di setiap level, lalu hancurkan turet lawan. Serang Fira lebih dulu agar ia membantumu; jika minion menyerangnya lebih dulu, ia akan berpihak pada musuh. Bergerak dengan tombol WASD/panah atau kontrol di layar.</p>
     <div class="game-panel">
       <div class="game-stats" aria-live="polite">
-        <span>Nyawa: <strong id="health">200</strong></span>
         <span>Level: <strong id="level">1</strong></span>
         <span>Minion: <strong id="kills">0/5</strong></span>
-        <span>Nyawa turet: <strong id="tower-health">300/300</strong></span>
       </div>
-      <canvas id="arena" width="720" height="400" aria-label="Arena permainan Jaga Arena"></canvas>
-      <p id="game-status" class="game-status" role="status">Karya DIMAS BAGUS OKA VIII A Kadiv Website Angkatan V</p>
-      <div class="game-actions">
-        <button id="start-game" type="button">Mulai Game</button>
-        <button id="attack" type="button">Serang</button>
-        <button id="heal" type="button" disabled>Pulihkan Darah (+100)</button>
-      </div>
-      <div class="game-controls" aria-label="Kontrol gerakan">
-        <button type="button" data-direction="up" aria-label="Bergerak ke atas">↑</button>
-        <div>
-          <button type="button" data-direction="left" aria-label="Bergerak ke kiri">←</button>
-          <button type="button" data-direction="down" aria-label="Bergerak ke bawah">↓</button>
-          <button type="button" data-direction="right" aria-label="Bergerak ke kanan">→</button>
+      <div class="game-stage">
+        <canvas id="arena" width="720" height="400" aria-label="Arena permainan Jaga Arena"></canvas>
+        <div class="game-setup" aria-label="Pengaturan karakter permainan">
+          <div class="game-setup-options">
+            <fieldset class="game-choice-group">
+              <legend><span>01</span> Pilih karakter</legend>
+              <div class="game-choice-grid character-choices">
+                <label class="game-choice">
+                  <input type="radio" name="character" value="male" />
+                  <span class="game-choice-card">
+                    <span class="choice-emblem character-emblem male-emblem" aria-hidden="true">♂</span>
+                    <span class="choice-copy"><strong>Ksatria</strong><small>Pria</small></span>
+                    <span class="choice-check" aria-hidden="true">✓</span>
+                  </span>
+                </label>
+                <label class="game-choice">
+                  <input type="radio" name="character" value="female" />
+                  <span class="game-choice-card">
+                    <span class="choice-emblem character-emblem female-emblem" aria-hidden="true">♀</span>
+                    <span class="choice-copy"><strong>Srikandi</strong><small>Perempuan</small></span>
+                    <span class="choice-check" aria-hidden="true">✓</span>
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+            <fieldset class="game-choice-group">
+              <legend><span>02</span> Pilih satu senjata</legend>
+              <div class="game-choice-grid weapon-choices">
+                <label class="game-choice">
+                  <input type="radio" name="weapon" value="sword" />
+                  <span class="game-choice-card">
+                    <span class="choice-emblem weapon-emblem" aria-hidden="true">⚔</span>
+                    <span class="choice-copy"><strong>Pedang</strong><small>Serangan dekat</small></span>
+                    <span class="choice-check" aria-hidden="true">✓</span>
+                  </span>
+                </label>
+                <label class="game-choice">
+                  <input type="radio" name="weapon" value="magic" />
+                  <span class="game-choice-card">
+                    <span class="choice-emblem weapon-emblem" aria-hidden="true">✧</span>
+                    <span class="choice-copy"><strong>Sihir</strong><small>Jangkauan jauh</small></span>
+                    <span class="choice-check" aria-hidden="true">✓</span>
+                  </span>
+                </label>
+                <label class="game-choice">
+                  <input type="radio" name="weapon" value="bow" />
+                  <span class="game-choice-card">
+                    <span class="choice-emblem weapon-emblem" aria-hidden="true">➶</span>
+                    <span class="choice-copy"><strong>Panah</strong><small>Jangkauan terjauh</small></span>
+                    <span class="choice-check" aria-hidden="true">✓</span>
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+          <p class="game-finish-message" hidden></p>
+          <button id="start-game" type="button" disabled>Mulai Game</button>
         </div>
       </div>
+      <p id="game-status" class="game-status" role="status">Pilih karakter dan satu senjata untuk memulai petualangan.</p>
+      <div class="game-screen-controls">
+        <div class="game-actions">
+          <button id="attack" type="button">Serang</button>
+          <button id="heal" type="button" disabled>Pulih +100</button>
+        </div>
+        <div class="game-controls" aria-label="Kontrol gerakan">
+          <button type="button" data-direction="up" aria-label="Bergerak ke atas">↑</button>
+          <div>
+            <button type="button" data-direction="left" aria-label="Bergerak ke kiri">←</button>
+            <button type="button" data-direction="down" aria-label="Bergerak ke bawah">↓</button>
+            <button type="button" data-direction="right" aria-label="Bergerak ke kanan">→</button>
+          </div>
+        </div>
+      </div>
+      <p class="game-credit">Dibuat oleh DIMAS BAGUS OKA · VIII A · Kadiv Website Angkatan V</p>
     </div>
   </section>
 
