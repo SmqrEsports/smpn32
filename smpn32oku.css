@@ -4578,36 +4578,67 @@ footer {
 
 @media (max-width: 640px) {
   #liga .official-roster-grid {
-    display: flex !important;
-    flex-wrap: nowrap;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     box-sizing: border-box;
-    gap: 8px !important;
+    gap: 7px !important;
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 6px;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(79, 124, 255, .4) transparent;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-inline: contain;
-    touch-action: pan-x;
   }
 
-  #liga .official-roster-grid::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  #liga .official-roster-grid::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background: rgba(79, 124, 255, .4);
+  #liga .official-roster-grid > [hidden] {
+    display: none !important;
   }
 
   #liga .official-roster-grid > div {
-    flex: 0 0 auto;
-    width: max-content;
-    max-width: none;
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  #liga .official-roster-pagination:not([hidden]) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  #liga .official-roster-pagination button {
+    display: inline-flex;
+    min-width: 0;
+    min-height: 36px;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 12px;
+    border: 1px solid rgba(79, 124, 255, .24);
+    border-radius: 9px;
+    background: linear-gradient(135deg, #fff, #f1f4ff);
+    color: #34466a;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  #liga .official-roster-pagination .official-roster-page-arrow {
+    flex: 1 1 0;
+    max-width: 150px;
+  }
+
+  #liga .official-roster-pagination button:disabled {
+    border-color: rgba(107, 114, 128, .16);
+    background: #f3f4f6;
+    color: #9ca3af;
+    cursor: not-allowed;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  #liga .official-roster-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
   }
 }
 
