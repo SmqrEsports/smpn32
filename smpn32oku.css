@@ -311,6 +311,60 @@ body {
   touch-action: manipulation;
 }
 
+.hero-image-controls {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  pointer-events: none;
+}
+
+.hero-image-controls[hidden] {
+  display: none;
+}
+
+.hero-image-controls button {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  background: rgba(17, 24, 39, 0.65);
+  color: #fff;
+  font: inherit;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  transform: translateY(-50%);
+}
+
+.hero-image-controls .hero-image-prev {
+  left: 0;
+}
+
+.hero-image-controls .hero-image-next {
+  right: 0;
+}
+
+.hero-image-controls button:hover {
+  background: rgba(17, 24, 39, 0.9);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.hero-image-controls button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
 .hero .hero-slide[data-hero-media="prestasi"],
 .hero .hero-slide[data-hero-media="kepengurusan"] {
   object-fit: contain;
@@ -5471,6 +5525,39 @@ footer {
 #beranda .hero-carousel > .hero-carousel-game-link:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+  #beranda .hero-slide[data-hero-media="video"] {
+    object-fit: contain;
+    object-position: center;
+    background: url("LOGO.jpg") center / cover no-repeat;
+    filter: none;
+  }
+
+  #beranda .hero-image-controls {
+    padding: 0;
+  }
+
+  #beranda .hero-image-controls button,
+  #beranda .hero-image-controls button:hover,
+  #beranda .hero-image-controls button:active {
+    width: 40px;
+    height: 48px;
+    border: 0;
+    border-radius: 0;
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  #beranda .hero-image-controls .hero-image-prev {
+    left: 0;
+  }
+
+  #beranda .hero-image-controls .hero-image-next {
+    right: 0;
+  }
 }
 
 #beranda.hero {
