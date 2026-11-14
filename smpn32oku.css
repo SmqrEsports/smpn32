@@ -4530,6 +4530,48 @@ footer {
   margin: 0 auto;
 }
 
+#liga .angkatan-carousel-nav {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 12px;
+  width: min(100%, 280px);
+  margin: 15px auto 0;
+}
+
+#liga .angkatan-carousel-nav .angkatan-carousel-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  min-width: 44px;
+  max-width: none;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(214, 74, 145, .5);
+  border-radius: 50%;
+  background: linear-gradient(110deg, #2864c7, #c64288);
+  color: #fff;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+#liga .angkatan-carousel-nav .angkatan-carousel-arrow:disabled {
+  border-color: rgba(107, 114, 128, .16);
+  background: #e5e7eb;
+  color: #9ca3af;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#liga .angkatan-carousel-label {
+  color: #172338;
+  font-weight: 750;
+  text-align: center;
+}
+
 #liga .season > .gallery {
   display: block;
   margin: 0 auto 16px;
