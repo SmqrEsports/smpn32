@@ -745,7 +745,7 @@ body {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  background: url("smpn32.png") center top / contain no-repeat fixed;
+  background: url("gambar/smpn32.png") center top / contain no-repeat fixed;
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(5px) brightness(0.9);
 }
@@ -974,7 +974,7 @@ button:hover {
 
   /* Background di mobile supaya tidak terlalu besar */
   .modal {
-    background: url("smpn32.png") center top / contain no-repeat;
+    background: url("gambar/smpn32.png") center top / contain no-repeat;
     background-color: rgba(0, 0, 0, 0.85);
     background-attachment: scroll;
   }
@@ -2264,6 +2264,10 @@ button:hover {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   margin-top: 16px;
+}
+
+.winner-swipe-hint {
+  display: none;
 }
 
 .winner-card {
@@ -4472,7 +4476,7 @@ footer {
 }
 
 #tentang .struktur-perangkat-grid > .struktur-inti {
-  background-image: url("smpn32.png") !important;
+  background-image: url("gambar/smpn32.png") !important;
   background-size: cover !important;
   background-position: center !important;
 }
@@ -4482,14 +4486,14 @@ footer {
 #tentang .struktur-angkatan-carousel > .struktur-angkatan-iii {
   background-image:
     linear-gradient(135deg, rgba(249, 212, 35, .92), rgba(255, 179, 71, .92)),
-    url("logoangk1-3.jpeg") !important;
+    url("gambar/logoangk1-3.jpeg") !important;
   background-size: cover, cover !important;
   background-position: center, center !important;
 }
 
 #tentang .struktur-angkatan-carousel > .struktur-angkatan-iv,
 #tentang .struktur-angkatan-carousel > .struktur-angkatan-v {
-  background-image: url("LOGO.jpg") !important;
+  background-image: url("gambar/LOGO.jpg") !important;
   background-size: cover !important;
   background-position: center !important;
 }
@@ -4528,6 +4532,90 @@ footer {
 #liga .season-container {
   max-width: 1080px;
   margin: 0 auto;
+}
+
+#liga .liga-season-navigation {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  margin: 0 auto 18px;
+  padding: 12px 0 16px;
+  border-bottom: 1px solid rgba(184, 139, 31, .2);
+}
+
+#liga .season-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  width: min(100%, 440px);
+  margin: 0 auto;
+}
+
+#liga .season-page[style*="display: none"] {
+  display: none !important;
+}
+
+#liga .season-page .season-btn {
+  flex: 1 1 150px;
+  width: auto;
+  min-width: 0;
+  max-width: 200px;
+  min-height: 42px;
+  margin: 0;
+  border-radius: 12px;
+  font-size: .86rem;
+}
+
+#liga .season-page .season-btn[data-start-text] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 8px 10px;
+  line-height: 1.2;
+  white-space: normal;
+}
+
+#liga .season-start-date {
+  display: block;
+  font-size: .62rem;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+#liga .future-season {
+  box-sizing: border-box;
+  max-width: 860px;
+  margin: 0 auto 16px;
+  padding: clamp(16px, 3vw, 26px);
+  border: 1px solid rgba(184, 139, 31, .24);
+  border-radius: 16px;
+  background: linear-gradient(145deg, #fff, #f8f6ef);
+  box-shadow: 0 12px 30px rgba(23, 35, 56, .08);
+}
+
+#liga .future-season .subtitle {
+  margin-bottom: 8px;
+}
+
+#liga .future-season-context {
+  margin: 0 0 16px;
+  color: #806938;
+  font-size: .86rem;
+  font-weight: 700;
+}
+
+#liga .future-season-note {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-left: 3px solid #b88b1f;
+  border-radius: 0 9px 9px 0;
+  background: rgba(248, 238, 211, .5);
+  color: #4b5563;
+  font-size: .85rem;
+  line-height: 1.6;
 }
 
 #liga .angkatan-carousel-nav {
@@ -4700,47 +4788,329 @@ footer {
 }
 
 @media (max-width: 640px) {
+  #liga .future-season {
+    padding: 14px 12px;
+  }
+
+  #liga .future-season-note {
+    margin-top: 10px;
+    padding: 10px 11px;
+    font-size: .78rem;
+  }
+
   #liga {
     width: calc(100% - 24px);
-    margin: 18px auto;
-    padding: 18px 14px 22px;
+    margin: 14px auto;
+    padding: 14px 12px 18px;
     border-radius: 18px;
   }
 
   #liga > .title {
-    margin-bottom: 16px;
-    padding-bottom: 13px;
-    font-size: clamp(1.45rem, 7vw, 1.9rem) !important;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    font-size: clamp(1.35rem, 6.3vw, 1.7rem) !important;
+    line-height: 1.25;
+  }
+
+  #liga .liga-season-navigation {
+    gap: 7px;
+    margin-bottom: 12px;
+    padding: 8px 0 12px;
+  }
+
+  #liga .season-page {
+    width: 100%;
+    gap: 7px;
+  }
+
+  #liga .season-page .season-btn {
+    flex-basis: 120px;
+    max-width: none;
+    min-height: 40px;
+    padding: 8px 9px;
+    border: 1px solid rgba(184, 139, 31, .32) !important;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #fff, #f8f6f1) !important;
+    background-image: linear-gradient(145deg, #fff, #f8f6f1) !important;
+    color: #263750 !important;
+    box-shadow: 0 4px 12px rgba(23, 35, 56, .06) !important;
+    font-size: .78rem;
+  }
+
+  #liga .season-page .season-btn:hover {
+    background: #f5f0e5 !important;
+    background-image: none !important;
+    transform: translateY(-1px);
+  }
+
+  #liga .season-locked-notice {
+    margin: 0;
+    color: #7a6335;
+    font-size: .78rem;
+  }
+
+  #liga .angkatan-carousel-nav {
+    width: min(100%, 240px);
+    gap: 8px;
+    margin: 0 auto;
+  }
+
+  #liga .angkatan-carousel-nav .angkatan-carousel-arrow {
+    width: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-color: rgba(184, 139, 31, .45) !important;
+    background: #263750 !important;
+    background-image: none !important;
+    color: #f2d78c !important;
+    box-shadow: 0 4px 12px rgba(23, 35, 56, .12) !important;
+  }
+
+  #liga .angkatan-carousel-nav .angkatan-carousel-arrow:not(:disabled):hover {
+    background: #344256 !important;
+    background-image: none !important;
+    box-shadow: 0 5px 14px rgba(23, 35, 56, .16) !important;
+    transform: translateY(-1px);
   }
 
   #liga .season > .gallery > figure {
-    margin-bottom: 12px !important;
-    padding: 9px !important;
+    margin: 0 auto 10px !important;
+    padding: 8px !important;
     border-radius: 14px !important;
   }
 
   #liga .season > hr {
-    margin: 14px 0 10px;
+    margin: 11px 0 8px;
+  }
+
+  #liga .subtitle {
+    margin-bottom: 9px;
+    padding-bottom: 7px;
+    font-size: 1rem;
   }
 
   #liga .info-list {
-    gap: 8px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
   }
 
   #liga .info-list > li {
-    padding: 11px 12px;
-    font-size: .92rem;
-    line-height: 1.55;
+    min-width: 0;
+    padding: 9px 10px;
+    border-radius: 10px;
+    font-size: .8rem;
+    line-height: 1.45;
+  }
+
+  #liga .info-list > li:nth-child(3),
+  #liga .info-list > li:nth-child(6) {
+    grid-column: 1 / -1;
   }
 
   #liga .info-list > li > section {
-    padding: 10px;
+    padding: 9px;
+  }
+
+  #liga .info-list > li > section > center > svg,
+  #liga .info-list > li > section hr {
+    display: none;
+  }
+
+  #liga .info-list > li > section h3 {
+    margin: 0 0 7px;
+    font-size: .88rem;
+  }
+
+  #liga .info-list > li > section address {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    font-style: normal;
+  }
+
+  #liga .info-list > li > section address p {
+    min-width: 0;
+    padding: 7px;
+    border: 1px solid rgba(184, 139, 31, .14);
+    border-radius: 8px;
+    background: #fff;
+    font-size: .72rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  #liga .info-list > li > section address p + p {
+    margin-top: 0;
+  }
+
+  #liga .info-list > li:nth-child(7) button,
+  #liga .info-list > li:nth-child(8) .winner-toggle {
+    width: auto;
+    max-width: 100%;
+    min-height: 34px;
+    margin: 6px 0 0;
+    padding: 7px 10px;
+    font-size: .72rem;
   }
 
   #liga .season > section.section {
-    margin-top: 14px;
-    padding: 16px 12px;
+    margin-top: 12px;
+    padding: 12px 10px;
   }
+
+  #liga .season > section.section h2 {
+    margin-bottom: 10px;
+    font-size: 1.05rem !important;
+  }
+
+  #liga .season > section.section .gallery {
+    display: flex;
+    gap: 9px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: 4px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #liga .season > section.section .gallery-item {
+    flex: 0 0 min(78vw, 250px);
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  #liga .season > section.section .gallery-item img {
+    display: block;
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+  }
+
+  #liga .season > section.section .gallery-item .caption {
+    padding: 8px;
+    font-size: .78rem;
+  }
+
+  #liga .winner-results-item {
+    grid-column: 1 / -1;
+  }
+
+  #liga .winner-results-item .winner-heading {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  #liga .winner-results-item .winner-toggle {
+    flex: 0 0 auto;
+    width: auto;
+    min-height: 36px;
+    margin: 0;
+    padding: 7px 12px;
+    border: 1px solid rgba(184, 139, 31, .45) !important;
+    border-radius: 999px;
+    background: #263750 !important;
+    background-image: none !important;
+    color: #f2d78c !important;
+    box-shadow: none !important;
+    font-size: .74rem;
+  }
+
+  #liga .winner-results-item .winner-toggle:hover {
+    background: #344256 !important;
+    background-image: none !important;
+  }
+
+  #liga .winner-results-item .winner-details {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    margin-top: 9px;
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  #liga .winner-results-item .winner-intro {
+    align-items: center;
+    padding-bottom: 8px;
+  }
+
+  #liga .winner-results-item .winner-intro h3 {
+    font-size: .88rem;
+  }
+
+  #liga .winner-results-item .winner-intro p {
+    font-size: .72rem;
+  }
+
+  #liga .winner-results-item .winner-swipe-hint {
+    display: block;
+    margin: 8px 2px 0;
+    color: #7a6335;
+    font-size: .7rem;
+    text-align: right;
+  }
+
+  #liga .winner-results-item .winner-grid {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    gap: 8px;
+    margin-top: 6px;
+    padding: 2px 2px 8px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #liga .winner-results-item .winner-card {
+    flex: 0 0 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 10px 11px;
+    scroll-snap-align: start;
+  }
+
+  #liga .winner-results-item .winner-card h4 {
+    margin-bottom: 6px;
+    font-size: .84rem;
+  }
+
+  #liga .winner-results-item .winner-card ol {
+    padding-left: 19px;
+    font-size: .78rem;
+    line-height: 1.45;
+  }
+}
+
+#liga .future-season-hidden-detail {
+  display: none;
+  margin-top: 9px;
+  padding: 10px 12px;
+  border: 1px solid rgba(184, 139, 31, .18);
+  border-radius: 10px;
+  background: #fff;
+  color: #4b5563;
+  font-size: .84rem;
+  line-height: 1.55;
+}
+
+#liga .future-season-hidden-detail p,
+#liga .future-season .official-roster-detail p {
+  margin: 0;
+}
+
+#liga .future-gallery-empty {
+  margin: 0;
+  padding: 16px;
+  border: 1px dashed rgba(184, 139, 31, .32);
+  border-radius: 10px;
+  color: #718096;
+  font-size: .84rem;
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4758,10 +5128,26 @@ footer {
 }
 
 #liga .official-roster-entry > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
   flex-wrap: wrap;
+  border-radius: 12px;
   border: 1px solid rgba(184, 139, 31, .28);
   background: #fff !important;
   box-shadow: 0 5px 15px rgba(23, 35, 56, .07) !important;
+}
+
+#liga .official-roster-entry > div:first-child > div:first-child {
+  min-width: 0;
+}
+
+#liga .official-roster-entry > div:first-child > div:first-child > div:first-child {
+  color: #172338 !important;
+  font-size: .9rem;
+  font-weight: 800;
 }
 
 #liga .official-roster-entry > div:first-child > div > div {
@@ -4770,14 +5156,48 @@ footer {
 
 #liga .official-roster-toggle {
   min-height: 40px;
+  padding: 9px 14px;
+  border: 1px solid rgba(184, 139, 31, .4);
+  border-radius: 9px;
+  background: linear-gradient(135deg, #f8edcf, #ead69c);
+  color: #172338;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 750;
+  cursor: pointer;
 }
 
 #liga .official-roster-detail {
+  display: none;
   box-sizing: border-box;
   width: 100%;
   min-width: 0;
   max-width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid rgba(184, 139, 31, .24);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #fff, #f8f6ef);
   overflow: hidden;
+}
+
+#liga .official-roster-detail > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: #172338;
+  font-size: .82rem;
+  font-weight: 800;
+}
+
+#liga .official-roster-grid {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 #liga .official-roster-grid {
@@ -4786,7 +5206,23 @@ footer {
 
 #liga .official-roster-grid > div {
   min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid rgba(184, 139, 31, .16);
+  border-radius: 9px;
+  background: #fff;
+  color: #344256;
+  font-size: .8rem;
   white-space: nowrap;
+}
+
+#liga .official-roster-grid > div > b {
+  margin-right: 5px;
+  color: #9a792f;
+}
+
+#liga .official-roster-grid > .official-roster-member-disciplined {
+  color: #111827;
+  font-weight: 800;
 }
 
 @media (max-width: 480px) {
@@ -5589,7 +6025,7 @@ footer {
   #beranda .hero-slide[data-hero-media="video"] {
     object-fit: contain;
     object-position: center;
-    background: url("LOGO.jpg") center / cover no-repeat;
+    background: url("gambar/LOGO.jpg") center / cover no-repeat;
     filter: none;
   }
 
@@ -5620,7 +6056,7 @@ footer {
 
 #beranda.hero {
   background-color: #fff !important;
-  background-image: url("smpn32.png") !important;
+  background-image: url("gambar/smpn32.png") !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-size: cover !important;
@@ -5629,7 +6065,7 @@ footer {
 #beranda .hero-slide[data-hero-media="prestasi"],
 #beranda .hero-slide[data-hero-media="kepengurusan"] {
   background-color: #fff !important;
-  background-image: url("smpn32.png") !important;
+  background-image: url("gambar/smpn32.png") !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-size: cover !important;
@@ -5639,8 +6075,142 @@ footer {
   background-color: #111c2f !important;
   background-image:
     linear-gradient(rgba(17, 28, 47, .58), rgba(17, 28, 47, .72)),
-    url("smpn32.png") !important;
+    url("gambar/smpn32.png") !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-size: cover !important;
+}
+
+#liga .season-btn {
+  padding: 8px 16px;
+  margin: 5px;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#liga .page-btn {
+  padding: 6px 12px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #ddd;
+}
+
+#liga .page-btn.active {
+  background: #333;
+  color: white;
+}
+
+.program-swipe-hint {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  #program > h2 {
+    margin-bottom: 10px;
+  }
+
+  #program .program-swipe-hint {
+    display: block;
+    margin: 0 0 8px;
+    color: #e0d3b4;
+    font-size: .76rem;
+    text-align: right;
+  }
+
+  #program .cards {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2px 2px 12px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #program .cards > .card {
+    box-sizing: border-box;
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    scroll-snap-align: start;
+  }
+
+  #liga .season > section.section .gallery-item {
+    flex: 0 0 100%;
+  }
+
+  #program .cards,
+  #liga .season > section.section .gallery {
+    scrollbar-width: auto;
+    scrollbar-color: #b88b1f rgba(23, 35, 56, .12);
+  }
+
+  #program .cards::-webkit-scrollbar,
+  #liga .season > section.section .gallery::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  #program .cards::-webkit-scrollbar-thumb,
+  #liga .season > section.section .gallery::-webkit-scrollbar-thumb {
+    border: 2px solid rgba(255, 255, 255, .72);
+    border-radius: 999px;
+    background: #b88b1f;
+  }
+
+  #program .cards::-webkit-scrollbar-track,
+  #liga .season > section.section .gallery::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: rgba(23, 35, 56, .1);
+  }
+
+  .horizontal-carousel-controls:not([hidden]) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: 4px 2px 12px;
+  }
+
+  .horizontal-carousel-hint {
+    margin-right: auto;
+    color: #77633a;
+    font-size: .72rem;
+  }
+
+  .horizontal-carousel-button {
+    display: inline-flex;
+    width: 40px;
+    min-width: 40px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(184, 139, 31, .45);
+    border-radius: 10px;
+    background: linear-gradient(135deg, #fff, #f3ead2);
+    color: #172338;
+    font: inherit;
+    font-size: 1.15rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .horizontal-carousel-button:disabled {
+    border-color: rgba(107, 114, 128, .18);
+    background: #f3f4f6;
+    color: #9ca3af;
+    cursor: not-allowed;
+  }
+}
+
+.horizontal-carousel-controls[hidden] {
+  display: none !important;
 }
