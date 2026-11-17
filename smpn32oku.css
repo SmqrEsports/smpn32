@@ -2134,7 +2134,8 @@ button:hover {
 
 .season-intro-media .season-intro-poster,
 .season-intro-media .season-intro-video {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 0;
   display: block;
   width: 100%;
@@ -4678,6 +4679,15 @@ footer {
 #liga .season > .gallery > figure img {
   overflow: hidden;
   border-radius: 12px !important;
+}
+
+#liga .season > .gallery > figure > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  cursor: zoom-in;
 }
 
 #liga .season > .gallery > figure figcaption {

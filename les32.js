@@ -503,8 +503,8 @@ const les32Markup = String.raw`<!-- Modal Lightbox Klasmen -->
       <!-- Seasons 1 -->
       <div class="season" id="season1">
         <div class="gallery">
-          <figure >
-            <img src="gambar/les32.jpeg" alt="Liga Esports SMPN 32 OKU" / >
+          <figure>
+            <img src="gambar/pengurusIVBanner.png" alt="Banner kepengurusan SMPN 32 OKU Esports Angkatan IV" />
             <figcaption >
               <strong>Seasons I</strong> (SELESAI)
             </figcaption>
@@ -779,8 +779,8 @@ const les32Markup = String.raw`<!-- Modal Lightbox Klasmen -->
       <!-- Seasons II -->
       <div class="season" id="season2">
         <div class="gallery">
-          <figure >
-            <img src="gambar/les32.jpeg" alt="Liga Esports SMPN 32 OKU" / >
+          <figure>
+            <img src="gambar/pengurusVBanner.jpeg" alt="Banner kepengurusan SMPN 32 OKU Esports Angkatan V" />
             <figcaption >
               <strong>Seasons II</strong> (SELESAI)
             </figcaption>
@@ -947,8 +947,8 @@ const les32Markup = String.raw`<!-- Modal Lightbox Klasmen -->
           <figure >
             <div class="season-intro-media" id="seasonThreeIntro">
               <img class="season-intro-poster" src="gambar/les32.jpeg" alt="Putar video intro Liga Esports SMPN 32 OKU" />
-              <video class="season-intro-video" playsinline preload="none" poster="gambar/les32.jpeg" hidden>
-                <source src="introles32oku.mp4" type="video/mp4" />
+              <video class="season-intro-video" playsinline preload="none" hidden>
+                <source src="Intro_Esports_SMPN32_OKU.mp4" type="video/mp4" />
                 Browser Anda tidak mendukung pemutaran video.
               </video>
               <button type="button" class="intro-play-toggle" aria-label="Putar video intro LES32OKU">
@@ -956,7 +956,7 @@ const les32Markup = String.raw`<!-- Modal Lightbox Klasmen -->
               </button>
               <p class="season-intro-error" role="status" aria-live="polite"></p>
             </div>
-            <p class="season-intro-caption">Lagu LES32OKU</p>
+            <p class="season-intro-caption">Video Intro LES32OKU</p>
             <figcaption >
               <strong>Seasons III</strong> (SELESAI)
             </figcaption>
@@ -1159,7 +1159,7 @@ const les32Markup = String.raw`<!-- Modal Lightbox Klasmen -->
     2: { modalId: "klasmenModal2", pageSelector: ".klasmen-grid.page2", currentPage: 1 },
     3: { modalId: "klasmenModal3", pageSelector: ".klasmen-grid.page3", currentPage: 1 },
   };
-  let currentAngkatanPage = 3;
+  let currentAngkatanPage = 1;
   let refreshHorizontalCarouselControls = () => {};
 
   function initializeHorizontalCarouselControls() {
@@ -1519,7 +1519,7 @@ const les32Markup = String.raw`<!-- Modal Lightbox Klasmen -->
       video.addEventListener("error", () => {
         video.hidden = true;
         poster.hidden = false;
-        errorMessage.textContent = "Video intro tidak dapat dimuat. Periksa file introles32oku.mp4.";
+        errorMessage.textContent = "Video intro tidak dapat dimuat. Periksa file Intro_Esports_SMPN32_OKU.mp4.";
         updatePlaybackButton();
       });
 
@@ -1596,29 +1596,10 @@ const les32Markup = String.raw`<!-- Modal Lightbox Klasmen -->
 
       const gallery = createElement("div", "gallery");
       const figure = document.createElement("figure");
-      const intro = createElement("div", "season-intro-media");
-      intro.id = `seasonIntro${seasonNumber}`;
-      const poster = createElement("img", "season-intro-poster");
+      const poster = document.createElement("img");
       poster.src = "gambar/les32.jpeg";
-      poster.alt = `Putar lagu LES32OKU ${seasonName}`;
-      const video = createElement("video", "season-intro-video");
-      video.setAttribute("playsinline", "");
-      video.preload = "none";
-      video.poster = "gambar/les32.jpeg";
-      video.hidden = true;
-      const source = document.createElement("source");
-      source.src = "introles32oku.mp4";
-      source.type = "video/mp4";
-      video.append(source, "Browser Anda tidak mendukung pemutaran video.");
-      const playButton = createElement("button", "intro-play-toggle");
-      playButton.type = "button";
-      playButton.setAttribute("aria-label", "Putar video intro LES32OKU");
-      playButton.append(createElement("span", "intro-play-icon", "▶"));
-      const introError = createElement("p", "season-intro-error");
-      introError.setAttribute("role", "status");
-      introError.setAttribute("aria-live", "polite");
-      intro.append(poster, video, playButton, introError);
-      figure.append(intro, createElement("p", "season-intro-caption", "Lagu LES32OKU"));
+      poster.alt = `Liga Esports SMPN 32 OKU ${seasonName}`;
+      figure.append(poster);
       const caption = document.createElement("figcaption");
       caption.append(createElement("strong", "", seasonName), " (AKAN DATANG)");
       figure.append(caption);
@@ -1777,7 +1758,7 @@ const les32Markup = String.raw`<!-- Modal Lightbox Klasmen -->
     initializeStandings();
     initializeSeasonIntros();
     changeAngkatanPage(0);
-    showSeason(4);
+    showSeason(1);
   }
 
   if (document.readyState === "loading") {
